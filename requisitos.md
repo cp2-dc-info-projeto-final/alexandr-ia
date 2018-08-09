@@ -75,20 +75,20 @@
 
   + Para catalogar os livros o(a) Bibliotecário(a) insere as seguintes informações no sistema:  
 
-  + Título do livro;
-  + Autores do livro;
-  + Editora(s) do livro;
-  + Gênero do livro.
+	+ Título do livro;
+	+ Autores do livro;
+	+ Editora(s) do livro;
+	+ Gênero do livro.
 
   (Essas informações serão utilizadas na elaboração dos bancos de dados do sistema);
 
-  - Os livros, após cadastrados no sistema, possuirão suas informações parcialmente disponibilizadas aos(às) Alunos(as) e Professores(as), através da plataforma Web, sendo elas:
+- Os livros, após cadastrados no sistema, possuirão suas informações parcialmente disponibilizadas aos(às) Alunos(as) e Professores(as), através da plataforma Web, sendo elas:
 
-  + Se o livro está emprestado ou não;
-  + Título do livro;
-  + Autores do livro;
-  + Editora(s) do livro;
-  + Gênero do livro.
+	+ Se o livro está emprestado ou não;
+	+ Título do livro;
+	+ Autores do livro;
+	+ Editora(s) do livro;
+	+ Gênero do livro.
 
 - Caso a data de entrega esteja próxima de chegar, será enviado um e-mail para lembrá-lo(a) da devolução do livro.
 
