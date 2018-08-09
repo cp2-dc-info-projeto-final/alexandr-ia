@@ -39,12 +39,11 @@
 
 			1. Matrícula;
 			2. Nome;
-			3. Ano cursado no Colégio;
-      
-4. E-mail;
-5. Senha.
+			3. Ano cursado no Colégio;      
+			4. E-mail;
+			5. Senha.
 	
-	+ Informações do(a) Professor(a):
++ Informações do(a) Professor(a):
 
 		* As informações guardadas no sistema, sobre o(a) professor(a) são:
 
@@ -72,20 +71,20 @@
 
 - O sistema gerencia os livros contidos na biblioteca, catalogando-os ou excluindo-os dos registros. 
 
-	+ O(a) Biliotecário(a) cadastra os livros na biblioteca.
+  + O(a) Biliotecário(a) cadastra os livros na biblioteca.
 
-	+ Para catalogar os livros o(a) Bibliotecário(a) insere as seguintes informações no sistema:  
+  + Para catalogar os livros o(a) Bibliotecário(a) insere as seguintes informações no sistema:  
 
-	+ Título do livro;
+  + Título do livro;
   + Autores do livro;
   + Editora(s) do livro;
   + Gênero do livro.
 
   (Essas informações serão utilizadas na elaboração dos bancos de dados do sistema);
 
-	- Os livros, após cadastrados no sistema, possuirão suas informações parcialmente disponibilizadas aos(às) Alunos(as) e Professores(as), através da plataforma Web, sendo elas:
+  - Os livros, após cadastrados no sistema, possuirão suas informações parcialmente disponibilizadas aos(às) Alunos(as) e Professores(as), através da plataforma Web, sendo elas:
 
-	+ Se o livro está emprestado ou não;
+  + Se o livro está emprestado ou não;
   + Título do livro;
   + Autores do livro;
   + Editora(s) do livro;
