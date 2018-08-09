@@ -71,7 +71,7 @@
 
 - O sistema gerencia os livros contidos na biblioteca, catalogando-os ou excluindo-os dos registros. 
 
-  + O(a) Biliotecário(a) cadastra os livros na biblioteca.
++ O(a) Biliotecário(a) cadastra os livros na biblioteca.
 
   + Para catalogar os livros o(a) Bibliotecário(a) insere as seguintes informações no sistema:  
 
