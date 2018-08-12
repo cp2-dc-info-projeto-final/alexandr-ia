@@ -1,8 +1,15 @@
-# Requisitos Não-Funcionais
-## Sistema
-### Dividido em duas partes:
+# Especificação de Requisitos
 
-#### Sistema Web:
+## Requisitos Não-Funcionais
+
+## RNF 01
+
+Sistema, dividido em duas partes:
+
+## RNF 1.1 
+
+   Sistema Web:
+   
  - Deve rodar com muitos alunos(as) ou professores(as) acessando ao mesmo tempo.
  - Deve cadastrar muitos ao mesmo tempo.
  - Deve fazer o cadastro instantaneamente, possibilitando o(a) cadastrado(a) fazer login imediatamente após o cadastro.
@@ -17,7 +24,10 @@
  - Deve utilizar as linguagens: HTML 5, CSS, PHP, JavaScript // e JSON.
  - Operações com o sistema C#.
 
-#### Sistema Software em C#:
+## RNF 1.2 
+
+   Software Desktop em C#:
+   
  - Roda em sistema operacional Windows.
  - Será rodado apenas nos computadores dos(as) bibliotecários(as).
  - Memória suficiente para acessar e armazenar o banco de dados (sql server) com todos os cadastros (mais de 10 mil livros, 2 mil alunos e professores).
@@ -31,7 +41,9 @@
  
 # Requisitos Funcionais
 
-### O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Professor(a) e Bibliotecário(a)
+## RF 01
+
+O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Professor(a) e Bibliotecário(a)
 	
 + Informações do(a) Aluno(a):
 
@@ -67,7 +79,9 @@
 - Os(as) Alunos(as) e Professores(as) terão acesso somente a suas respectivas informações, através da plataforma Web e informando matrícula e senha;
 - O(a) Bibliotecário(a) poderão ter acesso ao sistema informando somente o seus  respectivos códigos, na aplicação Desktop.
 
-### Livros
+## RF 02
+
+Livros
 
 - O sistema gerencia os livros contidos na biblioteca, catalogando-os ou excluindo-os dos registros. 
 
