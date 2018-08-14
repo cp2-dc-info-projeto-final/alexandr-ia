@@ -43,7 +43,3 @@
 ## RNF 11    
 
 -   Deve utilizar as linguagens: HTML 5, CSS, PHP, JavaScript // e JSON.
-
-## RNF 12    
-
--   Operações com o sistema C#.
