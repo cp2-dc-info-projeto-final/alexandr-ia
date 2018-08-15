@@ -31,10 +31,21 @@ O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Pr
 			3. Senha.
 
 
-## RF 02 Todas as informações dos(as) Usuários(as) são guardadas em um banco de dados  .
-## RF 03 O(a) Bibliotecário(a) tem acesso a várias informações de todos os usuários, menos à senha.
-## RF 04 Os(as) Alunos(as) e Professores(as) terão acesso somente a suas respectivas informações, através da plataforma Web e informando matrícula ou e-mail e senha;
-## RF 05 O(a) Bibliotecário(a) poderá ter acesso ao sistema informando nome ou e-mail e senha, na Web.
+## RF 02
+
+- Todas as informações dos(as) Usuários(as) são guardadas em um banco de dados.
+
+## RF 03
+
+- O(a) Bibliotecário(a) tem acesso a várias informações de todos os usuários, menos à senha.
+
+## RF 04
+
+- Os(as) Alunos(as) e Professores(as) terão acesso somente a suas respectivas informações, através da plataforma Web e informando matrícula ou e-mail e senha;
+
+## RF 05
+
+- O(a) Bibliotecário(a) poderá ter acesso ao sistema informando nome ou e-mail e senha, na Web.
 
 ## RF 06
 
