@@ -103,7 +103,43 @@
   1. Sistema exibe uma listagem de livros baseado na pesquisa do Usuário
     * Caso não haja pesquisa, o sistema não exibe quaisquer resultados
 
+  2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
 
+## CDU 00 - Página do Livro para Alunos e Professores
+
+**Atores:** Alunos e Professores
+
+**Pré-Condições:** Ser cadastrado no sistema como Aluno ou Professor e estar logado no sistema
+
+**Fluxo Principal:**
+
+  1. O sistema disponibiliza mais detalhes do livro selecionado
+    - Dentre os detelhes, há o de se o livro está ou não disponível
+      * Caso esteja disponível, o usuário poderá reservar o livro
+      * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
+
+## CDU 00 - Página do Livro para Bibliotecários
+
+**Atores:** Bibliotecários
+
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema
+
+**Fluxo Principal:**
+
+  1. O sistema disponibiliza mais detalhes do livro selecionado
+    - Há a possibilidade de excluir o livro do acervo
+    - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
+
+## CDU 00 - Página de Edição de Informações dos Livros
+
+**Atores:** Bibliotecários
+
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema
+
+**Fluxo Principal:**
+
+  1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro
+  2. O sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
 
 ## CDU 00 - Gerenciamento do Acervo (dos livros)
 
@@ -113,4 +149,5 @@
 
 **Fluxo Principal:**
 
-  1. Usuário preencherá um formulário
+  1. Usuário preencherá um formulário contendo as informações do livro a ser adcionados
+  2. Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário
