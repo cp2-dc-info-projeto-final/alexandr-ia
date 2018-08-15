@@ -186,7 +186,6 @@
 **Fluxo Principal:**
 
   1. Sistema exibe as informações do Bibliotecário, com a possiblidade da edição das informações pelo mesmo.
-  2.
 
 ## CDU 00 - Lista Negra
 
@@ -196,4 +195,4 @@
 
 **Fluxo Principal:**
 
-  
+  1. O bibliotecário pode colocar ou tirar Alunos/Professores da lista, que poderá ser acessada e alterada através do próprio perfil do bibliotecário
