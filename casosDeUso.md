@@ -113,7 +113,7 @@
 
 **Fluxo Principal:**
 
-  1. O sistema disponibiliza mais detalhes do livro selecionado
+  1. Sistema disponibiliza mais detalhes do livro selecionado
     - Dentre os detelhes, há o de se o livro está ou não disponível
       * Caso esteja disponível, o usuário poderá reservar o livro
       * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
@@ -126,7 +126,7 @@
 
 **Fluxo Principal:**
 
-  1. O sistema disponibiliza mais detalhes do livro selecionado
+  1. Sistema disponibiliza mais detalhes do livro selecionado
     - Há a possibilidade de excluir o livro do acervo
     - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
 
@@ -139,7 +139,7 @@
 **Fluxo Principal:**
 
   1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro
-  2. O sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
+  2. Sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
 
 ## CDU 00 - Gerenciamento do Acervo (dos livros)
 
@@ -151,3 +151,49 @@
 
   1. Usuário preencherá um formulário contendo as informações do livro a ser adcionados
   2. Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário
+
+## CDU 00 - Gerenciamento de Empréstimos
+
+**Atores:** Bibliotecários
+
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado.
+
+**Fluxo Principal:**
+
+  1. Usuário informa ao sistema se o livro reservado foi retirado ou não
+    * No caso de reservas feitas anteriormente, com quantidade superior aos livros disponíveis, se a quantidade de livros retirados for igual a quantidade existente no acervo, a reserva irá para a lista de desejos.
+
+## CDU 00 - Perfil de Alunos e Professores
+
+**Atores:** Alunos e Professores
+
+**Pré-Condições:** Ser cadastrado no sistema como Aluno ou Professor e estar logado no sistema
+
+**Fluxo Principal:**
+
+  1. Sistema exibe as informações do Aluno/Professor, com a possiblidade da edição das informações pelo mesmo.
+  2. Caso o usuário tenha retirado um livro na biblioteca e ele não esteja em uma lista de desejos, ele poderá pedir, até 2 vezes, adiamento da devolução do livro.
+    * Estando o livro numa lista de desejos, o pedido de adiamento não será aceito.
+  3. Sistema mostra as recomendações de leitura baseadas nas informações do usuário.
+  4. As informações do Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário.
+
+## CDU 00 - Perfil de Bibliotecários
+
+**Atores:** Bibliotecários
+
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema
+
+**Fluxo Principal:**
+
+  1. Sistema exibe as informações do Bibliotecário, com a possiblidade da edição das informações pelo mesmo.
+  2.
+
+## CDU 00 - Lista Negra
+
+**Atores:** Bibliotecários
+
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema
+
+**Fluxo Principal:**
+
+  
