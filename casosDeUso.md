@@ -43,7 +43,7 @@
 
   2. Caso o Usuário tenha esquecido sua senha, ele será redirecionado para a página de Recuperação de Senha.
 
-## CDU 00 - Recuperação de Senha
+## CDU 04 - Recuperação de Senha
 
 **Atores:** Alunos, Professores e Biliotecários
 
@@ -55,7 +55,7 @@
   2. Sistema envia um link de redefinição de senha para o e-mail informado.
   3. O link enviado, quando for acessado, redirecionará o usuário para a Página de definição de Nova Senha.
 
-## CDU 00 - Página de definição de Nova Senha
+## CDU 05 - Página de definição de Nova Senha
 
 **Atores:** Alunos, Professores e Biliotecários
 
@@ -66,7 +66,7 @@
   1. Usuário insere nova senha e a confirma
   2. Sistema redefine o cadastro do usuário, trocando a velha senha pela nova senha.
 
-## CDU 00 - Gerenciamento de Cadastros
+## CDU 06 - Gerenciamento de Cadastros
 
 **Atores:** Bibliotecários
 
@@ -76,7 +76,7 @@
 
   1. Sistema disponibiliza as informações dos Alunos e Professores (exceto a senha), não podendo alterá-las
 
-## CDU 00 - Página Inicial
+## CDU 07 - Página Inicial
 
 **Atores:** Alunos, Professores e Biliotecários
 
@@ -92,7 +92,7 @@
     2. Exibe os livros adcionados recentemente e os mais lidos
     3. Exibe um resumo do perfil do usuário, juntamente às recomendações de leitura
 
-## CDU 00 - Página de Listagem de Livros
+## CDU 08 - Página de Listagem de Livros
 
 **Atores:** Alunos, Professores e Bibliotecários
 
@@ -105,7 +105,7 @@
 
   2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
 
-## CDU 00 - Página do Livro para Alunos e Professores
+## CDU 09 - Página do Livro para Alunos e Professores
 
 **Atores:** Alunos e Professores
 
@@ -118,7 +118,7 @@
       * Caso esteja disponível, o usuário poderá reservar o livro
       * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
 
-## CDU 00 - Página do Livro para Bibliotecários
+## CDU 10 - Página do Livro para Bibliotecários
 
 **Atores:** Bibliotecários
 
@@ -130,7 +130,7 @@
     - Há a possibilidade de excluir o livro do acervo
     - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
 
-## CDU 00 - Página de Edição de Informações dos Livros
+## CDU 11 - Página de Edição de Informações dos Livros
 
 **Atores:** Bibliotecários
 
@@ -141,7 +141,7 @@
   1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro
   2. Sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
 
-## CDU 00 - Gerenciamento do Acervo (dos livros)
+## CDU 12 - Gerenciamento do Acervo (dos livros)
 
 **Atores:** Bibliotecários
 
@@ -152,7 +152,7 @@
   1. Usuário preencherá um formulário contendo as informações do livro a ser adcionados
   2. Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário
 
-## CDU 00 - Gerenciamento de Empréstimos
+## CDU 13 - Gerenciamento de Empréstimos
 
 **Atores:** Bibliotecários
 
@@ -163,7 +163,7 @@
   1. Usuário informa ao sistema se o livro reservado foi retirado ou não
     * No caso de reservas feitas anteriormente, com quantidade superior aos livros disponíveis, se a quantidade de livros retirados for igual a quantidade existente no acervo, a reserva irá para a lista de desejos.
 
-## CDU 00 - Perfil de Alunos e Professores
+## CDU 14 - Perfil de Alunos e Professores
 
 **Atores:** Alunos e Professores
 
@@ -177,7 +177,7 @@
   3. Sistema mostra as recomendações de leitura baseadas nas informações do usuário.
   4. As informações do Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário.
 
-## CDU 00 - Perfil de Bibliotecários
+## CDU 15 - Perfil de Bibliotecários
 
 **Atores:** Bibliotecários
 
@@ -187,7 +187,7 @@
 
   1. Sistema exibe as informações do Bibliotecário, com a possiblidade da edição das informações pelo mesmo.
 
-## CDU 00 - Lista Negra
+## CDU 16 - Lista Negra
 
 **Atores:** Bibliotecários
 
