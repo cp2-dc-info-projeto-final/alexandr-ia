@@ -84,13 +84,13 @@
 
 **Fluxo Principal:**
 
-    1. O sistema permite:
-      - Navegação entre as várias outras partes do website
-      - Busca por livros
-        * O usuário insere um parâmetro de busca (título, autor(a), gênero, etc.) e o sistema redireciona para a página de livros.
+  1. O sistema permite:
+    - Navegação entre as várias outras partes do website
+    - Busca por livros
+      * O usuário insere um parâmetro de busca (título, autor(a), gênero, etc.) e o sistema redireciona para a página de livros.
 
-    2. Exibe os livros adcionados recentemente e os mais lidos
-    3. Exibe um resumo do perfil do usuário, juntamente às recomendações de leitura
+  2. Exibe os livros adcionados recentemente e os mais lidos
+  3. Exibe um resumo do perfil do usuário, juntamente às recomendações de leitura
 
 ## CDU 08 - Página de Listagem de Livros
 
