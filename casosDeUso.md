@@ -76,23 +76,7 @@
 
   1. Sistema disponibiliza as informações dos Alunos e Professores (exceto a senha), não podendo alterá-las
 
-## CDU 07 - Página Inicial
-
-**Atores:** Alunos, Professores e Biliotecários
-
-**Pré-Condições:** Estar logado no sistema
-
-**Fluxo Principal:**
-
-  1. O sistema permite:
-    - Navegação entre as várias outras partes do website
-    - Busca por livros
-      * O usuário insere um parâmetro de busca (título, autor(a), gênero, etc.) e o sistema redireciona para a página de livros.
-
-  2. Exibe os livros adcionados recentemente e os mais lidos
-  3. Exibe um resumo do perfil do usuário, juntamente às recomendações de leitura
-
-## CDU 08 - Página de Listagem de Livros
+## CDU 07 - Pesquisa por Livros
 
 **Atores:** Alunos, Professores e Bibliotecários
 
@@ -105,7 +89,7 @@
 
   2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
 
-## CDU 09 - Página do Livro para Alunos e Professores
+## CDU 08 - Detalhes do Livro para Alunos e Professores
 
 **Atores:** Alunos e Professores
 
@@ -118,7 +102,7 @@
       * Caso esteja disponível, o usuário poderá reservar o livro
       * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
 
-## CDU 10 - Página do Livro para Bibliotecários
+## CDU 09 - Detalhes do Livro para Bibliotecários
 
 **Atores:** Bibliotecários
 
@@ -130,7 +114,7 @@
     - Há a possibilidade de excluir o livro do acervo
     - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
 
-## CDU 11 - Página de Edição de Informações dos Livros
+## CDU 10 - Página de Edição de Informações dos Livros
 
 **Atores:** Bibliotecários
 
@@ -141,7 +125,7 @@
   1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro
   2. Sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
 
-## CDU 12 - Gerenciamento do Acervo (dos livros)
+## CDU 11 - Gerenciamento do Acervo (dos livros)
 
 **Atores:** Bibliotecários
 
@@ -152,7 +136,7 @@
   1. Usuário preencherá um formulário contendo as informações do livro a ser adcionados
   2. Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário
 
-## CDU 13 - Gerenciamento de Empréstimos
+## CDU 12 - Gerenciamento de Empréstimos
 
 **Atores:** Bibliotecários
 
@@ -163,7 +147,7 @@
   1. Usuário informa ao sistema se o livro reservado foi retirado ou não
     * No caso de reservas feitas anteriormente, com quantidade superior aos livros disponíveis, se a quantidade de livros retirados for igual a quantidade existente no acervo, a reserva irá para a lista de desejos.
 
-## CDU 14 - Perfil de Alunos e Professores
+## CDU 13 - Atualização de Perfil de Alunos e Professores
 
 **Atores:** Alunos e Professores
 
@@ -176,8 +160,9 @@
     * Estando o livro numa lista de desejos, o pedido de adiamento não será aceito.
   3. Sistema mostra as recomendações de leitura baseadas nas informações do usuário.
   4. As informações do Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário.
+  5. Sistema exibe os livros pegos emprestados por aquele Aluno/Professor
 
-## CDU 15 - Perfil de Bibliotecários
+## CDU 14 - Atualização de Perfil de Bibliotecários
 
 **Atores:** Bibliotecários
 
@@ -187,7 +172,7 @@
 
   1. Sistema exibe as informações do Bibliotecário, com a possiblidade da edição das informações pelo mesmo.
 
-## CDU 16 - Lista Negra
+## CDU 15 - Lista Negra
 
 **Atores:** Bibliotecários
 
