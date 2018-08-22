@@ -6,13 +6,13 @@
 -   Deve rodar com muitos alunos(as) ou professores(as) acessando ao mesmo tempo.
 
 ## RNF 02
-   
+
 -   Deve cadastrar muitos ao mesmo tempo.
-    
+
 ## RNF 03
 
 -   Deve fazer o cadastro instantaneamente, possibilitando o(a) cadastrado(a) fazer login imediatamente após o cadastro.
-    
+
 ## RNF 04
 
 -   Deve ter comunicação e armazenamento instantâneos com o banco de dados.
@@ -23,7 +23,7 @@
 -   Deve ter suporte para mais de mil pessoas cadastradas.
 
 ## RNF 06   
- 
+
 -   Deve ter suporte para mais de 10 mil livros.
 
 ## RNF 07
@@ -79,6 +79,16 @@ O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Pr
 			2. E-mail;
 			3. Senha.
 
++ Informações do Livro:
+
+    * As informações guardadas no sistema, sobre o(a) Livro são:
+
+      1. Título;
+      2. Subtítulo;
+      2. Autor;
+      3. Genero;
+      4. Descrição;
+      5. Localização.
 
 ## RF 02
 
