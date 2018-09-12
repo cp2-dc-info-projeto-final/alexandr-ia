@@ -1,17 +1,52 @@
 <!DOCTYPE HTML>
 <html>
-
   <head>
-
+    <style>
+      body{
+        margin-top:10%;
+        background-color: rgb(174,231,240);
+        text-align: center;
+      }
+      h1{
+        font-size: 48px;
+        margin-bottom: -10px;
+      }
+      #subtitulo{font-size: 24px;}
+      .caixa{float: right;}
+      .linha{
+        padding-bottom: 20px;
+      }
+      #euestoumuitonossauau{
+        margin-top: 1.5%;
+        border-color: black;
+        border-width: 1px;
+        width: 130px;
+        height: 50px;
+        background-color: #c5c5c5;
+        border-radius: 4px;
+      }
+    </style>
     <title> Cadastrar </title>
     <meta charset="utf-8">
-
   </head>
-
   <body>
-
-    
-
+    <h1>Biblioteca CPII - Caxias</h1>
+    <p id="subtitulo">Aluno e Professor</p>
+      <center>
+      <form method="post">
+        <table>
+          <tr>
+            <td>
+              <div class="linha"><label>Matrícula:</label> <input class="caixa" type="text"><br></div>
+              <div class="linha"><label>Nome:</label> <input class="caixa" type="text"><br></div>
+              <div class="linha"><label>Email:</label> <input class="caixa" type="email"><br></div>
+              <div class="linha"><label>Senha:</label> <input class="caixa" type="password"><br></div>
+              <div class="linha"><label>Confirmar senha:</label> <input class="caixa" type="password"><br></div>
+            </td>
+          </tr>
+        </table>
+        <input id="euestoumuitonossauau" type="submit" value = "Cadastrar"><br>
+      </form>
+    </center>
   </body>
-
 </html>
