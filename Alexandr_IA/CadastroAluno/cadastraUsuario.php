@@ -56,7 +56,7 @@
 
   } else if (strlen($request['senha']) > 15 || strlen($request['senha'] < 6)) {
 
-    
+
 
   }
 
@@ -73,12 +73,10 @@
 
     //insere usuário
 
+  } else {
+
+    header(' Location: pagCadastro.php');
+
   }
 
 ?>
-
-<html>
-
-  <?php if(count($erros) != 0){echo '<object data="cadastrarUsuario.html"></object>';} ?>
-
-</html>

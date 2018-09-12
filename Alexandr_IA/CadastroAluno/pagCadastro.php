@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
   <head>
   <link rel="stylesheet" type="text/css" href="../ArquivosStyle/CeSS.css">
@@ -7,9 +6,10 @@
   </head>
   <body>
     <h1>Biblioteca CPII - Caxias</h1>
+    <?php print_r($_REQUEST); ?>
     <p id="subtitulo">Aluno e Professor</p>
       <center>
-      <form method="post">
+      <form method="post" action="cadastraUsuario.php">
         <table>
           <tr>
             <td>
