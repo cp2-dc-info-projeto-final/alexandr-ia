@@ -68,6 +68,9 @@
     $erros[] = "As senhas informadas devem ser iguais";
 
   }
+  
+  print_r($erros);
+  print_r($_REQUEST);
 
   if (count($erros) == 0){
 
@@ -75,7 +78,12 @@
 
   } else {
 
-    header(' Location: pagCadastro.php');
+	foreach ($erros as $erro){
+		
+		$text = $text.$erro.' | ';
+		
+	}
+    header('Location: pagCadastro.php?erros='.$text);
 
   }
 
