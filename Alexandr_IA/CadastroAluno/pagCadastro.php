@@ -1,4 +1,4 @@
-<html>
+﻿<html>
   <head>
   <link rel="stylesheet" type="text/css" href="../ArquivosStyle/CeSS.css">
     <title> Cadastrar </title>
@@ -6,8 +6,30 @@
   </head>
   <body>
     <h1>Biblioteca CPII - Caxias</h1>
-	<?php if(count($_REQUEST) != 0){echo ('<style> #caixaErros{visibility:visible} </style>')}?>
-	<div id='caixaErros'>ERRO: <?php foreach($_REQUEST as $item){print($item);}); ?></div>
+	<?php 
+  
+  if(count($_REQUEST) != 0){
+    
+    echo ('
+    
+      <br>
+      <style> #caixaErros{visibility:visible} </style>
+      
+      ');
+    
+    }
+  
+  ?>
+	<div id='caixaErros'>ERRO: 
+  <?php
+  
+   foreach($_REQUEST as $item){
+
+     print($item);
+     
+     }
+  
+  ?></div>
     <p id="subtitulo">Aluno e Professor</p>
       <center>
       <form method="post" action="cadastraUsuario.php">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
@@ -80,7 +80,7 @@
 
 	foreach ($erros as $erro){
 		
-		$text = $text.$erro.' | ';
+		$text = $text.' | '.$erro;
 		
 	}
     header('Location: pagCadastro.php?erros='.$text);
