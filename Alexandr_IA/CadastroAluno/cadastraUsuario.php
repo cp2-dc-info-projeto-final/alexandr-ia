@@ -1,5 +1,5 @@
 ﻿<?php
-  require_once('..\Modelo\TabelaUsuários.php');
+  require_once('../Modelo/TabelaUsuários.php');
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
 
@@ -46,11 +46,11 @@
     $erros[] = "Campo de e-mail inexistente ou inválido";
 
   }
-  
+
   if(MesmoEmail($request['email']) == 1){
-	  
-	$erros[] = "Não pode haver contas com mesmo email";
-	
+
+	$erros[] = "Não podem haver contas com mesmo email";
+
   };
 
   // ======
@@ -74,12 +74,12 @@
     $erros[] = "As senhas informadas devem ser iguais";
 
   }
-  
+
   //"Criptografar" a senha
   else {
 	$request['senha'] = password_hash($request['senha'], PASSWORD_DEFAULT);
   }
-  
+
   if (count($erros) == 0){
 	echo ('<html>
 			<head>
@@ -90,23 +90,25 @@
 			<body>
 				<h1>Biblioteca CPII - Caxias</h1>
 				<p>Cadastro Realizado com Sucesso!</p>
+        <br>
+        <a href="../LoginAluno/paginaLogin.php">Voltar para Tela de Inicial</a>
 			</body>
 		</html>');
-	
+
     //insere usuário
 	$novoUsuario = [
-		'matricula' => $request['nome'],
+		'matricula' => $request['matricula'],
 		'nome' => $request['nome'],
 		'email' => $request['email'],
 		'senha' => $request['senha']
 	];
-	
+
 	InsereUsuario($novoUsuario);
 
   } else {
 
 	foreach ($erros as $erro){
-		
+
 		$text = $text.' | '.$erro;
 		header('Location: pagCadastro.php?erros='.$text);
 	}

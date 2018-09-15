@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
   <head>
     <title>Login</title>
@@ -8,7 +7,7 @@
   <body>
     <h1>Biblioteca CPII - Caxias</h1>
     <center>
-        <form>
+        <form method="post" >
           <table style="margin-top:35px;">
             <tr>
               <td>
