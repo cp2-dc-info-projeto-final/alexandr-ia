@@ -1,5 +1,5 @@
 ﻿<?php
-
+  require_once('..\Modelo\TabelaUsuários.php');
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
 
@@ -46,6 +46,12 @@
     $erros[] = "Campo de e-mail inexistente ou inválido";
 
   }
+  
+  if(MesmoEmail($request['email']) == 1){
+	  
+	$erros[] = "Não pode haver contas com mesmo email";
+	
+  };
 
   // ======
   // ===== Validação da Senha
@@ -54,9 +60,9 @@
 
     $erros[] = "Campo da senha inexistente ou inválido";
 
-  } else if (strlen($request['senha']) > 15 || strlen($request['senha'] < 6)) {
+  } else if (strlen($request['senha']) < 6 || strlen($request['senha'] > 15)) {
 
-
+	$erros[] = "O campo senha deve ter no mínimo 6 e no máximo 15 dígitos";
 
   }
 
@@ -69,21 +75,41 @@
 
   }
   
-  print_r($erros);
-  print_r($_REQUEST);
-
+  //"Criptografar" a senha
+  else {
+	$request['senha'] = password_hash($request['senha'], PASSWORD_DEFAULT);
+  }
+  
   if (count($erros) == 0){
-
+	echo ('<html>
+			<head>
+				<link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css">
+				<title> Cadastrar </title>
+				<meta charset="utf-8">
+			</head>
+			<body>
+				<h1>Biblioteca CPII - Caxias</h1>
+				<p>Cadastro Realizado com Sucesso!</p>
+			</body>
+		</html>');
+	
     //insere usuário
+	$novoUsuario = [
+		'matricula' => $request['nome'],
+		'nome' => $request['nome'],
+		'email' => $request['email'],
+		'senha' => $request['senha']
+	];
+	
+	InsereUsuario($novoUsuario);
 
   } else {
 
 	foreach ($erros as $erro){
 		
 		$text = $text.' | '.$erro;
-		
+		header('Location: pagCadastro.php?erros='.$text);
 	}
-    header('Location: pagCadastro.php?erros='.$text);
 
   }
 

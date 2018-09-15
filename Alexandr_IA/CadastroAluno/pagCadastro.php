@@ -1,6 +1,6 @@
 ﻿<html>
   <head>
-  <link rel="stylesheet" type="text/css" href="../ArquivosStyle/CeSS.css">
+  <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css">
     <title> Cadastrar </title>
     <meta charset="utf-8">
   </head>
