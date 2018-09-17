@@ -59,10 +59,16 @@
   if ($request['senha'] == false){
 
     $erros[] = "Campo da senha inexistente ou inválido";
-
-  } else if (strlen($request['senha']) < 6 || strlen($request['senha'] > 15)) {
+	
+  } 
+  
+  $senha = $request['senha'];
+  $senha = strval($senha);
+  
+  if (strlen($senha) < 6 || strlen($senha) > 15) {
 
 	$erros[] = "O campo senha deve ter no mínimo 6 e no máximo 15 dígitos";
+	
 
   }
 

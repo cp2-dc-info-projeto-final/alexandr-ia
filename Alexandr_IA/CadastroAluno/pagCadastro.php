@@ -36,17 +36,80 @@
         <table>
           <tr>
             <td>
-              <div class="linha"><label>Matrícula:</label> <input class="caixa" type="text"name='matricula'><br></div>
-              <div class="linha"><label>Nome:</label> <input class="caixa" type="text"name='nome'><br></div>
-              <div class="linha"><label>Email:</label> <input class="caixa" type="email"name='email'><br></div>
-              <div class="linha"><label>Senha:</label> <input class="caixa" type="password"name='senha'><br></div>
-              <div class="linha"><label>Confirmar senha:</label> <input class="caixa" type="password" name='confirmarSenha'><br></div>
+			
+              <div class="linha"><label>Matrícula:</label> 
+			  
+			  <input 
+				class="caixa" 
+				type="text"
+				name='matricula'
+				maxlength="31"
+				required
+			  >
+			  
+			  <br>
+			  </div>
+			  
+              <div class="linha"><label>Nome:</label> 
+			  
+			  <input 
+				class="caixa" 
+				type="text"
+				name='nome'
+				minlength="3"
+				maxlength="127"
+				required
+			  >
+			  
+			  <br>			  
+			  </div>
+			  
+              <div class="linha"><label>Email:</label> 
+			  
+			  <input 
+			    class="caixa" 
+			    type="email"
+			    name='email'
+				required
+			  >
+			  
+			  <br>
+			  </div>
+			  
+              <div class="linha"><label>Senha:</label> 
+			  
+			  <input 
+			    class="caixa" 
+			    type="password"
+			    name='senha'
+				minlength="6"
+				maxlength="15"
+				required
+			  >
+			  
+			  <br>
+			  </div>
+			  
+              <div class="linha"><label>Confirmar senha:</label> 
+			  
+			  <input 
+			    class="caixa" 
+			    type="password" 
+			    name='confirmarSenha'
+				minlength="6"
+				maxlength="15"
+				required
+			  >
+			  
+			  <br>
+			  </div>
+			  
             </td>
           </tr>
         </table>
         <input id="submito2018" type="submit" value = "Cadastrar"><br>
       </form>
-	  <a href="../LoginAluno/paginaLogin.html">Fazer Login</a>
+	  <a href="../LoginAluno/paginaLogin.php">Fazer Login</a>
     </center>
   </body>
 </html>
