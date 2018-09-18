@@ -38,7 +38,7 @@
 		$erro[] = "Senha não informada";
 	}
 	
-	else if (password_verify($senha, $hash) == true){
+	else if (password_verify($senha, $hash)){
 
 		session_start();
 		$_SESSION['emailUsuarioLogado'] = $email;
