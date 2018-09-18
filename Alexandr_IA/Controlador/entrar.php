@@ -43,7 +43,7 @@
 		session_start();
 		$_SESSION['emailUsuarioLogado'] = $email;
 
-		header('Location: ../ArquivosStyle/FolhaDeEstilo.css');
+		header('Location: ');
 		exit();
 
 	}

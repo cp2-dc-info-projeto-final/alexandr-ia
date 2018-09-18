@@ -1,4 +1,5 @@
 ﻿<?php
+
   require_once('../Modelo/TabelaUsuários.php');
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
@@ -97,7 +98,7 @@
 				<h1>Biblioteca CPII - Caxias</h1>
 				<p>Cadastro Realizado com Sucesso!</p>
         <br>
-        <a href="../LoginAluno/paginaLogin.php">Voltar para Tela de Inicial</a>
+        <a href="../index.php">Voltar para Tela de Inicial</a>
 			</body>
 		</html>');
 
