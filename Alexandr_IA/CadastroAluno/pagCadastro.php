@@ -109,7 +109,7 @@
         </table>
         <input id="submito2018" type="submit" value = "Cadastrar"><br>
       </form>
-	  <a href="../LoginAluno/paginaLogin.php">Fazer Login</a>
+	  <a href="../index.php">Fazer Login</a>
     </center>
   </body>
 </html>
