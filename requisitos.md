@@ -84,11 +84,15 @@ O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Pr
     * As informações guardadas no sistema, sobre o(a) Livro são:
 
       1. Título;
-      2. Subtítulo;
       2. Autor;
-      3. Genero;
-      4. Descrição;
-      5. Localização.
+			3. Aquisição;
+      4. Observações;
+      5. Volume;
+			6. Edição;
+			7. Editora;
+			8. Exemplares;
+			9. Classificação;
+
 
 ## RF 02
 
