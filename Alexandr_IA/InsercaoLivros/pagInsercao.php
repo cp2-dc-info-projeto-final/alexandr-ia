@@ -26,7 +26,7 @@
 		<p id="subtitulo">Inserção de Livro</p>
 	
 		<center>
-		<form>		
+		<form method="POST" action="insereLivro.php">		
 			<table>
 				<tr>
 					<td>
