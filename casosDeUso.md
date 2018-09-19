@@ -5,7 +5,7 @@
 - [CDU 01 - Cadastro de Alunos e Professores](#cdu-01---cadastro-de-alunos-e-professores)
 - [CDU 02 - Cadastro de Bibliotecários](#cdu-02---cadastro-de-bibliotecários)
 - [CDU 03 - Login](#cdu-03---login)
-- [CDU 04 - Recuperação de Senha](#cdu-04-recuperação-de-senha)
+- [CDU 04 - Recuperação de Senha](#cdu-04---recuperação-de-senha)
 - [CDU 05 - Página de definição de Nova Senha](#cdu-05---página-de-definição-de-nova-senha)
 - [CDU 06 - Gerenciamento de Cadastros](#cdu-06---gerenciamento-de-cadastros)
 - [CDU 07 - Pesquisa por Livros](#cdu-07---pesquisa-por-livros)
