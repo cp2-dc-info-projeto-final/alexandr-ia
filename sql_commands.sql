@@ -6,7 +6,10 @@ CREATE TABLE Livro(
     edicao VARCHAR(31) NOT NULL,
     editora VARCHAR(31),
     volume VARCHAR(15),
-    exemplar INT NOT NULL
+    exemplar INT NOT NULL,
+	classificacao VARCHAR(34) NOT NULL,
+	aquisicao DATE NOT NULL,
+	observacao VARCHAR(144)
 
 );
 
