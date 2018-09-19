@@ -50,7 +50,7 @@
 
   if(MesmoEmail($request['email']) == 1){
 
-	$erros[] = "Não podem haver contas com mesmo email";
+	$erros[] = "Não pode haver contas com mesmo email";
 
   };
 
