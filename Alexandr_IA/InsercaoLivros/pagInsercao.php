@@ -37,7 +37,12 @@
 						<br>
 						
 						<div class"linha">
-							<label>Título: <input type='text' class="caixa" name="titulo"></label>
+							<label>Aquisição: <input type='date' class="caixa" name="aquisicao"></label>
+						</div>
+						<br>
+						
+						<div class"linha">
+							<label>Classificação: <input type='text' class="caixa" name="classificacao"></label>
 						</div>
 						<br>
 						
@@ -52,28 +57,23 @@
 						<br>
 						
 						<div class"linha">
-							<label>Volume: <input type='text' class="caixa" name="volume"></label>
-						</div>
-						<br>
-						
-						<div class"linha">
-							<label>Quantidade de Exemplares: <input type='number' class="caixa" name="qtd_exemplares"></label>
-						</div>
-						<br>
-						
-						<div class"linha">
-							<label>Classificação: <input type='text' class="caixa" name="classificacao"></label>
-						</div>
-						<br>
-						
-						<div class"linha">
-							<label>Aquisição: <input type='date' class="caixa" name="aquisicao"></label>
+							<label>Exemplares: <input type='number' class="caixa" name="qtd_exemplares"></label>
 						</div>
 						<br>
 						
 						<div class"linha">
 							<label>Observação: <input type='text' class="caixa" name="observacao"></label>
 						</div>						
+						<br>
+						
+						<div class"linha">
+							<label>Título: <input type='text' class="caixa" name="titulo"></label>
+						</div>
+						<br>
+						
+						<div class"linha">
+							<label>Volume: <input type='text' class="caixa" name="volume"></label>
+						</div>
 						<br>
 						
 						<center><input id="submito2018" type="submit" value="Inserir Livro"></center>

@@ -37,69 +37,88 @@
           <tr>
             <td>
 			
-              <div class="linha"><label>Matrícula:</label> 
+              <div class="linha">
 			  
-			  <input 
-				class="caixa" 
-				type="text"
-				name='matricula'
-				maxlength="31"
-				required
-			  >
+			  <label>Matrícula: 
+			  
+				  <input 
+					class="caixa" 
+					type="text"
+					name='matricula'
+					maxlength="31"
+					required
+				  >
+			  
+			  </label>
 			  
 			  <br>
 			  </div>
 			  
-              <div class="linha"><label>Nome:</label> 
+              <div class="linha">
+			  <label>Nome:
 			  
-			  <input 
-				class="caixa" 
-				type="text"
-				name='nome'
-				minlength="3"
-				maxlength="127"
-				required
-			  >
+				  <input 
+					class="caixa" 
+					type="text"
+					name='nome'
+					minlength="3"
+					maxlength="127"
+					required
+				  >
+			  
+			  </label>
 			  
 			  <br>			  
 			  </div>
 			  
-              <div class="linha"><label>Email:</label> 
+              <div class="linha">
 			  
-			  <input 
-			    class="caixa" 
-			    type="email"
-			    name='email'
-				required
-			  >
+			  <label>Email: 
 			  
-			  <br>
-			  </div>
+				  <input 
+					class="caixa" 
+					type="email"
+					name='email'
+					required
+				  >
 			  
-              <div class="linha"><label>Senha:</label> 
-			  
-			  <input 
-			    class="caixa" 
-			    type="password"
-			    name='senha'
-				minlength="6"
-				maxlength="15"
-				required
-			  >
+			  </label>
 			  
 			  <br>
 			  </div>
 			  
-              <div class="linha"><label>Confirmar senha:</label> 
+              <div class="linha">
 			  
-			  <input 
-			    class="caixa" 
-			    type="password" 
-			    name='confirmarSenha'
-				minlength="6"
-				maxlength="15"
-				required
-			  >
+			  <label>Senha: 
+			  
+				  <input 
+					class="caixa" 
+					type="password"
+					name='senha'
+					minlength="6"
+					maxlength="15"
+					required
+				  >
+			  
+			  </label>
+			  
+			  <br>
+			  </div>
+			  
+              <div class="linha">
+			  
+			  <label>Confirmar senha:
+			  
+				  <input 
+					class="caixa" 
+					type="password" 
+					name='confirmarSenha'
+					minlength="6"
+					maxlength="15"
+					required
+				  >
+			  
+			  </label>
 			  
 			  <br>
 			  </div>
