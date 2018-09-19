@@ -2,6 +2,22 @@
 
 ## Sumário
 
+- [CDU 01 - Cadastro de Alunos e Professores](#cdu-01---cadastro-de-alunos-e-professores)
+- [CDU 02 - Cadastro de Bibliotecários](#cdu-02---cadastro-de-bibliotecários)
+- [CDU 03 - Login](#cdu-03---login)
+- [CDU 04 - Recuperação de Senha](#cdu-04---recuperação-de-senha)
+- [CDU 05 - Página de definição de Nova Senha](#cdu-05---página-de-definição-de-nova-senha)
+- [CDU 06 - Gerenciamento de Cadastros](#cdu-06---gerenciamento-de-cadastros)
+- [CDU 07 - Pesquisa por Livros](#cdu-07---pesquisa-por-livros)
+- [CDU 08 - Detalhes do Livro para Alunos e Professores](#cdu-08---detalhes-do-livro-para-alunos-e-professores)
+- [CDU 09 - Detalhes do Livro para Bibliotecários](#cdu-09---detalhes-do-livro-para-bibliotecários)
+- [CDU 10 - Página de Edição de Informações dos Livros](#cdu-10---página-de-edição-de-informações-dos-livros)
+- [CDU 11 - Gerenciamento do Acervo (dos livros)](#cdu-11---gerenciamento-do-acervo-(dos-livros))
+- [CDU 12 - Gerenciamento de Empréstimos](#cdu-12---gerenciamento-de-empréstimos)
+- [CDU 13 - Atualização de Perfil de Alunos e Professores](#cdu-13---atualização-de-perfil-de-alunos-e-professores)
+- [CDU 14 - Atualização de Perfil de Bibliotecários](#cdu-14---atualização-de-perfil-de-bibliotecários)
+- [CDU 15 - Lista Negra](#cdu-15---lista-negra)
+
 ## CDU 01 - Cadastro de Alunos e Professores
 
 **Atores:** Alunos e Professores
@@ -11,9 +27,9 @@
 **Fluxo Principal:**
 
   1. Usuário informa Matrícula, Nome, E-mail e Senha.
-  2. Sistema verifica se a matrícula é válida.
-    - Se a Matrícula não for válida o sistema retorna um erro.
-    - Se a Matrícula for válida o sistema cadastra o Usuário como Aluno/Professor.
+  2. Sistema verifica se a o e-mail é válido
+    - Se o e-mail já estiver cadastrado no sistema, ele retorna um erro.
+    - Se o e-mail for válido o sistema cadastra o Usuário como Aluno/Professor.
 
 ## CDU 02 - Cadastro de Bibliotecários
 
@@ -24,10 +40,10 @@
 **Fluxo Principal:**
 
   1. Usuário informa Matrícula, Nome, E-mail e Senha.
-  2. Sistema verifica se a matrícula é válida.
-    - Se a Matrícula não for válida o sistema retorna um erro.
-    - Se a Matrícula for válida o sistema cadastra o Usuário como Bibliotecário.
-
+  2. Sistema verifica se a o e-mail é válido
+    - Se o e-mail já estiver cadastrado no sistema, ele retorna um erro.
+    - Se o e-mail for válido o sistema cadastra o Usuário como Bibliotecário.
+    
 ## CDU 03 - Login
 
 **Atores:** Alunos, Professores e Biliotecários
@@ -36,12 +52,12 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa e-mail ou matrícula e senha.
+  1. Usuário informa e-mail e senha.
     - Se os dados informados estiverem de acordo com os registrados no sistema, o usuário recebe permissão de acesso de acordo com o cadastro
       * Bibliotecários recebem as permissões de acesso de Biliotecário.
       * Alunos e Professores recebem as permissões de acesso de Alunos e Professores.
 
-  2. Caso o Usuário tenha esquecido sua senha, ele será redirecionado para a página de Recuperação de Senha.
+  2. Caso o Usuário tenha esquecido sua senha, ele será redirecionado para a página de Recuperação de Senha <!>
 
 ## CDU 04 - Recuperação de Senha
 
