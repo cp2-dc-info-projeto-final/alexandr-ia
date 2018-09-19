@@ -13,26 +13,46 @@
     echo ('
     
       <br>
-      <style> #caixaErros{visibility:visible} </style>
+      <style> 
+	  
+	  #caixaErros{
+		  
+		visibility:visible;
+		background-color: #ffff80;
+		width: 50%;
+		text-align: center;
+		border: solid 1px;
+		padding: 3px;
+		font-size: 18px;
+		  
+	  } 
+	  
+	  </style>
       
       ');
     
     }
   
   ?>
-	<div id='caixaErros'>ERRO: 
-  <?php
-  
-   foreach($_REQUEST as $item){
+	
+	<center>
+	
+		<div id='caixaErros'>ERRO: 
+	  <?php
+	  
+	   foreach($_REQUEST as $item){
 
-     print($item);
-     
-     }
+		 print($item);
+		 
+		 }
+	  
+	  ?></div>
   
-  ?></div>
+	</center>
+  
     <p id="subtitulo">Aluno e Professor</p>
       <center>
-      <form method="post" action="cadastraUsuario.php">
+      <form method="post" action="cadastraUsuario.php" novalidate>
         <table>
           <tr>
             <td>

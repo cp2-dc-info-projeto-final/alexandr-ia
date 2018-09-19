@@ -117,7 +117,7 @@
 	foreach ($erros as $erro){
 
 		$text = $text.' | '.$erro;
-		header('Location: pagCadastro.php?erros='.$text);
+		header('Location: pagCadastro.php?erros='.urlencode($text));
 	}
 
   }
