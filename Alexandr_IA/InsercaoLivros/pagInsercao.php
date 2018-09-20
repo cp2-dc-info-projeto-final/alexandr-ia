@@ -13,6 +13,12 @@
 				margin-top: 5%;
 				
 			}
+			
+			.linha{
+				
+				padding-bottom: 3px;
+				
+			}
 		
 		</style>
 	
