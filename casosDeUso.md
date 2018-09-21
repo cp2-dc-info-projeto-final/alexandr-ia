@@ -27,7 +27,7 @@
 **Fluxo Principal:**
 
   1. Usuário informa Matrícula, Nome, E-mail e Senha.
-  2. Sistema verifica se a o e-mail é válido
+  2. Sistema verifica se o e-mail é válido
     - Se o e-mail já estiver cadastrado no sistema, ele retorna um erro.
     - Se o e-mail for válido o sistema cadastra o Usuário como Aluno/Professor.
 
@@ -100,7 +100,7 @@
 
 **Fluxo Principal:**
 
-  1. Sistema exibe uma listagem de livros baseado na pesquisa do Usuário
+  1. Sistema exibe uma listagem de livros baseado na pesquisa do Usuário, que pode ser feita pelo título, editora ou autor.
     * Caso não haja pesquisa, o sistema não exibe quaisquer resultados
 
   2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
@@ -114,7 +114,7 @@
 **Fluxo Principal:**
 
   1. Sistema disponibiliza mais detalhes do livro selecionado
-    - Dentre os detelhes, há o de se o livro está ou não disponível
+    - Dentre os detalhes, há o de se o livro está ou não disponível
       * Caso esteja disponível, o usuário poderá reservar o livro
       * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
 
