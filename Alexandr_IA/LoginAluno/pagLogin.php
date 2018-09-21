@@ -1,17 +1,17 @@
-<?php 
+<?php
 
 	session_start();
 	$listaErros = null;
-	
+
 	if (array_key_exists('erro', $_SESSION) == true){
-		
+
 		$erros = $_SESSION['erro'];
 		foreach($erros as $erro){
-			
+
 			$listaErros[] = $erro;
-			
+
 		}
-		
+
 	}
 
 ?>
@@ -19,35 +19,35 @@
   <head>
     <title>Login</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="ArquivosStyle/FolhaDeEstilo.css">
-	
+    <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css">
+
   </head>
   <body>
     <h1>Biblioteca CPII - Caxias</h1>
     <center>
-	
+
 		<?php
-		
+
 		if ($listaErros != null){
-			
+
 			echo('<div class="alert alert-warning"><br>');
-			
+
 			foreach($listaErros as $erro){
-				
+
 				echo($erro);
-				
+
 			}
-			
+
 			echo('</div>');
-			
+
 			unset($_SESSION['erro']);
-			
+
 		}
-		
-		
+
+
 		?>
-	
-        <form method="post" action="Controlador/entrar.php">
+
+        <form method="post" action="../Controlador/entrar.php">
           <table style="margin-top:35px;">
             <tr>
               <td>
