@@ -141,3 +141,7 @@ Livros
 ## RF 12
 
 - Caso a data de entrega esteja próxima de chegar, será enviado um e-mail para lembrá-lo(a) da devolução do livro.
+
+## RF 13
+
+- O sistema irá fazer recomendações de leitura aos(às) Usuários(as) aleatoriamente.
