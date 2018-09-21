@@ -54,6 +54,8 @@
 			$sql -> execute();
 			$sql = $sql -> fetch();
 			
+			return ($sql);
+			
 		}
 		
 		if($tipo == 'pp_autor'){
@@ -64,6 +66,8 @@
 			$sql -> execute();
 			$sql = $sql -> fetch();
 			
+			return ($sql);
+			
 		}
 		
 		if($tipo == 'pp_editora'){
@@ -73,6 +77,8 @@
 			
 			$sql -> execute();
 			$sql = $sql -> fetch();
+			
+			return ($sql);
 			
 		}
 		
