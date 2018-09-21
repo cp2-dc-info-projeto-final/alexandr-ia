@@ -17,7 +17,6 @@
 
 -   Deve ter comunicação e armazenamento instantâneos com o banco de dados.
 
-
 ## RNF 05
 
 -   Deve ter suporte para mais de mil pessoas cadastradas.
@@ -81,18 +80,17 @@ O sistema gerencia cadastro e informações de 3 tipos de usuário: Aluno(a), Pr
 
 + Informações do Livro:
 
-    * As informações guardadas no sistema, sobre o(a) Livro são:
+	        * As informações guardadas no sistema, sobre o(a) Livro são:
 
-      1. Título;
-      2. Autor;
-			3. Aquisição;
-      4. Observações;
-      5. Volume;
-			6. Edição;
-			7. Editora;
-			8. Exemplares;
-			9. Classificação;
-
+	               1. Título;
+	      	       2. Autor;
+		       3. Aquisição;
+	      	       4. Observações;
+	      	       5. Volume;
+		       6. Edição;
+		       7. Editora;
+		       8. Exemplares;
+		       9. Classificação;
 
 ## RF 02
 
@@ -138,12 +136,8 @@ Livros
 
 ## RF 11
 
-- O sistema irá fazer recomendações de leitura aos(às) Usuários(as) baseados nos gêneros lidos recentementes.
-
-## RF 12
-
 - O sistema enviará um e-mail aos(às) Alunos(as) e Professores(as) quando um novo livro for catalogado.
 
-## RF 13
+## RF 12
 
 - Caso a data de entrega esteja próxima de chegar, será enviado um e-mail para lembrá-lo(a) da devolução do livro.
