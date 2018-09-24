@@ -1,3 +1,18 @@
+<?php 
+
+	session_start();
+	
+	if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
+		
+		$erro = [];
+		$erro[] = 'É preciso estar logado para acessar a página';
+		$_SESSION['erro'] = $erro;
+		
+		header('Location: ../index.php');
+		
+	}
+
+?>
 <html>
       <head>
         <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css">
@@ -8,7 +23,7 @@
                 }
                 ul {
                     list-style-type: none;
-                    margin: 0;
+                    margin-top: 5%;
                     padding: 0;
                     overflow: hidden;
                     background-color: #000000;
@@ -73,6 +88,16 @@
                 width: 500px;
                 padding-right: -4%;
               }
+			  #sair{
+				  
+				  float: right;
+				  display: inline-block;
+				  
+			  }
+			  
+			  #sair:hover {
+                    background-color: #32909a;
+              }
 
 
           </style>
@@ -84,18 +109,17 @@
       <body>
 
         <h1>Biblioteca CPII - Caxias</h1>
-        <br><br><br><br>
 
           <ul>
               <li class="cordetela"><a href="PI_aluno_prof.php"> Página Inicial </a></li>
               <li><a href="PI_aluno_prof.php"> Lista de Livros </a></li>
               <li><a href="PI_aluno_prof.php"> Perfil </a></li>
-              <li><form action="">
-                      <input type="text" placeholder="Pesquisa.." name="pesquisa">
-                      <button type="submit"><i class="botao_pesquisa"></i></button>
-                    </form>
+			<form action="">
+			  <input type="text" placeholder="Pesquisa.." name="pesquisa">
+			  <button type="submit"><i class="botao_pesquisa"></i></button>
+			</form>
 
-              <li style="float:right"><a class="cordetela" href="../Controlador/sair.php">Sair</a></li>
+              <li id="sair"><a class="cordetela" href="../Controlador/sair.php">Sair</a></li>
           </ul>
           <br><br>
 
@@ -125,11 +149,6 @@
 
               <input id="submito2018" type="submit" value="Livro Aleatório">
               <!-- Botão dos livros aleatórios -->
-
-
-
-
-
 
           </div>
 

@@ -2,7 +2,7 @@
 
 	session_start();
 	
-	$_SESSION['idLivro'] = 1;
+	//$_SESSION['idLivro'] = 1;
 	
 	$idLivro = $_SESSION['idLivro'];
 

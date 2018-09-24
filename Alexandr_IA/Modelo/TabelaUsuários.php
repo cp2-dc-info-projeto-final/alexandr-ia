@@ -35,7 +35,9 @@
 		$sql ->bindValue(':senha', $dadosNovoUsuario['senha']);
 		$sql -> execute();
 
-		$id = $bd -> query('SELECT id FROM Usuario WHERE matricula = "'.$dadosNovoUsuario['matricula'].'"');
+		$id = $bd -> preapre('SELECT id FROM Usuario WHERE email = :email');
+		$bd -> bindValue(':email', $dadosNovoUsuario['email']);
+		
 		$sql = $bd -> prepare('INSERT INTO Aluno_Professor(id) VALUES(:id)');
 
 		$id = $id -> fetch();

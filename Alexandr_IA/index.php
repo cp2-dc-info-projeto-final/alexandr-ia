@@ -6,6 +6,7 @@
 	if (array_key_exists('erro', $_SESSION) == true){
 
 		$erros = $_SESSION['erro'];
+		
 		foreach($erros as $erro){
 
 			$listaErros[] = $erro;
@@ -19,7 +20,7 @@
   <head>
     <title>Login</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css">
+    <link rel="stylesheet" type="text/css" href="ArquivosStyle/FolhaDeEstilo.css">
 
   </head>
   <body>
@@ -29,8 +30,29 @@
 		<?php
 
 		if ($listaErros != null){
+			
+			echo ('
 
-			echo('<div class="alert alert-warning"><br>');
+				<br>
+				<style> 
+
+				#caixaErros{
+				  
+				visibility:visible;
+				background-color: #ffff80;
+				width: 50%;
+				text-align: center;
+				border: solid 1px;
+				padding: 3px;
+				font-size: 18px;
+				  
+				} 
+
+				</style>
+
+			');
+
+			echo('<div id="caixaErros">ERRO: <br>');
 
 			foreach($listaErros as $erro){
 
@@ -47,7 +69,7 @@
 
 		?>
 
-        <form method="post" action="../Controlador/entrar.php">
+        <form method="post" action="Controlador/entrar.php">
           <table style="margin-top:35px;">
             <tr>
               <td>

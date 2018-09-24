@@ -56,6 +56,6 @@
 	session_start();
 
 	$_SESSION['erro'] = $erro;
-	header('Location: ../LoginAluno/pagLogin.php');
+	header('Location: ../index.php');
 
 ?>
