@@ -19,7 +19,7 @@
           <style>
 
                 h1{
-                  margin-bottom: -50px;
+                  margin-bottom: 2%;
                 }
                 ul {
                     list-style-type: none;
@@ -27,7 +27,9 @@
                     padding: 0;
                     overflow: hidden;
                     background-color: #000000;
+					display: block;
                 }
+				
                 li {
                     float: left;
                     padding-right: 4%;
@@ -91,13 +93,72 @@
 			  #sair{
 				  
 				  float: right;
-				  display: inline-block;
+				  margin-left: 30%;
+				  color: white;
 				  
 			  }
 			  
-			  #sair:hover {
-                    background-color: #32909a;
-              }
+			  body{
+				  
+				  margin-top: 3%;
+				  
+			  }
+			  #pesquisa{
+				  
+				  margin-left: 3%;
+				  float: right;
+				  
+			  }
+			  .botao_pesquisa{
+				  				  
+				float: left;
+				display: block;
+				vertical-align: middle;
+				margin-top: 10px;
+			  }
+			  #bloco{
+				  float: right;
+				  width: 50%;
+				  vertical-align: middle;
+			  }
+			  #barra{
+				  
+				  display: flex;
+				  margin-top: auto;
+				  background-color: #000000;
+				  
+			  }
+			  #barra a{
+				  
+				  background-color: #32909a;
+				  color: #FFFFFF;
+				  text-decoration: none;
+				  
+			  }
+			  #itens_nav{
+				  
+				  float: left;
+				  padding: 2% 0;
+				  margin-left: 3%;
+				  display: flex;
+				  width: 66%;
+				  
+			  }
+			  
+			  #itens_nav a{
+				  
+				  margin-left: 10%;
+				  
+			  }
+			  
+			  #direita{
+				  
+				  padding: 2% 0;
+				  display: flex;
+				  float: right;
+				  width: 33%;
+				  
+			  }
 
 
           </style>
@@ -109,19 +170,24 @@
       <body>
 
         <h1>Biblioteca CPII - Caxias</h1>
+		
+		<div id="barra">
 
-          <ul>
-              <li class="cordetela"><a href="PI_aluno_prof.php"> Página Inicial </a></li>
-              <li><a href="PI_aluno_prof.php"> Lista de Livros </a></li>
-              <li><a href="PI_aluno_prof.php"> Perfil </a></li>
-			<form action="">
-			  <input type="text" placeholder="Pesquisa.." name="pesquisa">
-			  <button type="submit"><i class="botao_pesquisa"></i></button>
-			</form>
-
-              <li id="sair"><a class="cordetela" href="../Controlador/sair.php">Sair</a></li>
-          </ul>
-          <br><br>
+			<div id="itens_nav">
+				<a href="PI_aluno_prof.php">Página Inicial</a>			
+				<a href="">Lista de Livros</a>			
+				<a href="">Perfil</a>
+			</div>
+			<div id="direita">
+				<div id="pesquisa">
+					<input type="text" placeholder="Pesquisa...">
+					<input type="submit">
+				</div>
+				<a id = "sair" href="../Controlador/sair.php">Sair</a>
+			</div>
+		
+		</div>
+        <br><br>
 
           <div class="adicionadosrec">
             <h3>  Adicionados <br> Recentemente </h3>
