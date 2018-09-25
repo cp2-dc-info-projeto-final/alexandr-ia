@@ -48,8 +48,10 @@
 		
 		if($tipo == 'pp_titulo'){ // pp_ é Pesquisar Por
 		
-			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE titulo LIKE %:string%');
-			$sql -> bindValue(':string', $string);
+			$string = str_replace("'", "", $string);
+		
+			$sql = $bd -> prepare("SELECT titulo, autor FROM livro WHERE titulo LIKE :string ORDER BY titulo ASC");
+			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
 			$sql = $sql -> fetch();
@@ -60,8 +62,8 @@
 		
 		if($tipo == 'pp_autor'){
 		
-			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE autor LIKE %:string%');
-			$sql -> bindValue(':string', $string);
+			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE autor LIKE :string ORDER BY autor ASC');
+			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
 			$sql = $sql -> fetch();
@@ -72,8 +74,8 @@
 		
 		if($tipo == 'pp_editora'){
 		
-			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE editora LIKE %:string%');
-			$sql -> bindValue(':string', $string);
+			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE editora LIKE :string ORDER BY editora ASC');
+			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
 			$sql = $sql -> fetch();
@@ -81,6 +83,20 @@
 			return ($sql);
 			
 		}
+		
+	}
+	
+	function VerificaTipo($titulo){
+		
+		$sql = $bd -> prepare('SELECT observacao FROM livro WHERE titulo = :titulo');
+		$sql -> bindValue(':titulo', $titulo);
+		$sql -> execute();
+		
+		$sql = $sql -> fetch();
+		
+		$tipo = trim($sql['observacao']);
+		
+		return $tipo;
 		
 	}
 ?>

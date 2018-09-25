@@ -175,7 +175,7 @@
 
 			<div id="itens_nav">
 				<a href="PI_aluno_prof.php">Página Inicial</a>			
-				<a href="">Lista de Livros</a>			
+				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>			
 				<a href="">Perfil</a>
 			</div>
 			<div id="direita">
