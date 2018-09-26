@@ -1,6 +1,14 @@
 <?php
 
 	session_start();
+	
+	if ( empty($_SESSION['emailUsuarioLogado']) == false ){
+		
+		header('Location: PaginaInicial/PI_aluno_prof.php');
+		exit();
+		
+	}
+	
 	$listaErros = null;
 
 	if (array_key_exists('erro', $_SESSION) == true){

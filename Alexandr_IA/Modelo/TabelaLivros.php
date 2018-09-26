@@ -48,13 +48,11 @@
 		
 		if($tipo == 'pp_titulo'){ // pp_ é Pesquisar Por
 		
-			$string = str_replace("'", "", $string);
-		
 			$sql = $bd -> prepare("SELECT titulo, autor FROM livro WHERE titulo LIKE :string ORDER BY titulo ASC");
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
-			$sql = $sql -> fetch();
+			$sql = $sql -> fetchAll();
 			
 			return ($sql);
 			
@@ -66,7 +64,7 @@
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
-			$sql = $sql -> fetch();
+			$sql = $sql -> fetchAll();
 			
 			return ($sql);
 			
@@ -78,7 +76,7 @@
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
-			$sql = $sql -> fetch();
+			$sql = $sql -> fetchAll();
 			
 			return ($sql);
 			
@@ -87,6 +85,8 @@
 	}
 	
 	function VerificaTipo($titulo){
+		
+		$bd = CriaConexãoBd();
 		
 		$sql = $bd -> prepare('SELECT observacao FROM livro WHERE titulo = :titulo');
 		$sql -> bindValue(':titulo', $titulo);

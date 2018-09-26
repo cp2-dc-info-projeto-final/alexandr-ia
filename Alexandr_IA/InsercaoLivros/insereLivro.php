@@ -4,6 +4,7 @@
 	
 	$request = array_map("trim", $_REQUEST);
 	$request = filter_var_array($request, [
+	
 		'autor' => FILTER_DEFAULT,
 		'aquisicao' => FILTER_DEFAULT,
 		'classificacao' => FILTER_DEFAULT,
@@ -17,9 +18,9 @@
 
 	$erros = [];
 	
-	if($request['autor'] == false){
+	/* if($request['autor'] == false){
 		$erros = "Autor não informado";
-	}
+	} */
 	
 	if($request['aquisicao'] == false){
 		$erros = "Aquisição não informado";

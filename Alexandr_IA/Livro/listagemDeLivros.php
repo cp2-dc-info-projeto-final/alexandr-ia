@@ -3,6 +3,7 @@
 	require_once('../Modelo/TabelaLivros.php');
 	
 	$listaLivros = PesquisaLivro('', 'pp_titulo');
+	print_r($listaLivros);
 
 ?>
 <html>
@@ -127,22 +128,69 @@
 		</div>
         <br><br>
 
+		<?php
+		
+			foreach($listaLivros as $livro){
+				
+				$tipo = VerificaTipo($livro['titulo']);
+				
+				if($tipo == 'CD'){
+					
+					$img = $tipo;
+					
+				} else if($tipo == 'DVD') {
+					
+					$img = $tipo;
+					
+				} else if($tipo == 'Cordel'){
+					
+					$img = $tipo;
+					
+				} else if($tipo == 'Braille'){
+					
+					$img = $tipo;
+					
+				} else if($tipo == 'Audiolivro'){
+					
+					$img = $tipo;
+					
+				} else if($tipo == 'Edição com fonte ampliada'){
+					
+					$img = 'fonteAmpliada';
+					
+				} else {
+					
+					$img = 'livro';
+					
+				}
+		
+		?>
+		
 		<div class="exibicaoLivro">
 		
-			<img src="../Imagens/Reduzidas/icon_livro.png">
+			<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
 			<div class="conteudo">
 			
 				<ul>
-					<li>Título: </li>
+					<li><?php echo('Título: '.$livro['titulo']);?></li>
 					<br>
-					<li>Autor: </li>
-					<br>
-					<li>Tipo de Conteúdo: </li>
+					<?php if(empty($livro['autor']) == false){
+						
+						echo('<li> Autor: '.$livro['autor'].'</li> <br>');
+						
+					}?>
+					<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
 				<ul>
 			
 			</div>
 		
 		</div>
+		
+		<?php 
+		
+			}
+		
+		?>
 	
 	</body>
 
