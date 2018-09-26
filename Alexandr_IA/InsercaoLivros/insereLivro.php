@@ -23,25 +23,25 @@
 	} */
 	
 	if($request['aquisicao'] == false){
-		$erros = "Aquisição não informado";
+		$erros[] = "Aquisição não informado";
 	}
 	
 	if($request['classificacao'] == false){
-		$erros = "Classificação não informado";
+		$erros[] = "Classificação não informado";
 	}
 	
 	if($request['edicao'] == false){
-		$erros = "Edição não informado";
+		$erros[] = "Edição não informado";
 	}
 	
 
 	if($request['qtd_exemplares'] == false){
-		$erros = "Quantidade de Exemplares não informado";
+		$erros[] = "Quantidade de Exemplares não informado";
 	}
 	
 	
 	if($request['titulo'] == false){
-		$erros = "Título não informado";
+		$erros[] = "Título não informado";
 	}
 	
 
@@ -61,7 +61,17 @@
 		];
 		
 		InsereLivro($novoLivro);
+
+		session_start();
+		$_SESSION['OK'] = 'ok';
+		
 		header('Location: pagInsercao.php');
+		exit();
 		
 	}
+	
+	session_start();
+	
+	$_SESSION['errosInsercao'] = $erros;
+	header('Location: pagInsercao.php');
 ?>

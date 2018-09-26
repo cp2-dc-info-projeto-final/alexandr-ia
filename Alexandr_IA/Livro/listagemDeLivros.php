@@ -2,8 +2,15 @@
 
 	require_once('../Modelo/TabelaLivros.php');
 	
-	$listaLivros = PesquisaLivro('', 'pp_titulo');
-	print_r($listaLivros);
+	if( array_key_exists('stringPesquisada', $_REQUEST) == false){
+		
+		$listaLivros = PesquisaLivro('', 'pp_titulo');
+		
+	} else {
+		
+		$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_titulo');
+		
+	}
 
 ?>
 <html>
@@ -82,10 +89,10 @@
 			  
 			  .exibicaoLivro{
 				  
-				  display: flex;
-				  margin-left: 1%;
+				  display: inline-block;
+				  float: left;
+				  margin-left: 4%;
 				  margin-top: 1%;
-				  
 			  }
 			  
 			  .conteudo{
@@ -99,6 +106,13 @@
 				  
 				  list-style-type:none;
 				  text-align: left;
+				  
+				  
+			  }
+			  
+			  .conteudo ul{
+				  
+				  padding-left: 5%;
 				  
 			  }
 			
@@ -158,9 +172,15 @@
 					
 					$img = 'fonteAmpliada';
 					
+				} else if( HQ($livro['titulo']) == true ){
+					
+					$img = 'hq';
+					$tipo = 'HQ/Mangá/Graphic Novel';
+					
 				} else {
 					
 					$img = 'livro';
+					$tipo = 'Livro';
 					
 				}
 		
@@ -168,7 +188,9 @@
 		
 		<div class="exibicaoLivro">
 		
-			<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+			<a href="">
+				<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+			</a>
 			<div class="conteudo">
 			
 				<ul>
@@ -191,7 +213,6 @@
 			}
 		
 		?>
-	
 	</body>
 
 </html>

@@ -99,4 +99,21 @@
 		return $tipo;
 		
 	}
+	
+	function HQ($titulo){
+		
+		$bd = CriaConexãoBd();
+		
+		$sql = $bd -> prepare('SELECT classificacao FROM livro WHERE classificacao LIKE :string AND titulo = :titulo');
+		
+		$sql -> bindValue(':string', '741.5%');
+		$sql -> bindValue(':titulo', $titulo);
+		$sql -> execute();
+		
+		$sql = $sql -> fetch();
+		$sql = $sql['classificacao'];
+		
+		return($sql);
+		
+	}
 ?>

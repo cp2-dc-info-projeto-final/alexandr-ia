@@ -1,4 +1,14 @@
-<html>
+<?php
+
+	session_start();
+	
+	if( array_key_exists('errosInsercao', $_SESSION) == true){
+		
+		$erros = $_SESSION['errosInsercao'];
+		
+	}
+
+?><html>
 
 	<head>
 	
@@ -30,6 +40,58 @@
 		<h1>Biblioteca CPII - Caxias</h1>
 		<br>
 		<p id="subtitulo">Inserção de Livro</p>
+		
+		<?php 
+		
+			if ( isset($erros) == true){
+				
+				if ($erros != null){
+				
+					echo ('
+
+						<br>
+						<style> 
+
+						#caixaErros{
+						  
+						visibility:visible;
+						background-color: #ffff80;
+						width: 50%;
+						text-align: center;
+						border: solid 1px;
+						padding: 3px;
+						font-size: 18px;
+						  
+						} 
+
+						</style>
+
+					');
+
+					echo('<center><div id="caixaErros">ERRO: <br>');
+
+					foreach($erros as $erro){
+
+						echo(' | '.$erro);
+
+					}
+
+					echo('</div></center><br>');
+
+					unset($_SESSION['errosInsercao']);
+				
+				}
+
+			}
+			
+			if (array_key_exists('OK', $_SESSION) == true){				
+					
+				echo('<center><strong>Cadastro Realizado Com Sucesso!</strong></center><br>');	
+
+				unset($_SESSION['OK']);
+				
+			}
+		?>
 	
 		<center>
 		<form method="POST" action="insereLivro.php">		
@@ -53,7 +115,7 @@
 						<br>
 						
 						<div class="linha">
-							<label>Edição: <input type='text' class="caixa" name="edicao"></label>
+							<label>Edição: <input type='number' class="caixa" name="edicao"></label>
 						</div>
 						<br>
 						

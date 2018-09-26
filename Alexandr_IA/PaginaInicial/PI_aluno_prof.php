@@ -180,8 +180,10 @@
 			</div>
 			<div id="direita">
 				<div id="pesquisa">
-					<input type="text" placeholder="Pesquisa...">
-					<input type="submit">
+					<form method="POST" action="../Livro/listagemDeLivros.php">
+						<input type="text" placeholder="Pesquisa..." name="stringPesquisada">
+						<input type="submit">
+					</form>
 				</div>
 				<a id = "sair" href="../Controlador/sair.php">Sair</a>
 			</div>
