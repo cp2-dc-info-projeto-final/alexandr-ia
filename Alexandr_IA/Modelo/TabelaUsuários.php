@@ -27,18 +27,24 @@
 	{
 		$bd = CriaConexãoBd();
 
-		$sql = $bd ->prepare('INSERT INTO Usuario(matricula, nome, email, senha) VALUES( :matricula, :nome, :email, :senha);');
+		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha) VALUES( :matricula, :nome, :email, :senha);');
 
 		$sql ->bindValue(':matricula',$dadosNovoUsuario['matricula']);
 		$sql ->bindValue(':nome',$dadosNovoUsuario['nome']);
 		$sql ->bindValue(':email', $dadosNovoUsuario['email']);
 		$sql ->bindValue(':senha', $dadosNovoUsuario['senha']);
 		$sql -> execute();
-
-		$id = $bd -> preapre('SELECT id FROM Usuario WHERE email = :email');
-		$bd -> bindValue(':email', $dadosNovoUsuario['email']);
 		
-		$sql = $bd -> prepare('INSERT INTO Aluno_Professor(id) VALUES(:id)');
+		$bd = CriaConexãoBd();
+		$sql = NULL;
+
+		$id = $bd -> prepare('SELECT id FROM usuario WHERE email = :email');
+		$id -> bindValue(':email', $dadosNovoUsuario['email']);
+		$id -> execute();
+		
+		$bd = CriaConexãoBd();
+		
+		$sql = $bd -> prepare('INSERT INTO aluno_professor(id) VALUES(:id)');
 
 		$id = $id -> fetch();
 		$id = $id['id'];

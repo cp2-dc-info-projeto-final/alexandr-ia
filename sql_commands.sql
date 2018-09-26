@@ -25,14 +25,14 @@ CREATE TABLE Usuario(
 
 CREATE TABLE Aluno_Professor (
 
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    id INT NOT NULL PRIMARY KEY, 
     FOREIGN KEY (id) REFERENCES Usuario(id)
 
 );
 
 CREATE TABLE Bibliotecario(
     
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT NOT NULL PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES Usuario(id)
     
 );
