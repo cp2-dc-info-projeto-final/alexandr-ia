@@ -34,4 +34,4 @@ O projeto consiste em computadorizar o sistema de empréstimo de livros da bibli
 
 5. Os livros serão catalogados de acordo com o acervo disponível na biblioteca do campus. Caso algum livro tenha sido danificado ao ponto de não poder ser mais utilizado pela biblioteca, o bibliotecário tem a opção de excluir o livro do acervo até que possam colocar outro no lugar e sendo assim, necessário recadastra-lo. Existindo também a possibilidade de cadastrar novos livros, adicionando-os ao sistema, neste processo os alunos cadastrados recebem um email sobre o novo livro do acervo da biblioteca.
 
-6. O aluno/professor receberá sugestões de leitura baseados em seu histórico de empréstimos de livros.
+6. O aluno/professor receberá sugestões de leitura aleatoriamente.
