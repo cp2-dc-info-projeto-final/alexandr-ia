@@ -1,4 +1,4 @@
-CREATE TABLE Livro(
+CREATE TABLE livro(
 
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     autor VARCHAR(255) NOT NULL,
@@ -7,13 +7,13 @@ CREATE TABLE Livro(
     editora VARCHAR(31),
     volume VARCHAR(15),
     exemplar INT NOT NULL,
-	classificacao VARCHAR(34) NOT NULL,
-	aquisicao DATE NOT NULL,
-	observacao VARCHAR(144)
+	  classificacao VARCHAR(34) NOT NULL,
+	  aquisicao DATE NOT NULL,
+	  observacao VARCHAR(144)
 
 );
 
-CREATE TABLE Usuario(
+CREATE TABLE usuario(
 
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     matricula VARCHAR(15),
@@ -23,31 +23,31 @@ CREATE TABLE Usuario(
 
 );
 
-CREATE TABLE Aluno_Professor (
+CREATE TABLE aluno_professor (
 
-    id INT NOT NULL PRIMARY KEY, 
-    FOREIGN KEY (id) REFERENCES Usuario(id)
-
-);
-
-CREATE TABLE Bibliotecario(
-    
     id INT NOT NULL PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES Usuario(id)
-    
+    FOREIGN KEY (id) REFERENCES usuario(id)
+
 );
 
-CREATE TABLE Reserva(
-    
+CREATE TABLE bibliotecario(
+
+    id INT NOT NULL PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES usuario(id)
+
+);
+
+CREATE TABLE reserva(
+
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     aluno_prof INT NOT NULL,
     livro INT NOT NULL,
-    FOREIGN KEY (aluno_prof) REFERENCES Aluno_Professor(id),
-    FOREIGN KEY (livro) REFERENCES Livro(id)
-    
+    FOREIGN KEY (aluno_prof) REFERENCES aluno_professor(id),
+    FOREIGN KEY (livro) REFERENCES livro(id)
+
 );
 
-CREATE TABLE Emprestimo (
+CREATE TABLE emprestimo (
 
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     aluno_prof INT NOT NULL,
@@ -56,8 +56,8 @@ CREATE TABLE Emprestimo (
     retirado BOOLEAN NOT NULL,
     _data DATE NOT NULL,
     horario TIME NOT NULL,
-    FOREIGN KEY (aluno_prof) REFERENCES Aluno_Professor(id),
-    FOREIGN KEY (bibliotecario) REFERENCES Bibliotecario(id),
-    FOREIGN KEY (livro) REFERENCES Livro(id)
+    FOREIGN KEY (aluno_prof) REFERENCES aluno_professor(id),
+    FOREIGN KEY (bibliotecario) REFERENCES bibliotecario(id),
+    FOREIGN KEY (livro) REFERENCES livro(id)
 
 );
