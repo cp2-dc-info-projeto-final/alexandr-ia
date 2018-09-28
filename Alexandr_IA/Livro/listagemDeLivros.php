@@ -2,15 +2,31 @@
 
 	require_once('../Modelo/TabelaLivros.php');
 	
+	$tipoConsulta = $_REQUEST['tipoConsulta'];
+	
 	if( array_key_exists('stringPesquisada', $_REQUEST) == false){
 		
 		$listaLivros = PesquisaLivro('', 'pp_titulo');
 		
 	} else {
 		
-		$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_titulo');
+		if($tipoConsulta == 'pp_titulo'){
+			
+			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_titulo');
+		}
 		
+		if($tipoConsulta == 'pp_autor'){
+			
+			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_autor');
+		}
+		
+		if($tipoConsulta == 'pp_editora'){
+			
+			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_editora');
+		}
 	}
+	
+	print_r($listaLivros);
 
 ?>
 <html>
@@ -87,18 +103,25 @@
 				  
 			  }
 			  
-			  .exibicaoLivro{
+			  .exibicaoLivro {
 				  
 				  display: inline-block;
 				  float: left;
 				  margin-left: 4%;
 				  margin-top: 1%;
+				  width: 100%;
+			  }
+			  
+			  .exibicaoLivro a{
+				  
+				  float: left;
+				  
 			  }
 			  
 			  .conteudo{
 				  
 				  display: flex;
-				  float: right;
+				  float: left;
 				  
 			  }
 			  
@@ -112,27 +135,27 @@
 			  
 			  .conteudo ul{
 				  
-				  padding-left: 5%;
+				  padding-left: 10px;
 				  
 			  }
 			  
-			li {
+			.barra li {
 				float: left;
 				padding-right: 4%;
 				padding-left: 4%;
 			}
-			li a {
+			.barra li a {
 				display: block;
 				color: white;
 				text-align: center;
 				padding: 14px 16px;
 				text-decoration: none;
 			}
-			li:hover {
+			.barra li:hover {
 				background-color: #32909a;
 			}
 			
-			ul {
+			.barra ul {
 				
 				list-style-type: none;
 				margin-top: 5%;
@@ -140,6 +163,21 @@
 				overflow: hidden;
 				background-color: #000000;
 				display: block;
+			}
+			
+			#parte_esquerda{
+				
+				float: left;
+				width: 45%;
+				margin-left: 5%;
+				
+			}
+			
+			#parte_direita{
+				
+				float: right;
+				width: 45%;
+				
 			}
 			
 		</style>
@@ -168,96 +206,200 @@
 		</div>
         <br><br> -->
 		
-		<ul>
-			<li>
-				<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>
-			</li>	
-			<li>
-				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
-			</li>		
-			<li>
-				<a href="">Perfil</a>
-			</li> 
-			<div style="display: inline-block; margin-top:0.6%;">
-				<input style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
-				<input type="submit" value="Pesquisar">
+		<div class="barra">
+			<ul>
+				<li>
+					<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>
+				</li>	
+				<li>
+					<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
+				</li>		
+				<li>
+					<a href="">Perfil</a>
+				</li> 
+				<div style="display: inline-block; margin-top:0.6%;">
+				<form method="post" action="listagemDeLivros.php">
+					<select name="tipoConsulta">
+						<option value="pp_titulo">Título</option>
+						<option value="pp_autor">Autor</option>
+						<option value="pp_editora">Editora</option>
+					</select>
+					<input name="stringPesquisada" style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
+					<input type="submit" value="Pesquisar">
+				</form>
 			</div>
-			<li style="float: right;">
-				<a id = "sair" href="../Controlador/sair.php">Sair</a>
-			</li>
-		</ul>
+				<li style="float: right;">
+					<a id = "sair" href="../Controlador/sair.php">Sair</a>
+				</li>
+			</ul>
+		</div>
 
-		<?php
-		
-			foreach($listaLivros as $livro){
+		<div id="parte_esquerda">
+			<?php
+			
+				$listaEsquerda = [];
+				$listaDireita = [];
 				
-				$tipo = VerificaTipo($livro['titulo']);
-				
-				if($tipo == 'CD'){
+				for($i = 0; $i < count($listaLivros); $i++){
 					
-					$img = $tipo;
-					
-				} else if($tipo == 'DVD') {
-					
-					$img = $tipo;
-					
-				} else if($tipo == 'Cordel'){
-					
-					$img = $tipo;
-					
-				} else if($tipo == 'Braille'){
-					
-					$img = $tipo;
-					
-				} else if($tipo == 'Audiolivro'){
-					
-					$img = $tipo;
-					
-				} else if($tipo == 'Edição com fonte ampliada'){
-					
-					$img = 'fonteAmpliada';
-					
-				} else if( HQ($livro['titulo']) == true ){
-					
-					$img = 'hq';
-					$tipo = 'HQ/Mangá/Graphic Novel';
-					
-				} else {
-					
-					$img = 'livro';
-					$tipo = 'Livro';
+					if( ($i % 2) == 0){
+						
+						$listaEsquerda[] = $listaLivros[$i];
+						
+					} else {
+						
+						$listaDireita[] = $listaLivros[$i];
+						
+					}
 					
 				}
-		
-		?>
-		
-		<div class="exibicaoLivro">
-		
-			<a href="">
-				<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
-			</a>
-			<div class="conteudo">
+								
+				foreach($listaEsquerda as $livro){
+					
+					$tipo = VerificaTipo($livro['titulo']);
+					
+					if($tipo == 'CD'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'DVD') {
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Cordel'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Braille'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Audiolivro'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Edição com fonte ampliada'){
+						
+						$img = 'fonteAmpliada';
+						
+					} else if( HQ($livro['titulo']) == true ){
+						
+						$img = 'hq';
+						$tipo = 'HQ/Mangá/Graphic Novel';
+						
+					} else {
+						
+						$img = 'livro';
+						$tipo = 'Livro';
+						
+					}
 			
-				<ul>
-					<li><?php echo('Título: '.$livro['titulo']);?></li>
-					<br>
-					<?php if(empty($livro['autor']) == false){
-						
-						echo('<li> Autor: '.$livro['autor'].'</li> <br>');
-						
-					}?>
-					<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
-				<ul>
+			?>
+			
+			<div class="exibicaoLivro">
+			
+				<a href="detalhesLivro.php?idLivro=<?php echo($livro['id']); ?>">
+					<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+				</a>
+				
+				<div class="conteudo">
+				
+					<ul>
+						<li><?php echo('Título: '.$livro['titulo']);?></li>
+						<br>
+						<?php if(empty($livro['autor']) == false){
+							
+							echo('<li> Autor: '.$livro['autor'].'</li> <br>');
+							
+						}?>
+						<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
+					<ul>
+				
+				</div>
 			
 			</div>
+			
+			<?php			
+			
+				}
+			?>
 		
 		</div>
 		
-		<?php 
+		<div id="parte_direita">
+			<?php			
+			
+				foreach($listaDireita as $livro){
+					
+					$tipo = VerificaTipo($livro['titulo']);
+					
+					if($tipo == 'CD'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'DVD') {
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Cordel'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Braille'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Audiolivro'){
+						
+						$img = $tipo;
+						
+					} else if($tipo == 'Edição com fonte ampliada'){
+						
+						$img = 'fonteAmpliada';
+						
+					} else if( HQ($livro['titulo']) == true ){
+						
+						$img = 'hq';
+						$tipo = 'HQ/Mangá/Graphic Novel';
+						
+					} else {
+						
+						$img = 'livro';
+						$tipo = 'Livro';
+						
+					}
+			
+			?>
+			
+			<div class="exibicaoLivro">
+			
+				<a href="detalhesLivro.php?idLivro=<?php echo($livro['id']); ?>">
+					<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+				</a>
+				<div class="conteudo">
+				
+					<ul>
+						<li><?php echo('Título: '.$livro['titulo']);?></li>
+						<br>
+						<?php if(empty($livro['autor']) == false){
+							
+							echo('<li> Autor: '.$livro['autor'].'</li> <br>');
+							
+						}?>
+						<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
+					<ul>
+				
+				</div>
+			
+			</div>
+			
+			<?php			
+			
+				}
+			?>
 		
-			}
+		</div>
 		
-		?>
 	</body>
 
 </html>

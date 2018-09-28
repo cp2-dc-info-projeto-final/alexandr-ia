@@ -48,7 +48,7 @@
 		
 		if($tipo == 'pp_titulo'){ // pp_ é Pesquisar Por
 		
-			$sql = $bd -> prepare("SELECT titulo, autor FROM livro WHERE titulo LIKE :string ORDER BY titulo ASC");
+			$sql = $bd -> prepare("SELECT id, titulo, autor FROM livro WHERE titulo LIKE :string ORDER BY titulo ASC");
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
@@ -60,7 +60,7 @@
 		
 		if($tipo == 'pp_autor'){
 		
-			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE autor LIKE :string ORDER BY autor ASC');
+			$sql = $bd -> prepare('SELECT id, titulo, autor FROM livro WHERE autor LIKE :string ORDER BY autor ASC');
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();
@@ -72,7 +72,7 @@
 		
 		if($tipo == 'pp_editora'){
 		
-			$sql = $bd -> prepare('SELECT titulo, autor FROM livro WHERE editora LIKE :string ORDER BY editora ASC');
+			$sql = $bd -> prepare('SELECT id, titulo, autor FROM livro WHERE editora LIKE :string ORDER BY editora ASC');
 			$sql -> bindValue(':string', '%'.$string.'%');
 			
 			$sql -> execute();

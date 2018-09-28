@@ -1,8 +1,11 @@
 <?php
 
 	session_start();
+	$idLivro = filter_input(INPUT_GET, 'idLivro', FILTER_SANITIZE_URL);
+
 	
-	$_SESSION['idLivro'] = 2;
+	$_SESSION['idLivro'] = $idLivro;
+;
 	
 	$idLivro = $_SESSION['idLivro'];
 

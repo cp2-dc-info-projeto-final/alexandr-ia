@@ -201,8 +201,15 @@
 				<a href="">Perfil</a>
 			</li> 
 			<div style="display: inline-block; margin-top:0.6%;">
-				<input style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
-				<input type="submit" value="Pesquisar">
+				<form method="post" action="../Livro/listagemDeLivros.php">
+					<select name="tipoConsulta">
+						<option value="pp_titulo">Título</option>
+						<option value="pp_autor">Autor</option>
+						<option value="pp_editora">Editora</option>
+					</select>
+					<input name="stringPesquisada" style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
+					<input type="submit" value="Pesquisar">
+				</form>
 			</div>
 			<li style="float: right;">
 				<a id = "sair" href="../Controlador/sair.php">Sair</a>
