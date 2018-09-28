@@ -171,7 +171,7 @@
 
         <h1>Biblioteca CPII - Caxias</h1>
 		
-		<div id="barra">
+		<!-- <div id="barra">
 
 			<div id="itens_nav">
 				<a href="PI_aluno_prof.php">Página Inicial</a>			
@@ -188,7 +188,27 @@
 				<a id = "sair" href="../Controlador/sair.php">Sair</a>
 			</div>
 		
-		</div>
+		</div> -->
+		
+		 <ul>
+			<li>
+				<a href="PI_aluno_prof.php">Página Inicial</a>
+			</li>	
+			<li>
+				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
+			</li>		
+			<li>
+				<a href="">Perfil</a>
+			</li> 
+			<div style="display: inline-block; margin-top:0.6%;">
+				<input style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
+				<input type="submit" value="Pesquisar">
+			</div>
+			<li style="float: right;">
+				<a id = "sair" href="../Controlador/sair.php">Sair</a>
+			</li>
+		</ul>
+		
         <br><br>
 
           <div class="adicionadosrec">

@@ -115,6 +115,32 @@
 				  padding-left: 5%;
 				  
 			  }
+			  
+			li {
+				float: left;
+				padding-right: 4%;
+				padding-left: 4%;
+			}
+			li a {
+				display: block;
+				color: white;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+			}
+			li:hover {
+				background-color: #32909a;
+			}
+			
+			ul {
+				
+				list-style-type: none;
+				margin-top: 5%;
+				padding: 0;
+				overflow: hidden;
+				background-color: #000000;
+				display: block;
+			}
 			
 		</style>
 	
@@ -124,7 +150,7 @@
 	
 		<h1>Biblioteca CPII - Caxias</h1>
 		
-		<div id="barra">
+		<!-- <div id="barra">
 
 			<div id="itens_nav">
 				<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>			
@@ -140,7 +166,26 @@
 			</div>
 		
 		</div>
-        <br><br>
+        <br><br> -->
+		
+		<ul>
+			<li>
+				<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>
+			</li>	
+			<li>
+				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
+			</li>		
+			<li>
+				<a href="">Perfil</a>
+			</li> 
+			<div style="display: inline-block; margin-top:0.6%;">
+				<input style="margin-top: 0.8%;" type="text" placeholder="Pesquisar...">
+				<input type="submit" value="Pesquisar">
+			</div>
+			<li style="float: right;">
+				<a id = "sair" href="../Controlador/sair.php">Sair</a>
+			</li>
+		</ul>
 
 		<?php
 		
