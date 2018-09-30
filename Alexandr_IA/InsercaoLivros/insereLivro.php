@@ -1,10 +1,10 @@
 <?php
 
 	require_once('../Modelo/TabelaLivros.php');
-	
+
 	$request = array_map("trim", $_REQUEST);
 	$request = filter_var_array($request, [
-	
+
 		'autor' => FILTER_DEFAULT,
 		'aquisicao' => FILTER_DEFAULT,
 		'classificacao' => FILTER_DEFAULT,
@@ -17,37 +17,39 @@
 	]);
 
 	$erros = [];
-	
+
 	/* if($request['autor'] == false){
 		$erros = "Autor não informado";
 	} */
-	
+
 	if($request['aquisicao'] == false){
 		$erros[] = "Aquisição não informado";
 	}
-	
+
 	if($request['classificacao'] == false){
 		$erros[] = "Classificação não informado";
 	}
-	
+
 	if($request['edicao'] == false){
 		$erros[] = "Edição não informado";
 	}
-	
+
 
 	if($request['qtd_exemplares'] == false){
 		$erros[] = "Quantidade de Exemplares não informado";
 	}
-	
-	
+
+
 	if($request['titulo'] == false){
 		$erros[] = "Título não informado";
 	}
-	
 
-	
+	if(MesmaClassificacao($request['classificacao']) == 1){
+		$erros[] = "Não pode haver livros com a mesma classificação";
+	}
+
 	else if( empty($erros) == true){
-		
+
 		$novoLivro = [
 			'autor' => $request['autor'],
 			'aquisicao' => $request['aquisicao'],
@@ -59,19 +61,19 @@
 			'titulo' => $request['titulo'],
 			'volume' => $request['volume']
 		];
-		
+
 		InsereLivro($novoLivro);
 
 		session_start();
 		$_SESSION['OK'] = 'ok';
-		
+
 		header('Location: pagInsercao.php');
 		exit();
-		
+
 	}
-	
+
 	session_start();
-	
+
 	$_SESSION['errosInsercao'] = $erros;
 	header('Location: pagInsercao.php');
 ?>
