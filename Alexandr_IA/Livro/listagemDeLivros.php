@@ -12,25 +12,30 @@
 
 	}
 
+	session_start();
+
 	if( array_key_exists('stringPesquisada', $_REQUEST) == false){
 
 		$listaLivros = PesquisaLivro('', 'pp_titulo');
+		unset($_SESSION['stringPesquisada']);
 
 	} else {
 
+		$_SESSION['stringPesquisada'] = $_REQUEST['stringPesquisada'];
+
 		if($tipoConsulta == 'pp_titulo'){
 
-			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_titulo');
+			$listaLivros = PesquisaLivro($_SESSION['stringPesquisada'], 'pp_titulo');
 		}
 
 		if($tipoConsulta == 'pp_autor'){
 
-			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_autor');
+			$listaLivros = PesquisaLivro($_SESSION['stringPesquisada'], 'pp_autor');
 		}
 
 		if($tipoConsulta == 'pp_editora'){
 
-			$listaLivros = PesquisaLivro($_REQUEST['stringPesquisada'], 'pp_editora');
+			$listaLivros = PesquisaLivro($_SESSION['stringPesquisada'], 'pp_editora');
 		}
 	}
 
@@ -239,13 +244,14 @@
 				</li>
 			</ul>
 		</div>
-
+		<?php if(empty($listaLivros)){
+			echo '<center><h2>Não Há Resultados Para Esta Pesquisa</h2></center>';
+		} ?>
 		<div id="parte_esquerda">
 			<?php
 
 				$listaEsquerda = [];
 				$listaDireita = [];
-
 				for($i = 0; $i < count($listaLivros); $i++){
 
 					if( ($i % 2) == 0){

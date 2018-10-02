@@ -3,9 +3,7 @@
 	session_start();
 	$idLivro = filter_input(INPUT_GET, 'idLivro', FILTER_SANITIZE_URL);
 
-
 	$_SESSION['idLivro'] = $idLivro;
-;
 
 	$idLivro = $_SESSION['idLivro'];
 
@@ -83,7 +81,7 @@
 
 	<body>
 
-		<center><a href="listagemDeLivros.php">Retornar à listagem de livros</a></center>
+		<center><a href="listagemDeLivros.php?stringPesquisada=<?php if(!empty($_SESSION['stringPesquisada'])){echo($_SESSION['stringPesquisada']);} ?>">Retornar à listagem de livros</a></center>
 
 		<h1>Biblioteca CPII - Caxias</h1>
 
