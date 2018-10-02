@@ -104,7 +104,7 @@
 
 			  #pesquisa{
 
-				  margin-left: 3%;
+				  margin-left: 10%;
 				  float: right;
 
 			  }

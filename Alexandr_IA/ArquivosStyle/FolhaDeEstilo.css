@@ -1,32 +1,32 @@
   body{
-	  
+
     margin-top:10%;
     background-color: rgb(174,231,240);
     text-align: center;
   }
-  
+
   h1{
     font-size: 48px;
     margin-bottom: -10px;
   }
-  
+
   #subtitulo{
-	
-	font-size: 24px;	
+
+	font-size: 24px;
   }
-  
+
   .caixa{
-	  
+
 	  float: right;
   }
-  
+
   .linha{
-	  
+
     padding-bottom: 20px;
   }
-  
+
   #submito2018{
-	  
+
     margin-top: 1.5%;
     border-color: black;
     border-width: 1px;
@@ -37,7 +37,7 @@
   }
 
   #caixaErros{
-	  
+
 	visibility: hidden;
-	  
+
   }

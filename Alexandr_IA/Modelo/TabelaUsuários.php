@@ -52,4 +52,18 @@
 		$sql -> bindValue(':id', $id);
 		$sql -> execute();
 	}
+
+	function InfosUsuario($email){
+
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('SELECT * FROM usuario WHERE email = :email');
+		$sql -> bindValue(':email', $email);
+
+		$sql -> execute();
+		$sql = $sql -> fetch();
+
+		return($sql);
+
+	}
+
 ?>
