@@ -1,15 +1,15 @@
-<?php 
+<?php
 
 	session_start();
-	
+
 	if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
-		
+
 		$erro = [];
 		$erro[] = 'É preciso estar logado para acessar a página';
 		$_SESSION['erro'] = $erro;
-		
+
 		header('Location: ../index.php');
-		
+
 	}
 
 ?>
@@ -29,7 +29,7 @@
                     background-color: #000000;
 					display: block;
                 }
-				
+
                 li {
                     float: left;
                     padding-right: 4%;
@@ -91,26 +91,26 @@
                 padding-right: -4%;
               }
 			  #sair{
-				  
+
 				  float: right;
 				  margin-left: 30%;
 				  color: white;
-				  
+
 			  }
-			  
+
 			  body{
-				  
+
 				  margin-top: 3%;
-				  
+
 			  }
 			  #pesquisa{
-				  
+
 				  margin-left: 3%;
 				  float: right;
-				  
+
 			  }
 			  .botao_pesquisa{
-				  				  
+
 				float: left;
 				display: block;
 				vertical-align: middle;
@@ -122,42 +122,42 @@
 				  vertical-align: middle;
 			  }
 			  #barra{
-				  
+
 				  display: flex;
 				  margin-top: auto;
 				  background-color: #000000;
-				  
+
 			  }
 			  #barra a{
-				  
+
 				  background-color: #32909a;
 				  color: #FFFFFF;
 				  text-decoration: none;
-				  
+
 			  }
 			  #itens_nav{
-				  
+
 				  float: left;
 				  padding: 2% 0;
 				  margin-left: 3%;
 				  display: flex;
 				  width: 66%;
-				  
+
 			  }
-			  
+
 			  #itens_nav a{
-				  
+
 				  margin-left: 10%;
-				  
+
 			  }
-			  
+
 			  #direita{
-				  
+
 				  padding: 2% 0;
 				  display: flex;
 				  float: right;
 				  width: 33%;
-				  
+
 			  }
 
 
@@ -170,12 +170,12 @@
       <body>
 
         <h1>Biblioteca CPII - Caxias</h1>
-		
+
 		<!-- <div id="barra">
 
 			<div id="itens_nav">
-				<a href="PI_aluno_prof.php">Página Inicial</a>			
-				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>			
+				<a href="PI_aluno_prof.php">Página Inicial</a>
+				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
 				<a href="">Perfil</a>
 			</div>
 			<div id="direita">
@@ -187,19 +187,19 @@
 				</div>
 				<a id = "sair" href="../Controlador/sair.php">Sair</a>
 			</div>
-		
+
 		</div> -->
-		
+
 		 <ul>
 			<li>
 				<a href="PI_aluno_prof.php">Página Inicial</a>
-			</li>	
+			</li>
 			<li>
 				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
-			</li>		
+			</li>
 			<li>
-				<a href="">Perfil</a>
-			</li> 
+				<a href="../Perfil/perfil_alunoProf.php">Perfil</a>
+			</li>
 			<div style="display: inline-block; margin-top:0.6%;">
 				<form method="post" action="../Livro/listagemDeLivros.php">
 					<select name="tipoConsulta">
@@ -215,7 +215,7 @@
 				<a id = "sair" href="../Controlador/sair.php">Sair</a>
 			</li>
 		</ul>
-		
+
         <br><br>
 
           <div class="adicionadosrec">

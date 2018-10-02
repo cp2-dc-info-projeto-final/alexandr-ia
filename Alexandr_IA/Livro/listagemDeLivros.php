@@ -226,7 +226,7 @@
 					<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
 				</li>
 				<li>
-					<a href="">Perfil</a>
+					<a href="../Perfil/perfil_alunoProf.php">Perfil</a>
 				</li>
 				<div style="display: inline-block; margin-top:0.6%;">
 				<form method="post" action="listagemDeLivros.php">
