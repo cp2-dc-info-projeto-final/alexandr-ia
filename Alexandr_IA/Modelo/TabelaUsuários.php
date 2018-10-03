@@ -91,17 +91,4 @@
 
 	}
 
-	function QuantidadeTotal(){
-
-		$bd = CriaConexãoBd();
-
-		$sql = $bd -> prepare('SELECT id FROM livro');
-		$sql -> execute();
-
-		$quantidade = $sql -> rowCount();
-
-		return($quantidade);
-
-	}
-
 ?>

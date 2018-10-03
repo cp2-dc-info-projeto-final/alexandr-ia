@@ -342,12 +342,14 @@
 
 								require_once('../Modelo/TabelaLivros.php');
 
-								$tamanho = QuantidadeTotal();
+								$lista = IdsLivro();
 
-								$id = rand(0, $tamanho);
+								$chave = array_rand($lista, 1);
+								$id = $lista[$chave];
 
 							?>
 
+							<!-- <a href="../Livro/detalhesLivro.php?idLivro=<//?php echo($id); ?>">Livro a</a> -->
 							<form method="post" action="../Livro/detalhesLivro.php?idLivro=<?php echo($id); ?>">
               	<input id="submito2018" type="submit" value="Livro Aleatório">
 							</form>

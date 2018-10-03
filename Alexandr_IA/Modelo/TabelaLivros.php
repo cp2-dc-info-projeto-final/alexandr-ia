@@ -148,4 +148,24 @@
 
 	}
 
+
+
+	function IdsLivro(){
+
+		$bd = CriaConexãoBd();
+
+		$sql = $bd -> prepare('SELECT id FROM livro');
+		$sql -> execute();
+
+		$sql = $sql -> fetchAll(PDO::FETCH_ASSOC);
+		$ids = [];
+
+		foreach ($sql as $item) {
+			$ids[] = $item['id'];
+		}
+
+		return($ids);
+
+	}
+
 ?>
