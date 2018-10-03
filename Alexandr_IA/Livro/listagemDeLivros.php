@@ -244,13 +244,14 @@
 				</li>
 			</ul>
 		</div>
-
+		<?php if(empty($listaLivros)){
+			echo '<center><h2>Não Há Resultados Para Esta Pesquisa</h2></center>';
+		} ?>
 		<div id="parte_esquerda">
 			<?php
 
 				$listaEsquerda = [];
 				$listaDireita = [];
-
 				for($i = 0; $i < count($listaLivros); $i++){
 
 					if( ($i % 2) == 0){
