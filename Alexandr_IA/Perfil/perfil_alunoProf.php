@@ -123,6 +123,15 @@
 
       }
 
+      #conteudo{
+        margin-left: 20%;
+        display: inline-block;
+      }
+
+      #botoes{
+        margin-left: 5%;
+      }
+
       </style>
 
   </head>
@@ -159,34 +168,34 @@
 			</ul>
 		</div>
 
-    <h2><?php echo($usuario['nome']); ?></h2>
+    <div id="conteudo">
+      <h2><?php echo($usuario['nome']); ?></h2>
 
-    <img id="foto_perfil" src=<?php
+      <img id="foto_perfil" src=<?php
 
-    if($usuario['foto'] == NULL){
+      if($usuario['foto'] == NULL){
 
-      echo('../Imagens/icon_usuarioPadrao.png');
+        echo('../Imagens/icon_usuarioPadrao.png');
 
-    } else {
+      } else {
 
-      // foto guardada
+        // foto guardada
 
-    }
+      }
 
-    ?> >
+      ?> >
 
-  <div id="infos">
+    <div id="infos">
 
-    <ul>
-      <li> Nome: <?php echo($usuario['nome']);?></li>
-      <br>
-      <li> Matrícula: <?php echo($usuario['matricula']);?></li>
-      <br>
-      <li> E-mail: <?php echo($usuario['email']);?></li>
-    <ul>
-
-  </div>
-
+      <ul>
+        <li> Nome: <?php echo($usuario['nome']);?></li>
+        <br>
+        <li> Matrícula: <?php echo($usuario['matricula']);?></li>
+        <br>
+        <li> E-mail: <?php echo($usuario['email']);?></li>
+        <br>
+        <input type="button" value="Editar">
+      <ul>
   </body>
 
 </html>
