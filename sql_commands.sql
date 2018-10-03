@@ -19,7 +19,8 @@ CREATE TABLE usuario(
     matricula VARCHAR(15),
     nome VARCHAR(255),
     email VARCHAR(63),
-    senha VARCHAR(127)
+    senha VARCHAR(127),
+    foto VARCHAR(127)
 
 );
 
