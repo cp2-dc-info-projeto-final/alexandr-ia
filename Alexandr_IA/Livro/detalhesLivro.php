@@ -100,7 +100,51 @@
 
 			<div id='BordaLivro'>
 
-				<img src="../Imagens/icon_livro.png">
+				<?php
+
+					$tipo = VerificaTipo($livro['id']);
+					$img = null;
+
+					if($tipo == 'CD'){
+
+						$img = $tipo;
+
+					} else if($tipo == 'DVD') {
+
+						$img = $tipo;
+
+					} else if($tipo == 'Cordel'){
+
+						$img = $tipo;
+
+					} else if($tipo == 'Braille'){
+
+						$img = $tipo;
+
+					} else if($tipo == 'Audiolivro'){
+
+						$img = $tipo;
+
+					} else if($tipo == 'Edição com fonte ampliada'){
+
+						$img = 'fonteAmpliada';
+
+					} else if( HQ($livro['id']) == true ){
+
+						$img = 'hq';
+						$tipo = 'HQ/Mangá/Graphic Novel';
+
+					} else {
+
+						$img = 'livro';
+						$tipo = 'Livro';
+
+					}
+
+					echo(' <img src="../Imagens/icon_'.$img.'.png"> ');
+
+				?>
+
 			</div>
 
 			<div id="displayed">

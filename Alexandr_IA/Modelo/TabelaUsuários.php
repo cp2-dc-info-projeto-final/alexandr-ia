@@ -72,7 +72,7 @@
 
 		$bd = CriaConexãoBd();
 
-		$sql = $bd -> prepare('SELECT id from bibliotecario WHERE id = :id');
+		$sql = $bd -> prepare('SELECT id FROM bibliotecario WHERE id = :id');
 		$sql -> bindValue(':id', $id);
 
 		$sql -> execute();
@@ -88,6 +88,19 @@
 			}
 
 		return($tipo);
+
+	}
+
+	function QuantidadeTotal(){
+
+		$bd = CriaConexãoBd();
+
+		$sql = $bd -> prepare('SELECT id FROM livro');
+		$sql -> execute();
+
+		$quantidade = $sql -> rowCount();
+
+		return($quantidade);
 
 	}
 

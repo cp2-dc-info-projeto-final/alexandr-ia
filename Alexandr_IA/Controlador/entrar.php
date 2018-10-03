@@ -45,7 +45,7 @@
 		session_start();
 		$_SESSION['emailUsuarioLogado'] = $email;
 
-		header('Location: ../PaginaInicial/PI_aluno_prof.php');
+		header('Location: ../PaginaInicial/PaginaInicial.php');
 		exit();
 
 	}

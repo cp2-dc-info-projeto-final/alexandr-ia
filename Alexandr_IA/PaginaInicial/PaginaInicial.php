@@ -9,8 +9,15 @@
 		$_SESSION['erro'] = $erro;
 
 		header('Location: ../index.php');
+		exit();
 
 	}
+
+	require_once('../Modelo/CriaConexao.php');
+	require_once('../Modelo/TabelaUsuários.php');
+
+	$email = $_SESSION['emailUsuarioLogado'];
+	$usuario = InfosUsuario($email);
 
 ?>
 <html>
@@ -50,39 +57,56 @@
               }
 
               .adicionadosrec{
-                    text-align: left;
+                    text-align: center;
                     margin-left: 2%;
                     border-style: solid;
                     border-color: grey;
                     border-width: 5px;
                     padding: 1%;
                     display: inline-block;
-                    margin-right: 85%;
+                    float: left;
               }
               h3{
                 margin-top: -0.5%;
 
               }
+
+							h2 {
+
+								display: flex;
+								width: auto;
+								margin-left: 40%;
+
+							}
+
               .maisacessados{
                 padding: 8px;
                 margin-right: -1px;
                 background-color: grey;
                 display: inline-block;
-                margin-left: 3%;
+                //margin-left: 3%;
 
               }
+
               #perfilAluno{
-                margin-top: -13%;
-                text-align: left;
-                margin-left: 2%;
+                margin-top: -4%;
+                text-align: center;
+                //margin-left: 2%;
                 border-style: solid;
                 border-color: grey;
                 border-width: 5px;
                 padding: 1%;
                 display: inline-block;
-                margin-left: 85%;
+                float: right;
 
               }
+
+							#perfilAluno img {
+
+								margin-bottom: 5%;
+
+							}
+
               #icone_pesquisa{
                 margin-top: 2.5%;
                 margin-bottom: 2.5%;
@@ -192,13 +216,13 @@
 
 		 <ul>
 			<li>
-				<a href="PI_aluno_prof.php">Página Inicial</a>
+				<a href="PaginaInicial.php">Página Inicial</a>
 			</li>
 			<li>
 				<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
 			</li>
 			<li>
-				<a href="../Perfil/perfil_alunoProf.php">Perfil</a>
+				<a href="../Perfil/perfil.php">Perfil</a>
 			</li>
 			<div style="display: inline-block; margin-top:0.6%;">
 				<form method="post" action="../Livro/listagemDeLivros.php">
@@ -221,7 +245,67 @@
           <div class="adicionadosrec">
             <h3>  Adicionados <br> Recentemente </h3>
             <!-- Parte php de consulta dos livros adicionados recentemente -->
-            <a href="Lista de Livros"> Quero ver mais </a> <!-- Redirecionamento a fazer para a lista de livros -->
+						<?php
+
+							require_once('../Modelo/CriaConexao.php');
+							require_once('../Modelo/TabelaLivros.php');
+
+							$lista = MaisRecentes();
+
+							foreach ($lista as $livro) {
+
+								$tipo = VerificaTipo($livro['id']);
+								$img = null;
+
+								if($tipo == 'CD'){
+
+									$img = $tipo;
+
+								} else if($tipo == 'DVD') {
+
+									$img = $tipo;
+
+								} else if($tipo == 'Cordel'){
+
+									$img = $tipo;
+
+								} else if($tipo == 'Braille'){
+
+									$img = $tipo;
+
+								} else if($tipo == 'Audiolivro'){
+
+									$img = $tipo;
+
+								} else if($tipo == 'Edição com fonte ampliada'){
+
+									$img = 'fonteAmpliada';
+
+								} else if( HQ($livro['id']) == true ){
+
+									$img = 'hq';
+									$tipo = 'HQ/Mangá/Graphic Novel';
+
+								} else {
+
+									$img = 'livro';
+									$tipo = 'Livro';
+
+								}
+
+								echo('
+
+									<a href="../Livro/detalhesLivro.php?idLivro='.$livro['id'].'">
+										<img src="../Imagens/MaisReduzidas/icon_'.$img.'.png">
+									</a>
+									<br>
+									<p> '.$livro['titulo'].' </p>
+
+								');
+							}
+
+						?>
+            <a href="../Livro/listagemDeLivros.php"> Quero ver mais </a> <!-- Redirecionamento a fazer para a lista de livros -->
 
           </div>
             <h2><img src="../Imagens/icon_star.png"> Livros Mais Acessados </h2>
@@ -232,17 +316,41 @@
           </div>
 
           <div id="perfilAluno">
-              <h3> Nome do Usuário </h3>
-              <br>
+              <h3> <?php echo($usuario['nome']); ?> </h3>
               <!-- Foto e Informações Do Usuário -->
-              <br><br>
+							<?php
+
+							if(empty($usuario['foto']) == true){
+
+								echo('<img src="../Imagens/MaisReduzidas/icon_usuarioPadrao.png"');
+
+							} else {
+
+								// foto guardada
+
+							}
+
+							?>
+              <br>
               <h3> Livros Comigo </h3>
               <br>
               <!-- Consulta dos Livros emprestados -->
               <br><br>
-              <h3> Livros Sugeridos </h3>
+              <h3> Quero uma novidade </h3>
 
-              <input id="submito2018" type="submit" value="Livro Aleatório">
+							<?php
+
+								require_once('../Modelo/TabelaLivros.php');
+
+								$tamanho = QuantidadeTotal();
+
+								$id = rand(0, $tamanho);
+
+							?>
+
+							<form method="post" action="../Livro/detalhesLivro.php?idLivro=<?php echo($id); ?>">
+              	<input id="submito2018" type="submit" value="Livro Aleatório">
+							</form>
               <!-- Botão dos livros aleatórios -->
 
           </div>

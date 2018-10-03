@@ -1,5 +1,6 @@
 <?php
 
+	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaLivros.php');
 
 	$request = array_map("trim", $_REQUEST);

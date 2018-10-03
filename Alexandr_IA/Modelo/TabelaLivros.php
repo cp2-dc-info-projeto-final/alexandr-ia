@@ -85,12 +85,12 @@
 
 	}
 
-	function VerificaTipo($titulo){
+	function VerificaTipo($id){
 
 		$bd = CriaConexãoBd();
 
-		$sql = $bd -> prepare('SELECT observacao FROM livro WHERE titulo = :titulo');
-		$sql -> bindValue(':titulo', $titulo);
+		$sql = $bd -> prepare('SELECT observacao FROM livro WHERE id = :id');
+		$sql -> bindValue(':id', $id);
 		$sql -> execute();
 
 		$sql = $sql -> fetch();
@@ -101,14 +101,14 @@
 
 	}
 
-	function HQ($titulo){
+	function HQ($id){
 
 		$bd = CriaConexãoBd();
 
-		$sql = $bd -> prepare('SELECT classificacao FROM livro WHERE classificacao LIKE :string AND titulo = :titulo');
+		$sql = $bd -> prepare('SELECT classificacao FROM livro WHERE classificacao LIKE :string AND id = :id');
 
 		$sql -> bindValue(':string', '741.5%');
-		$sql -> bindValue(':titulo', $titulo);
+		$sql -> bindValue(':id', $id);
 		$sql -> execute();
 
 		$sql = $sql -> fetch();
@@ -130,6 +130,22 @@
 		else{
 			return 0;
 		}
+	}
+
+	function MaisRecentes(){
+
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('SELECT id, titulo FROM livro ORDER BY aquisicao DESC');
+		$sql -> execute();
+
+		$maisRecentes = [];
+
+		$maisRecentes[] = $sql -> fetch();
+		$maisRecentes[] = $sql -> fetch();
+		$maisRecentes[] = $sql -> fetch();
+
+		return ($maisRecentes);
+
 	}
 
 ?>

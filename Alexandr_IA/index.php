@@ -1,20 +1,20 @@
 <?php
 
 	session_start();
-	
+
 	if ( empty($_SESSION['emailUsuarioLogado']) == false ){
-		
-		header('Location: PaginaInicial/PI_aluno_prof.php');
+
+		header('Location: PaginaInicial/PaginaInicial.php');
 		exit();
-		
+
 	}
-	
+
 	$listaErros = null;
 
 	if (array_key_exists('erro', $_SESSION) == true){
 
 		$erros = $_SESSION['erro'];
-		
+
 		foreach($erros as $erro){
 
 			$listaErros[] = $erro;
@@ -38,14 +38,14 @@
 		<?php
 
 		if ($listaErros != null){
-			
+
 			echo ('
 
 				<br>
-				<style> 
+				<style>
 
 				#caixaErros{
-				  
+
 				visibility:visible;
 				background-color: #ffff80;
 				width: 50%;
@@ -53,8 +53,8 @@
 				border: solid 1px;
 				padding: 3px;
 				font-size: 18px;
-				  
-				} 
+
+				}
 
 				</style>
 

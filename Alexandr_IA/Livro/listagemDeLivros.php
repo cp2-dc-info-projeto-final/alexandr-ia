@@ -221,13 +221,13 @@
 		<div class="barra">
 			<ul>
 				<li>
-					<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>
+					<a href="../PaginaInicial/PaginaInicial.php">Página Inicial</a>
 				</li>
 				<li>
 					<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
 				</li>
 				<li>
-					<a href="../Perfil/perfil_alunoProf.php">Perfil</a>
+					<a href="../Perfil/perfil.php">Perfil</a>
 				</li>
 				<div style="display: inline-block; margin-top:0.6%;">
 				<form method="post" action="listagemDeLivros.php">
@@ -269,7 +269,8 @@
 
 				foreach($listaEsquerda as $livro){
 
-					$tipo = VerificaTipo($livro['titulo']);
+					$tipo = VerificaTipo($livro['id']);
+					$img = null;
 
 					if($tipo == 'CD'){
 
@@ -295,7 +296,7 @@
 
 						$img = 'fonteAmpliada';
 
-					} else if( HQ($livro['titulo']) == true ){
+					} else if( HQ($livro['id']) == true ){
 
 						$img = 'hq';
 						$tipo = 'HQ/Mangá/Graphic Novel';
@@ -344,7 +345,8 @@
 
 				foreach($listaDireita as $livro){
 
-					$tipo = VerificaTipo($livro['titulo']);
+					$tipo = VerificaTipo($livro['id']);
+					$img = null;
 
 					if($tipo == 'CD'){
 
@@ -370,7 +372,7 @@
 
 						$img = 'fonteAmpliada';
 
-					} else if( HQ($livro['titulo']) == true ){
+					} else if( HQ($livro['id']) == true ){
 
 						$img = 'hq';
 						$tipo = 'HQ/Mangá/Graphic Novel';

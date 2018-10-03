@@ -6,6 +6,8 @@
   require_once('../Modelo/TabelaUsuários.php');
   $usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
 
+  $tipoUsuario = TipoUsuario($usuario['id']);
+
 ?>
 
 <html>
@@ -15,6 +17,16 @@
       <title> Perfil </title>
       <meta charset="utf-8">
       <!-- <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css"> -->
+
+      <script>
+
+        function Redirect(endereco){
+
+          window.location.replace(endereco);
+
+        }
+
+      </script>
 
       <style>
 
@@ -124,13 +136,37 @@
 
       }
 
+      #infos input {
+
+        height: 25%;
+
+      }
+
       #conteudo{
         margin-left: 20%;
         display: inline-block;
+        width: 50%;
       }
 
       #botoes{
         margin-left: 5%;
+      }
+
+      #funcionalidades{
+
+        display: block;
+        float: right;
+        margin-left: 5%;
+        border: 2px solid;
+        padding: 1%;
+
+      }
+
+      #funcionalidades input {
+
+          width: 100%;
+          height: 5%;
+
       }
 
       </style>
@@ -144,7 +180,7 @@
     <div class="barra">
 			<ul>
 				<li>
-					<a href="../PaginaInicial/PI_aluno_prof.php">Página Inicial</a>
+					<a href="../PaginaInicial/PaginaInicial.php">Página Inicial</a>
 				</li>
 				<li>
 					<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
@@ -174,7 +210,7 @@
 
       <img id="foto_perfil" src=<?php
 
-      if($usuario['foto'] == NULL){
+      if(empty($usuario['foto']) == true){
 
         echo('../Imagens/icon_usuarioPadrao.png');
 
@@ -195,8 +231,37 @@
         <br>
         <li> E-mail: <?php echo($usuario['email']);?></li>
         <br>
-        <input type="button" value="Editar">
+        <input type="button" value="Editar Informações do Perfil">
       <ul>
+
+    </div>
+
+    <?php
+
+    if ($tipoUsuario == 1){
+
+      echo('
+
+      <div id="funcionalidades">
+
+          <h3>Painel de Funcionalidades</h3>
+
+          <input type="button" value="Inserir Novo Livro" onClick="Redirect(\'../InsercaoLivros/pagInsercao.php\');">
+          <br>
+          <input type="button" value="Cadastrar Novo Bibliotecário">
+          <br>
+          <input type="button" value="Gerenciar Lista Negra">
+
+      </div>
+
+      ');
+
+    }
+
+    ?>
+
+  </div>
+
   </body>
 
 </html>
