@@ -138,7 +138,7 @@
 
       #infos input {
 
-        height: 25%;
+        //height: 25%;
 
       }
 
@@ -225,13 +225,13 @@
     <div id="infos">
 
       <ul>
-        <li> Nome: <?php echo($usuario['nome']);?></li>
+        <li> Nome: <input type="text" value="<?php echo($usuario['nome']);?>"></li>
         <br>
-        <li> Matrícula: <?php echo($usuario['matricula']);?></li>
+        <li> Matrícula: <input type="text" value="<?php echo($usuario['matricula']);?>"></li>
         <br>
-        <li> E-mail: <?php echo($usuario['email']);?></li>
+        <li> E-mail: <input type="text" value="<?php echo($usuario['email']);?>"></li>
         <br>
-        <input type="button" value="Editar Informações do Perfil">
+        <input type="button" value="Salvar alterações">
       <ul>
 
     </div>

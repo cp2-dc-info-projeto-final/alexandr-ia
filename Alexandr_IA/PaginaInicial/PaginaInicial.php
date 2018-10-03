@@ -322,7 +322,7 @@
 
 							if(empty($usuario['foto']) == true){
 
-								echo('<img src="../Imagens/MaisReduzidas/icon_usuarioPadrao.png"');
+								echo('<img src="../Imagens/MaisReduzidas/icon_usuarioPadrao.png">');
 
 							} else {
 
