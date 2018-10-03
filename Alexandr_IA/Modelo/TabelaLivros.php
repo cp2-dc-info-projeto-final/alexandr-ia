@@ -1,5 +1,6 @@
 <?php
-	function CriaConexãoBd(){
+
+	/* function CriaConexãoBd(){
 		$bd = new PDO('mysql:host=localhost;
 		dbname=alexandria;charset=utf8',
 		'alexandria',
@@ -7,7 +8,7 @@
 		);
 		$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		return $bd;
-	}
+	} */
 
 	function InsereLivro($dadosNovoLivro)
 	{
@@ -130,5 +131,5 @@
 			return 0;
 		}
 	}
-	
+
 ?>

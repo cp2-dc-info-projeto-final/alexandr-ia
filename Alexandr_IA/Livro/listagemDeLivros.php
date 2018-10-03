@@ -1,5 +1,6 @@
 <?php
 
+	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaLivros.php');
 
 	if(array_key_exists('tipoConsulta', $_REQUEST) == true){

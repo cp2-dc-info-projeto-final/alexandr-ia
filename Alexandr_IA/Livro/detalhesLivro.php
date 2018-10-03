@@ -7,10 +7,19 @@
 
 	$idLivro = $_SESSION['idLivro'];
 
+	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaLivros.php');
+	require_once('../Modelo/TabelaUsuários.php');
+
 	$livro = DetalhaLivro($idLivro);
 
 	$titulo = $livro['titulo'];
+	$email = $_SESSION['emailUsuarioLogado'];
+
+	$dadosUsuario = InfosUsuario($email);
+	$id = $dadosUsuario['id'];
+
+	$tipoUsuario = TipoUsuario($id);
 
 ?>
 <html>
@@ -118,11 +127,29 @@
 				?>
 			</div>
 
+			<?php
 
-			<form class="enviar">
+				if ($tipoUsuario == 0){
 
-				<input type='submit' value='Reservar' id="submito2018">
-			</form>
+					echo('
+
+				<form class="enviar">
+					<input type="submit" value="Enviar" id="submito2018">
+				</form>
+
+					');
+
+				} else {
+
+					echo('
+
+						<br>
+						<input type="button" value="Editar" id="submito2018">
+
+					');
+
+				}
+			?>
 
 		</div>
 

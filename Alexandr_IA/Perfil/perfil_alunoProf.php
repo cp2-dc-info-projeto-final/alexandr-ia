@@ -2,6 +2,7 @@
 
   session_start();
 
+  require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
   $usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
 

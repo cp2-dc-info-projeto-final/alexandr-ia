@@ -1,13 +1,15 @@
 <?php
-	function CriaConexãoBd(){
+
+	/* function CriaConexãoBd(){
 		$bd = new PDO('mysql:host=localhost;
 		dbname=alexandria;charset=utf8',
 		'alexandria',
 		'bibliteclinha'
-		);
+	);
+
 		$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		return $bd;
-	}
+	} */
 
 	function MesmoEmail($email){
 		$bd = CriaConexãoBd();
@@ -63,6 +65,29 @@
 		$sql = $sql -> fetch();
 
 		return($sql);
+
+	}
+
+	function TipoUsuario($id){
+
+		$bd = CriaConexãoBd();
+
+		$sql = $bd -> prepare('SELECT id from bibliotecario WHERE id = :id');
+		$sql -> bindValue(':id', $id);
+
+		$sql -> execute();
+
+		if ($sql -> rowCount() == 1){
+
+			$tipo = 1;
+
+		} else {
+
+			$tipo = 0;
+
+			}
+
+		return($tipo);
 
 	}
 

@@ -1,5 +1,6 @@
 ﻿<?php
 
+  require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
@@ -60,16 +61,16 @@
   if ($request['senha'] == false){
 
     $erros[] = "Campo da senha inexistente ou inválido";
-	
-  } 
-  
+
+  }
+
   $senha = $request['senha'];
   $senha = strval($senha);
-  
+
   if (strlen($senha) < 6 || strlen($senha) > 15) {
 
 	$erros[] = "O campo senha deve ter no mínimo 6 e no máximo 15 dígitos";
-	
+
 
   }
 

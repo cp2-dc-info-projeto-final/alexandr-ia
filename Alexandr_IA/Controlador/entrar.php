@@ -1,4 +1,6 @@
 <?php
+
+	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaUsuários.php');
 
 	$erro = [];
