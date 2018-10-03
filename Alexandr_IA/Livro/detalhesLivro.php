@@ -169,6 +169,7 @@
 						echo('<p> Editora: '.$livro['editora'].'</p>');
 					}
 				?>
+				<?php echo('<p>Tipo de Conteúdo: '.$tipo.'</p>') ?>
 			</div>
 
 			<?php
