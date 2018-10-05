@@ -169,6 +169,14 @@
 
       }
 
+      #id {
+
+        margin: 0;
+        padding: 0;
+        visibility: hidden;
+
+      }
+
       </style>
 
   </head>
@@ -186,7 +194,7 @@
 					<a href="../Livro/listagemDeLivros.php">Lista de Livros</a>
 				</li>
 				<li>
-					<a href="../Perfil/perfil_alunoProf.php">Perfil</a>
+					<a href="../Perfil/perfil.php">Perfil</a>
 				</li>
 				<div style="display: inline-block; margin-top:0.6%;" id="pesquisa">
 				<form method="post" action="listagemDeLivros.php">
@@ -204,6 +212,57 @@
 				</li>
 			</ul>
 		</div>
+
+    <?php
+
+    $erros = filter_input(INPUT_GET, 'erros', FILTER_SANITIZE_URL);
+
+    if(empty($erros) == false){
+
+      echo ('
+
+        <br>
+        <style>
+
+  	  #caixaErros{
+
+  		visibility:visible;
+  		background-color: #ffff80;
+  		width: 50%;
+  		text-align: center;
+  		border: solid 1px;
+  		padding: 3px;
+  		font-size: 18px;
+
+  	  }
+
+  	  </style>
+
+        ');
+
+      }
+
+    ?>
+
+    <center>
+
+  		<div id='caixaErros'>
+  	  <?php
+
+       if (empty($erros) == false ){
+
+         echo('ERRO:');
+
+    	   foreach($_REQUEST as $item){
+
+    		 print($item);
+
+    		 }
+      }
+
+  	  ?></div>
+
+  	</center>
 
     <div id="conteudo">
       <h2><?php echo($usuario['nome']); ?></h2>
@@ -225,14 +284,21 @@
     <div id="infos">
 
       <ul>
-        <li> Nome: <input type="text" value="<?php echo($usuario['nome']);?>"></li>
-        <br>
-        <li> Matrícula: <input type="text" value="<?php echo($usuario['matricula']);?>"></li>
-        <br>
-        <li> E-mail: <input type="text" value="<?php echo($usuario['email']);?>"></li>
-        <br>
-        <input type="button" value="Salvar alterações">
-      <ul>
+
+          <form method="post" action="validarAlteracoes.php">
+
+            <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
+            <li> Nome: <input type="text" name="nome" value="<?php echo($usuario['nome']);?>"></li>
+            <br>
+            <li> Matrícula: <input type="text" name="matricula" value="<?php echo($usuario['matricula']);?>"></li>
+            <br>
+            <li> E-mail: <input type="text" disabled name="email" value="<?php echo($usuario['email']);?>"></li>
+            <br>
+            <input type="submit" value="Salvar alterações">
+
+          </form>
+
+      </ul>
 
     </div>
 
