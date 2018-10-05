@@ -146,7 +146,7 @@
             </td>
           </tr>
         </table>
-        <input id="submito2018" type="submit" value = "Cadastrar"><br>
+        <input id="amazing_button" type="submit" value = "Cadastrar"><br>
       </form>
 	  <a href="../Perfil/perfil.php">Voltar para o Perfil</a>
     </center>

@@ -179,7 +179,7 @@
 					echo('
 
 				<form class="enviar">
-					<input type="submit" value="Enviar" id="submito2018">
+					<input type="submit" value="Enviar" id="amazing_button">
 				</form>
 
 					');
@@ -189,7 +189,7 @@
 					echo('
 
 						<br>
-						<input type="button" value="Editar" id="submito2018">
+						<input type="button" value="Editar" id="amazing_button">
 
 					');
 

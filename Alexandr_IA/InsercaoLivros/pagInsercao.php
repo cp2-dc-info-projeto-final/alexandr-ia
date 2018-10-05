@@ -144,7 +144,7 @@
 						</div>
 						<br>
 						
-						<center><input id="submito2018" type="submit" value="Inserir Livro"></center>
+						<center><input id="amazing_button" type="submit" value="Inserir Livro"></center>
 			
 					</td>
 				</tr>

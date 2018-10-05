@@ -351,7 +351,7 @@
 
 							<!-- <a href="../Livro/detalhesLivro.php?idLivro=<//?php echo($id); ?>">Livro a</a> -->
 							<form method="post" action="../Livro/detalhesLivro.php?idLivro=<?php echo($id); ?>">
-              	<input id="submito2018" type="submit" value="Livro Aleatório">
+              	<input id="amazing_button" type="submit" value="Livro Aleatório">
 							</form>
               <!-- Botão dos livros aleatórios -->
 
