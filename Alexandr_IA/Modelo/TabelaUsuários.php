@@ -25,7 +25,7 @@
 		}
 	}
 
-	function InsereUsuario($dadosNovoUsuario)
+	function InsereUsuario($dadosNovoUsuario, $tipo)
 	{
 		$bd = CriaConexãoBd();
 
@@ -46,7 +46,16 @@
 
 		$bd = CriaConexãoBd();
 
-		$sql = $bd -> prepare('INSERT INTO aluno_professor(id) VALUES(:id)');
+		if ($tipo == 0){
+
+			$sql = $bd -> prepare('INSERT INTO aluno_professor(id) VALUES(:id)');
+
+		} else if ($tipo == 1){
+
+
+			$sql = $bd -> prepare('INSERT INTO bibliotecario(id) VALUES(:id)');
+
+		}		
 
 		$id = $id -> fetch();
 		$id = $id['id'];

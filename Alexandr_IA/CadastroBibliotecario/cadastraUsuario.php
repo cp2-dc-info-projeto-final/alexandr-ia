@@ -99,7 +99,7 @@
 				<h1>Biblioteca CPII - Caxias</h1>
 				<p>Cadastro Realizado com Sucesso!</p>
         <br>
-        <a href="../index.php">Voltar para Tela de Inicial</a>
+        <a href="../Perfil/perfil.php">Voltar para o Perfil</a>
 			</body>
 		</html>');
 
@@ -111,7 +111,7 @@
 		'senha' => $request['senha']
 	];
 
-	InsereUsuario($novoUsuario, 0);
+	InsereUsuario($novoUsuario, 1);
 
   } else {
 

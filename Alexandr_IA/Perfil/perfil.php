@@ -314,7 +314,7 @@
 
           <input type="button" value="Inserir Novo Livro" onClick="Redirect(\'../InsercaoLivros/pagInsercao.php\');">
           <br>
-          <input type="button" value="Cadastrar Novo Bibliotecário">
+          <input type="button" value="Cadastrar Novo Bibliotecário" onClick="Redirect(\'../CadastroBibliotecario/pagCadastro.php\');">
           <br>
           <input type="button" value="Gerenciar Lista Negra">
 
