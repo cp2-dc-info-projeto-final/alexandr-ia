@@ -55,7 +55,7 @@
 
 			$sql = $bd -> prepare('INSERT INTO bibliotecario(id) VALUES(:id)');
 
-		}		
+		}
 
 		$id = $id -> fetch();
 		$id = $id['id'];
@@ -111,6 +111,30 @@
 		$sql -> bindValue(':matricula', $matricula);
 		$sql -> bindValue(':id', $id, PDO::PARAM_INT);
 
+		$sql -> execute();
+
+	}
+
+	function Usuarios(){
+
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('SELECT * FROM usuario ORDER BY nome');
+
+		$sql -> execute();
+		$sql = $sql -> fetchAll(PDO::FETCH_ASSOC);
+
+		return($sql);
+
+	}
+
+	function Ban($player){
+
+		// player é Id nesse contexto
+
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('UPDATE usuario SET banido = 1 WHERE id = :player');
+
+		$sql -> bindValue(':player', $player);
 		$sql -> execute();
 
 	}
