@@ -139,4 +139,16 @@
 
 	}
 
+	function UnBan($player){
+
+		// player é Id nesse contexto
+
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('UPDATE usuario SET banido = 0 WHERE id = :player');
+
+		$sql -> bindValue(':player', $player);
+		$sql -> execute();
+
+	}
+
 ?>
