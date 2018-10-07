@@ -5,7 +5,6 @@
   require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
   $usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
-
   $tipoUsuario = TipoUsuario($usuario['id']);
 
 ?>
@@ -131,7 +130,9 @@
         margin-left: 2%;
 
       }
-
+	  #conteudo.banido{
+		  background-color: red;
+	  }
 
 
       </style>
@@ -181,7 +182,8 @@
       foreach ($usuarios as $usuario) {
 
         $tipo = TipoUsuario($usuario['id']);
-
+		$banido = $usuario['banido'];
+		
         if(empty($usuario['foto']) == true){
 
           $caminho = ('../Imagens/icon_usuarioPadrao.png');
@@ -194,10 +196,18 @@
         }
 
         $id = $usuario['id'];
-
+		
+		if($banido == 1){
         echo('
-
-        <div id="conteudo">
+        <div id="conteudo" class="banido">');
+		}
+		
+		if($banido == 0){
+        echo('
+        <div id="conteudo">');
+		}
+		
+		echo('
           <h2>'.$usuario['nome'].'</h2>
 
           <img id="foto_perfil" src='.$caminho.'>
@@ -222,7 +232,7 @@
 
                 <form method="post" action="banir.php">
                   <input type="hidden" value="'.$id.'" name="id">
-                  <input type="submit" value="Adcionar Aluno/Professor à Lista Negra">
+                  <input type="submit" value="Adicionar Aluno/Professor à Lista Negra">
                 </form>
 
                 <br>
