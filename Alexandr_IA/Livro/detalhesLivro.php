@@ -141,6 +141,8 @@
 
 					}
 
+					$img = strtolower($img);
+
 					echo(' <img src="../Imagens/icon_'.$img.'.png"> ');
 
 				?>
