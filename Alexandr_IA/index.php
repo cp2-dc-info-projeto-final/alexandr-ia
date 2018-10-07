@@ -2,14 +2,14 @@
 
 	session_start();
 
+	$listaErros = null;
+
 	if ( empty($_SESSION['emailUsuarioLogado']) == false ){
 
 		header('Location: PaginaInicial/PaginaInicial.php');
 		exit();
 
 	}
-
-	$listaErros = null;
 
 	if (array_key_exists('erro', $_SESSION) == true){
 
