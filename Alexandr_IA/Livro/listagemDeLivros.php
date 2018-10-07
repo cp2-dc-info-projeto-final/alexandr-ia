@@ -313,7 +313,7 @@
 			<div class="exibicaoLivro">
 
 				<a href="detalhesLivro.php?idLivro=<?php echo($livro['id']); ?>">
-					<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+					<img src="../Imagens/Reduzidas/icon_<?php echo(strtolower($img)); ?>.png">
 				</a>
 
 				<div class="conteudo">
@@ -389,7 +389,7 @@
 			<div class="exibicaoLivro">
 
 				<a href="detalhesLivro.php?idLivro=<?php echo($livro['id']); ?>">
-					<img src="../Imagens/Reduzidas/icon_<?php echo($img); ?>.png">
+					<img src="../Imagens/Reduzidas/icon_<?php echo(strtolower($img)); ?>.png">
 				</a>
 				<div class="conteudo">
 

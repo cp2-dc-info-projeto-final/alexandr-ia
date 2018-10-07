@@ -237,7 +237,7 @@
 
                 <br>
 
-                </form>
+                <form>
                   <input type="submit" value="Excluir Aluno/Professor do Sistema">
                 </form>
 
