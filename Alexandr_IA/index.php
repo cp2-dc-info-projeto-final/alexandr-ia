@@ -64,7 +64,7 @@
 
 			foreach($listaErros as $erro){
 
-				echo($erro);
+				echo($erro.' | ');
 
 			}
 
