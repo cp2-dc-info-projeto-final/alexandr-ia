@@ -2,6 +2,7 @@
 
 	session_start();
 	$idLivro = filter_input(INPUT_GET, 'idLivro', FILTER_SANITIZE_URL);
+	$erro = filter_input(INPUT_GET, 'erro', FILTER_DEFAULT);
 
 	$_SESSION['idLivro'] = $idLivro;
 
@@ -96,6 +97,43 @@
 		<center><a href="listagemDeLivros.php?stringPesquisada=<?php if(!empty($_SESSION['stringPesquisada'])){echo($_SESSION['stringPesquisada']);} ?>">Retornar à listagem de livros</a></center>
 
 		<h1>Biblioteca CPII - Caxias</h1>
+
+		<?php
+
+		if ($erro != null){
+
+				echo ('
+
+					<br>
+					<style>
+
+					#caixaErros{
+
+					visibility:visible;
+					background-color: #ffff80;
+					width: 50%;
+					text-align: center;
+					border: solid 1px;
+					padding: 3px;
+					font-size: 18px;
+
+					}
+
+					</style>
+
+				');
+
+				echo('<center><div id="caixaErros">ERRO: <br>');
+
+					echo($erro);
+
+				echo('</div></center><br>');
+
+				unset($_SESSION['errosInsercao']);
+
+			}
+
+		?>
 
 		<div id="infos">
 
@@ -195,7 +233,7 @@
 						');
 
 					} else {
-						
+
 						echo('
 
 					<form class="enviar" method="post" action="reserva.php">
