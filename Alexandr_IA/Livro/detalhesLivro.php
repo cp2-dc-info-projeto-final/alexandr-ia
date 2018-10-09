@@ -10,6 +10,7 @@
 	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaLivros.php');
 	require_once('../Modelo/TabelaUsuários.php');
+	require_once('../Modelo/TabelaEmprestimo.php');
 
 	$livro = DetalhaLivro($idLivro);
 
@@ -97,6 +98,7 @@
 		<div id="infos">
 
 			<h2><i><?php echo($titulo)?></i></h2>
+			<p>Qunatidade de exemplares disponíveis: <?php echo(ExemplaresDisponiveis($idLivro)); ?></p>
 
 			<div id='BordaLivro'>
 
