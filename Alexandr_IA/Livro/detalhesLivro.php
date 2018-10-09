@@ -180,8 +180,10 @@
 
 					echo('
 
-				<form class="enviar">
-					<input type="submit" value="Enviar" id="amazing_button">
+				<form class="enviar" method="post" action="empresta.php">
+					<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+					<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+					<input type="submit" value="Pegar Emprestado" id="amazing_button">
 				</form>
 
 					');
