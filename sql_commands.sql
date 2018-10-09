@@ -20,7 +20,8 @@ CREATE TABLE usuario(
     nome VARCHAR(255),
     email VARCHAR(63),
     senha VARCHAR(127),
-    foto VARCHAR(127)
+    foto VARCHAR(127),
+    banido BOOL 
 
 );
 
