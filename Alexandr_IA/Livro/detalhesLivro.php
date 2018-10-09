@@ -22,6 +22,8 @@
 
 	$tipoUsuario = TipoUsuario($id);
 
+	$qtd_exemplares = ExemplaresDisponiveis($idLivro);
+
 ?>
 <html>
 
@@ -98,7 +100,7 @@
 		<div id="infos">
 
 			<h2><i><?php echo($titulo)?></i></h2>
-			<p>Qunatidade de exemplares disponíveis: <?php echo(ExemplaresDisponiveis($idLivro)); ?></p>
+			<p>Qunatidade de exemplares disponíveis: <?php echo($qtd_exemplares); ?></p>
 
 			<div id='BordaLivro'>
 
@@ -180,15 +182,31 @@
 
 				if ($tipoUsuario == 0){
 
-					echo('
+					if($qtd_exemplares != 0){
 
-				<form class="enviar" method="post" action="empresta.php">
-					<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-					<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-					<input type="submit" value="Pegar Emprestado" id="amazing_button">
-				</form>
+						echo('
 
-					');
+					<form class="enviar" method="post" action="empresta.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Pegar Emprestado" id="amazing_button">
+					</form>
+
+						');
+
+					} else {
+						
+						echo('
+
+					<form class="enviar" method="post" action="reserva.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Reservar Livro" id="amazing_button">
+					</form>
+
+						');
+
+					}
 
 				} else {
 
