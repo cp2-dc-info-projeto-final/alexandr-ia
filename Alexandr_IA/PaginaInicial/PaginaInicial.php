@@ -332,7 +332,22 @@
 
 							?>
               <br>
-              <h3> Livros Comigo </h3>
+              <h3> <?php
+
+								$tipo = TipoUsuario($usuario['id']);
+
+								if ($tipo == 1){
+
+									echo('Livros emprestados');
+
+								} else {
+
+									echo('Livros comigo');
+
+								}
+
+							?>
+							</h3>
               <br>
               <!-- Consulta dos Livros emprestados -->
               <br><br>
