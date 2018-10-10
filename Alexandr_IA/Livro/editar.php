@@ -3,6 +3,10 @@
   require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaLivros.php');
   $idLivro = $_SESSION['idLivro'];
+  $informacoes = DetalhaLivro($idLivro);
+	if(array_key_exists('errosInsercao', $_SESSION) == true){
+		$erros = $_SESSION['errosInsercao'];
+	}
 ?>
 <html>
 	<head>
@@ -24,7 +28,6 @@
 		<br>
 		<p id="subtitulo">Editar Livro</p>
 		<?php
-    $erros = filter_input(INPUT_GET, 'erros', FILTER_SANITIZE_URL);
     if(empty($erros) == false){
       echo ('
         <br>
@@ -46,10 +49,11 @@
   		<div id='caixaErros'>
   	  <?php
        if (empty($erros) == false ){
-         echo('ERRO:');
-    	   foreach($_REQUEST as $item){
-    		 print($item);
+         echo('ERRO: <br>');
+    	   foreach($erros as $item){
+    		   echo(' | '.$item);
     		 }
+         unset($_SESSION['errosInsercao']);
        }
   	  ?></div><br>
 		<form method="POST" action="editaLivro.php">
@@ -57,39 +61,39 @@
 				<tr>
 					<td>
 						<div class="linha">
-							<label>Autor: <input type='text' class="caixa" name="autor"></label>
+							<label>Autor: <input type='text' class="caixa" name="autor" value="<?= $informacoes['autor']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Aquisição: <input type='date' class="caixa" name="aquisicao"></label>
+							<label>Aquisição: <input type='date' class="caixa" name="aquisicao" value="<?= $informacoes['aquisicao']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Classificação: <input type='text' class="caixa" name="classificacao"></label>
+							<label>Classificação: <input type='text' class="caixa" name="classificacao" value="<?= $informacoes['classificacao']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Edição: <input type='number' class="caixa" name="edicao"></label>
+							<label>Edição: <input type='number' class="caixa" name="edicao" value="<?= $informacoes['edicao']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Editora: <input type='text' class= "caixa" name="editora"></label>
+							<label>Editora: <input type='text' class= "caixa" name="editora" value="<?= $informacoes['editora']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Exemplares: <input type='number' class="caixa" name="qtd_exemplares"></label>
+							<label>Exemplares: <input type='number' class="caixa" name="qtd_exemplares" value="<?= $informacoes['exemplar']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Observação: <input type='text' class="caixa" name="observacao"></label>
+							<label>Observação: <input type='text' class="caixa" name="observacao" value="<?= $informacoes['observacao']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Título: <input type='text' class="caixa" name="titulo"></label>
+							<label>Título: <input type='text' class="caixa" name="titulo" value="<?= $informacoes['titulo']?>"></label>
 						</div>
 						<br>
 						<div class="linha">
-							<label>Volume: <input type='text' class="caixa" name="volume"></label>
+							<label>Volume: <input type='text' class="caixa" name="volume" value="<?= $informacoes['volume']?>"></label>
 						</div>
 						<br>
 						<center><input id="amazing_button" type="submit" value="Editar Livro"></center>

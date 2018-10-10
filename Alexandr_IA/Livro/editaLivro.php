@@ -49,14 +49,10 @@
 
   //Validação dos erros
   if(empty($erros) == false){
-
-    foreach ($erros as $erro){
-
-  		$text = $text.' | '.$erro;
-  		header('Location: editar.php?erros='.urlencode($text));
-  	}
-
-  } else {
+      session_start();
+  	  $_SESSION['errosInsercao'] = $erros;
+  		header('Location: editar.php');
+  	} else {
 
     $autor = $request['autor'];
     $aquisicao = $request['aquisicao'];
