@@ -123,11 +123,11 @@
 
 				');
 
-				echo('<center><div id="caixaErros">ERRO: <br>');
+				echo('<center><div id="caixaErros">');
 
 					echo($erro);
 
-				echo('</div></center><br>');
+				echo('</div></center>');
 
 				unset($_SESSION['errosInsercao']);
 

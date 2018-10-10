@@ -13,11 +13,15 @@
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
     $sql -> bindValue(':id_livro', $id_livro); */
 
-    $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (\':id_usuario, :id_livro\')');
+    $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (:id_usuario, :id_livro);');
     $sql -> bindValue('id_usuario', $id_usuario);
     $sql -> bindValue('id_livro', $id_livro);
 
     $sql -> execute();
+
+    $mensagem = 'Reserva feita com sucesso';
+
+    return($mensagem);
 
   }
 
@@ -46,7 +50,7 @@
 
     $retorno2 = $sql -> rowCount();
 
-    if($retorno == 0 AND $retorno2 < 3){
+    if($retorno == 0 AND $retorno2 < 2){
 
       $bd = CriaConexãoBd();
       $sql = NULL;
@@ -64,23 +68,28 @@
 
       $sql -> execute();
 
+      $erro = 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas';
+      return($erro);
+
     } else {
 
-      if($retorno2 < 3){
+      if($retorno2 >= 2){
 
-        $erro = 'Você não pode pegar emprestado mais de 2 livros';
+        $erro = 'ERRO: <br> Você não pode pegar emprestado mais de 2 livros';
+        return($erro);
 
       }
 
       if($retorno != 0){
 
-        $erro = 'Este livro já está emprestado a este usuário';
+        $erro = 'ERRO: <br> Este livro já está emprestado a este usuário';
+        return($erro);
 
       }
 
     }
 
-    return($erro);
+    // return($erro);
 
   }
 
