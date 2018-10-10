@@ -43,9 +43,9 @@
     $erros[] = "Título não informado";
   }
 
-  if(MesmaClassificacao($request['classificacao']) == 1){
+  /* if(MesmaClassificacao($request['classificacao']) == 1){
     $erros[] = "Não pode haver livros com a mesma classificação";
-  }
+  } */
 
   //Validação dos erros
   if(empty($erros) == false){
