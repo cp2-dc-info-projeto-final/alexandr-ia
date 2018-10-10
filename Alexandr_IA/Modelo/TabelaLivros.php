@@ -168,6 +168,26 @@
 
 	}
 
+	function AlteraLivro($autor, $aquisicao, $classificacao, $edicao, $editora, $qtd_exemplares, $observacao, $titulo, $volume, $id_livro){
 
+		$bd = CriaConexãoBd();
+
+		$id_livro = intval($id_livro);
+
+		$sql = $bd -> prepare('UPDATE livro SET autor = :autor, aquisicao = :aquisicao, classificacao = :classificacao, edicao = :edicao, editora = :editora, exemplar = :qtd_exemplares, observacao = :observacao, titulo = :titulo, volume = :volume WHERE id = :id');
+		$sql -> bindValue(':autor', $autor);
+		$sql -> bindValue(':aquisicao', $aquisicao);
+		$sql -> bindValue(':classificacao', $classificacao);
+		$sql -> bindValue(':edicao', $edicao);
+		$sql -> bindValue(':editora', $editora);
+		$sql -> bindValue(':qtd_exemplares', $qtd_exemplares);
+		$sql -> bindValue(':observacao', $observacao);
+		$sql -> bindValue(':titulo', $titulo);
+		$sql -> bindValue(':volume', $volume);
+		$sql -> bindValue(':id', $id_livro, PDO::PARAM_INT);
+
+		$sql -> execute();
+
+	}
 
 ?>

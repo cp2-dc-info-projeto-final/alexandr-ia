@@ -193,7 +193,10 @@
 					echo('
 
 						<br>
-						<input type="button" value="Editar" id="amazing_button">
+						<form class="enviar" method="post" action="editar.php">
+							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+							<input type="submit" value="Editar" id="amazing_button">
+						</form>
 
 					');
 
