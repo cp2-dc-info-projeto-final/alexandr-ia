@@ -53,7 +53,7 @@ CREATE TABLE emprestimo (
 
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     aluno_prof INT NOT NULL,
-    bibliotecario INT NOT NULL,
+    bibliotecario INT NULL,
     livro INT NOT NULL,
     retirado BOOLEAN NOT NULL,
     _data DATE NOT NULL,

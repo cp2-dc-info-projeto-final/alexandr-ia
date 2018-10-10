@@ -2,6 +2,7 @@
 
 	session_start();
 	$idLivro = filter_input(INPUT_GET, 'idLivro', FILTER_SANITIZE_URL);
+	$erro = filter_input(INPUT_GET, 'erro', FILTER_DEFAULT);
 
 	$_SESSION['idLivro'] = $idLivro;
 
@@ -10,6 +11,7 @@
 	require_once('../Modelo/CriaConexao.php');
 	require_once('../Modelo/TabelaLivros.php');
 	require_once('../Modelo/TabelaUsuários.php');
+	require_once('../Modelo/TabelaEmprestimo.php');
 
 	$livro = DetalhaLivro($idLivro);
 
@@ -20,6 +22,8 @@
 	$id = $dadosUsuario['id'];
 
 	$tipoUsuario = TipoUsuario($id);
+
+	$qtd_exemplares = ExemplaresDisponiveis($idLivro);
 
 ?>
 <html>
@@ -94,9 +98,47 @@
 
 		<h1>Biblioteca CPII - Caxias</h1>
 
+		<?php
+
+		if ($erro != null){
+
+				echo ('
+
+					<br>
+					<style>
+
+					#caixaErros{
+
+					visibility:visible;
+					background-color: #ffff80;
+					width: 50%;
+					text-align: center;
+					border: solid 1px;
+					padding: 3px;
+					font-size: 18px;
+
+					}
+
+					</style>
+
+				');
+
+				echo('<center><div id="caixaErros">');
+
+					echo($erro);
+
+				echo('</div></center>');
+
+				unset($_SESSION['errosInsercao']);
+
+			}
+
+		?>
+
 		<div id="infos">
 
 			<h2><i><?php echo($titulo)?></i></h2>
+			<p>Qunatidade de exemplares disponíveis: <?php echo($qtd_exemplares); ?></p>
 
 			<div id='BordaLivro'>
 
@@ -178,15 +220,31 @@
 
 				if ($tipoUsuario == 0){
 
-					echo('
+					if($qtd_exemplares != 0){
 
-				<form class="enviar" method="post" action="empresta.php">
-					<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-					<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-					<input type="submit" value="Pegar Emprestado" id="amazing_button">
-				</form>
+						echo('
 
-					');
+					<form class="enviar" method="post" action="empresta.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Pegar Emprestado" id="amazing_button">
+					</form>
+
+						');
+
+					} else {
+
+						echo('
+
+					<form class="enviar" method="post" action="reserva.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Reservar Livro" id="amazing_button">
+					</form>
+
+						');
+
+					}
 
 				} else {
 
