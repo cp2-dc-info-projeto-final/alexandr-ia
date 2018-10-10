@@ -237,7 +237,8 @@
 
                 <br>
 
-                <form>
+                <form method="post" action="excluir.php">
+				  <input type="hidden" value="'.$id.'" name="id">
                   <input type="submit" value="Excluir Aluno/Professor do Sistema">
                 </form>
 
@@ -252,18 +253,27 @@
 
         if($tipo == 1){
           // Bibliotecário
+		  if($id == 1){
+		    echo('
+			  </ul>
+			  
+			  </div>
+			</div>
+			');
+		  } else {
+			  echo('
+					<form method="post" action="excluir.php">
+					  <input type="hidden" value="'.$id.'" name="id">
+					  <input type="submit" value="Excluir Bibliotecario do Sistema">
+					</form>
 
-          echo('
+				</ul>
 
-                <input type="button" value="Excluir Bibliotecario do Sistema">
+				</div>
+			  </div>
 
-            </ul>
-
-            </div>
-          </div>
-
-          ');
-
+			  ');
+		  }
         }
 
       }

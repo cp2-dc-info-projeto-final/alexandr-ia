@@ -150,5 +150,30 @@
 		$sql -> execute();
 
 	}
+	
+	function Excluir($id){
+		$bd = CriaConexãoBd();
+		$tipoUsuario = TipoUsuario($id);
+		
+		if($tipoUsuario == 0){
+			
+			$tipo = $bd -> prepare('DELETE FROM aluno_professor WHERE id = :id');
+			$tipo -> bindValue(':id', $id);
+			$tipo -> execute();
+			
+		}
+		
+		if($tipoUsuario == 1){
+			
+			$tipo = $bd -> prepare('DELETE FROM bibliotecario WHERE id = :id');
+			$tipo -> bindValue(':id', $id);
+			$tipo -> execute();
+			
+		}
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('DELETE FROM usuario WHERE id = :id');
+		$sql -> bindValue(':id', $id);
+		$sql -> execute();
+	}
 
 ?>
