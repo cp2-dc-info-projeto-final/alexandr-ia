@@ -59,89 +59,108 @@
 
               <div class="linha">
 
-			  <label>Matrícula:
+                <label>Matrícula:
 
-				  <input
-					class="caixa"
-					type="text"
-					name='matricula'
-					maxlength="31"
-					required
-				  >
+                  <input
+                  class="caixa"
+                  type="text"
+                  name='matricula'
+                  maxlength="31"
+                  required
+                  >
 
-			  </label>
+                </label>
 
-			  <br>
-			  </div>
+                <br>
+             </div>
 
-              <div class="linha">
-			  <label>Nome:
+             <div class="linha">
 
-				  <input
-					class="caixa"
-					type="text"
-					name='nome'
-					minlength="3"
-					maxlength="127"
-					required
-				  >
+              <label>Nome:
 
-			  </label>
+                <input
+                class="caixa"
+                type="text"
+                name='nome'
+                minlength="3"
+                maxlength="127"
+                required
+                >
 
-			  <br>
-			  </div>
+              </label>
 
-              <div class="linha">
+              <br>
+           </div>
 
-			  <label>Email:
+            <div class="linha">
 
-				  <input
-					class="caixa"
-					type="email"
-					name='email'
-					required
-				  >
+              <label>Email:
 
-			  </label>
+                <input
+                class="caixa"
+                type="email"
+                name='email'
+                required
+                >
 
-			  <br>
-			  </div>
+              </label>
 
-              <div class="linha">
+              <br>
+           </div>
 
-			  <label>Senha:
+           <div class="linha">
 
-				  <input
-					class="caixa"
-					type="password"
-					name='senha'
-					minlength="6"
-					maxlength="15"
-					required
-				  >
+            <label>Senha:
 
-			  </label>
+              <input
+              class="caixa"
+              type="password"
+              name='senha'
+              minlength="6"
+              maxlength="15"
+              required
+              >
 
-			  <br>
-			  </div>
+            </label>
 
-              <div class="linha">
+            <br>
+         </div>
 
-			  <label>Confirmar senha:
+         <div class="linha">
 
-				  <input
-					class="caixa"
-					type="password"
-					name='confirmarSenha'
-					minlength="6"
-					maxlength="15"
-					required
-				  >
+          <label>Confirmar senha:
 
-			  </label>
+            <input
+            class="caixa"
+            type="password"
+            name='confirmarSenha'
+            minlength="6"
+            maxlength="15"
+            required
+            >
 
-			  <br>
-			  </div>
+          </label>
+
+          <br>
+        </div>
+
+        <div class="linha">
+
+         <label>Telefone:
+
+           <input
+           class="caixa"
+           type="tel"
+           name='telefone'
+           minlength="12"
+           maxlength="30"
+           required
+           >
+
+         </label>
+
+         <br>
+      </div>
 
             </td>
           </tr>

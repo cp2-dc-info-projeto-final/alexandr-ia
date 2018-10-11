@@ -4,22 +4,57 @@
 
     $bd = CriaConexãoBd();
 
-    /* $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data,	horario)
-                          VALUES (:id_usuario, :id_bibliotecario, :id_livro, FALSE, NULL, NULL);
-
-    ');
-
+    $sql = $bd -> prepare('SELECT aluno_prof, livro FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro');
     $sql -> bindValue(':id_usuario', $id_usuario);
-    $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
-    $sql -> bindValue(':id_livro', $id_livro); */
-
-    $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (:id_usuario, :id_livro);');
-    $sql -> bindValue('id_usuario', $id_usuario);
-    $sql -> bindValue('id_livro', $id_livro);
+    $sql -> bindValue(':id_livro', $id_livro);
 
     $sql -> execute();
 
-    $mensagem = 'Reserva feita com sucesso';
+    $retorno = $sql -> rowCount();
+
+    if($retorno == 0){
+
+      $bd = CriaConexãoBd();
+      $sql = NULL;
+
+      $sql = $bd -> prepare('SELECT aluno_prof FROM emprestimo WHERE aluno_prof = :id_usuario');
+      $sql -> bindValue(':id_usuario', $id_usuario);
+
+      $sql -> execute();
+
+      $qtd_emprestimos = $sql -> rowCount();
+
+      $bd = CriaConexãoBd();
+      $sql = NULL;
+
+      $sql = $bd -> prepare('SELECT aluno_prof FROM reserva WHERE aluno_prof = :id_usuario');
+      $sql -> bindValue(':id_usuario', $id_usuario);
+
+      $sql -> execute();
+
+      $qtd_reservas = $sql -> rowCount();
+
+      if( ($qtd_reservas + $qtd_emprestimos) < 2 ) {
+
+        $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (:id_usuario, :id_livro);');
+        $sql -> bindValue('id_usuario', $id_usuario);
+        $sql -> bindValue('id_livro', $id_livro);
+
+        $sql -> execute();
+
+        $mensagem = 'Reserva feita com sucesso';
+
+      } else {
+
+        $mensagem = 'Você pode fazer, no máximo, 2 reservas/empréstimos';
+
+      }
+
+    } else {
+
+      $mensagem = 'Você não pode colocar este livro na lista de espera já tendo reservado-o';
+
+    }
 
     return($mensagem);
 
@@ -30,7 +65,7 @@
     $bd = CriaConexãoBd();
     $erro = '';
 
-    date_default_timezone_set ('America/Sao_Paulo');
+    date_default_timezone_set ('America/Sao_Paulo'); 
     $data = date('Y-m-d');
     $horario = date('H:i:s');
 
@@ -43,14 +78,28 @@
     $retorno = $sql -> rowCount();
 
     $bd = CriaConexãoBd();
+    $sql = NULL;
+
     $sql = $bd -> prepare('SELECT aluno_prof FROM emprestimo WHERE aluno_prof = :id_usuario');
     $sql -> bindValue(':id_usuario', $id_usuario);
 
     $sql -> execute();
 
-    $retorno2 = $sql -> rowCount();
+    $qtd_emprestimos = $sql -> rowCount();
 
-    if($retorno == 0 AND $retorno2 < 2){
+    $bd = CriaConexãoBd();
+    $sql = NULL;
+
+    $sql = $bd -> prepare('SELECT aluno_prof FROM reserva WHERE aluno_prof = :id_usuario');
+    $sql -> bindValue(':id_usuario', $id_usuario);
+
+    $sql -> execute();
+
+    $qtd_reservas = $sql -> rowCount();
+
+    $total = $qtd_reservas + $qtd_emprestimos;
+
+    if($retorno == 0 AND $total < 2){
 
       $bd = CriaConexãoBd();
       $sql = NULL;
@@ -73,9 +122,9 @@
 
     } else {
 
-      if($retorno2 >= 2){
+      if($total >= 2){
 
-        $erro = 'ERRO: <br> Você não pode pegar emprestado mais de 2 livros';
+        $erro = 'ERRO: <br> Você não pode pegar emprestado mais de 2 itens';
         return($erro);
 
       }
@@ -112,7 +161,7 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT retirado FROM emprestimo WHERE livro = :id_livro AND retirado = TRUE;');
+    $sql = $bd -> prepare('SELECT retirado FROM emprestimo WHERE livro = :id_livro;');
 
     $sql -> bindValue('id_livro', $id_livro);
     $sql -> execute();

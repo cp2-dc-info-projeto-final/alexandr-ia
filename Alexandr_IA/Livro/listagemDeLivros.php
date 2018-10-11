@@ -326,7 +326,7 @@
 							echo('<li> Autor: '.$livro['autor'].'</li> <br>');
 
 						}?>
-						<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
+						<li><?php echo('Tipo de suporte: '.$tipo);?></li>
 					<ul>
 
 				</div>
@@ -401,7 +401,7 @@
 							echo('<li> Autor: '.$livro['autor'].'</li> <br>');
 
 						}?>
-						<li><?php echo('Tipo de Conteúdo: '.$tipo);?></li>
+						<li><?php echo('Tipo de suporte: '.$tipo);?></li>
 					<ul>
 
 				</div>

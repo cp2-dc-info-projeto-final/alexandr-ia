@@ -82,6 +82,12 @@
 
 			}
 
+			#amazing_button{
+
+				width: auto;
+
+			}
+
 			.enviar{
 
 				margin-left: 5%;
@@ -213,7 +219,12 @@
 						echo('<p> Editora: '.$livro['editora'].'</p>');
 					}
 				?>
-				<?php echo('<p>Tipo de Conteúdo: '.$tipo.'</p>') ?>
+				<?php echo('<p>Tipo de suporte: '.$tipo.'</p>') ?>
+
+				<p>Número de chamada:
+				<?php echo($livro['classificacao']);?>
+				</p>
+
 			</div>
 
 			<?php
@@ -227,7 +238,7 @@
 					<form class="enviar" method="post" action="empresta.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Pegar Emprestado" id="amazing_button">
+						<input type="submit" value="Reservar livro" id="amazing_button">
 					</form>
 
 						');
@@ -239,7 +250,7 @@
 					<form class="enviar" method="post" action="reserva.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Reservar Livro" id="amazing_button">
+						<input type="submit" value="Adcionar à lista de espera" id="amazing_button">
 					</form>
 
 						');

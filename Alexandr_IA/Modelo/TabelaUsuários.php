@@ -29,12 +29,14 @@
 	{
 		$bd = CriaConexãoBd();
 
-		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha) VALUES( :matricula, :nome, :email, :senha);');
+		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha, telefone, turma, banido) VALUES( :matricula, :nome, :email, :senha, :telefone, :turma, FALSE);');
 
 		$sql ->bindValue(':matricula',$dadosNovoUsuario['matricula']);
 		$sql ->bindValue(':nome',$dadosNovoUsuario['nome']);
 		$sql ->bindValue(':email', $dadosNovoUsuario['email']);
 		$sql ->bindValue(':senha', $dadosNovoUsuario['senha']);
+		$sql ->bindValue(':telefone', $dadosNovoUsuario['telefone']);
+		$sql ->bindValue(':turma', $dadosNovoUsuario['turma']);
 		$sql -> execute();
 
 		$bd = CriaConexãoBd();
@@ -150,25 +152,25 @@
 		$sql -> execute();
 
 	}
-	
+
 	function Excluir($id){
 		$bd = CriaConexãoBd();
 		$tipoUsuario = TipoUsuario($id);
-		
+
 		if($tipoUsuario == 0){
-			
+
 			$tipo = $bd -> prepare('DELETE FROM aluno_professor WHERE id = :id');
 			$tipo -> bindValue(':id', $id);
 			$tipo -> execute();
-			
+
 		}
-		
+
 		if($tipoUsuario == 1){
-			
+
 			$tipo = $bd -> prepare('DELETE FROM bibliotecario WHERE id = :id');
 			$tipo -> bindValue(':id', $id);
 			$tipo -> execute();
-			
+
 		}
 		$bd = CriaConexãoBd();
 		$sql = $bd -> prepare('DELETE FROM usuario WHERE id = :id');
