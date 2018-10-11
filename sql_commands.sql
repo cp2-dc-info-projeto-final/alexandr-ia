@@ -20,6 +20,8 @@ CREATE TABLE usuario(
     nome VARCHAR(255),
     email VARCHAR(63),
     senha VARCHAR(127),
+    telefone VARCHAR(30),
+    turma VARCHAR(10),
     foto VARCHAR(127),
     banido BOOL
 
