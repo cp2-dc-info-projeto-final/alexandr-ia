@@ -2,6 +2,9 @@
 
 	session_start();
 
+	require_once('Modelo/CriaConexao.php');
+	require_once('Modelo/TabelaUsuários.php');
+
 	$listaErros = null;
 
 	if ( empty($_SESSION['emailUsuarioLogado']) == false ){
@@ -20,6 +23,25 @@
 			$listaErros[] = $erro;
 
 		}
+
+	}
+
+	if (isset($_SESSION['confirmacao']) == true){
+
+		if($_REQUEST['confirmacao'] == $_SESSION['confirmacao']){
+
+			InsereUsuario($_SESSION['dados'], 0);
+
+			$listaErros[] = 'Cadastro confirmado';
+
+		} else {
+
+			$listaErros[] = 'Erro na Confirmação do Cadastro';
+
+		}
+
+		unset($_SESSION['dados']);
+		unset($_SESSION['confirmacao']);
 
 	}
 

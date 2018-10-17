@@ -1,5 +1,7 @@
 ﻿<?php
 
+  session_start();
+
   require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
   $request = array_map("trim", $_REQUEST);
@@ -97,7 +99,7 @@
 			</head>
 			<body>
 				<h1>Biblioteca CPII - Caxias</h1>
-				<p>Cadastro Realizado com Sucesso!</p>
+				<p>Um link foi enviado para o seu e-mail. Use-o para terminar o cadastro</p>
         <br>
         <a href="../index.php">Voltar para Tela de Inicial</a>
 			</body>
@@ -111,7 +113,20 @@
 		'senha' => $request['senha']
 	];
 
-	InsereUsuario($novoUsuario, 0);
+	// InsereUsuario($novoUsuario, 0);
+
+  $email = $novoUsuario['email'];
+
+  $_SESSION['dados'] = $novoUsuario;
+
+  $hash = password_hash($email, PASSWORD_DEFAULT);
+
+  $link = 'http://localhost:8080/alexandria/index.php?confirmacao='.$hash;
+  $message = 'Clique no link abaixo para confirmar seu cadastro: \n \n '.$link;
+
+  $_SESSION['confirmacao'] = $hash;
+
+  mail($email, 'Confirmação de Cadastro na Biblioteca' ,$message);
 
   } else {
 
