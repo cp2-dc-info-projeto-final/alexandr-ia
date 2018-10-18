@@ -190,4 +190,20 @@
 
 	}
 
+	function IdPorClassificacao($classificacao){
+
+		$bd = CriaConexãoBd();
+
+		$sql = $bd -> prepare('SELECT id FROM livro WHERE classificacao = :classificacao');
+
+		$sql -> bindValue(':classificacao', $classificacao);
+		$sql -> execute();
+
+		$sql = $sql -> fetch();
+		$sql = $sql['id'];
+
+		return($sql);
+
+	}
+
 ?>

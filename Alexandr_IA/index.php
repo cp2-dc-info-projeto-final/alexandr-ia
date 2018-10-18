@@ -6,6 +6,7 @@
 	require_once('Modelo/TabelaUsuários.php');
 
 	$listaErros = null;
+	$mensagem = null;
 
 	if ( empty($_SESSION['emailUsuarioLogado']) == false ){
 
@@ -32,7 +33,7 @@
 
 			InsereUsuario($_SESSION['dados'], 0);
 
-			$listaErros[] = 'Cadastro confirmado';
+			$mensagem = 'Cadastro confirmado';
 
 		} else {
 
@@ -59,7 +60,7 @@
 
 		<?php
 
-		if ($listaErros != null){
+		if ($listaErros != null || $mensagem != null){
 
 			echo ('
 
@@ -82,13 +83,21 @@
 
 			');
 
-			echo('<div id="caixaErros">ERRO: <br>');
+			echo('<div id="caixaErros">');
 
-			foreach($listaErros as $erro){
+			if(isset($listaErros) == true){
 
-				echo($erro.' | ');
+				echo('ERRO: <br>');
+
+				foreach($listaErros as $erro){
+
+					echo($erro.' | ');
+
+				}
 
 			}
+
+			echo($mensagem);
 
 			echo('</div>');
 
