@@ -63,7 +63,13 @@
 
     $mensagem = Empresta($id_usuario, $id_bibliotecario, $id_livro);
 
-    header('Location: pagEmprestimo.php?erros='.urlencode($mensagem));
+    if ($mensagem == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
+
+      $mensagem = 'Empréstimo feito com sucesso';
+
+    }
+
+    header('Location: pagEmprestimo.php?mensagem='.urlencode($mensagem));
 
   }
 

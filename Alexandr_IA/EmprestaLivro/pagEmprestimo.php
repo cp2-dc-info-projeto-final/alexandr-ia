@@ -13,6 +13,8 @@
 
   <head>
 
+    <link rel="stylesheet" type="text/css" href="ArquivosStyle/FolhaDeEstilo.css">
+
     <style>
 
     .barra li {
@@ -135,7 +137,7 @@
 
     $erros = filter_input(INPUT_GET, 'erros', FILTER_SANITIZE_URL);
 
-    if(empty($erros) == false){
+    if(empty($erros) == false || isset($_REQUEST['mensagem']) == true){
 
       echo ('
 
@@ -173,25 +175,34 @@
 
     	   foreach($_REQUEST as $item){
 
-    		 print($item);
+    		     print($item);
 
     		 }
+
+      }
+
+      if( isset($_REQUEST['mensagem']) == true ){
+
+        echo($_REQUEST['mensagem']);
+
       }
 
   	  ?></div>
 
-  	</center>
+    <br><br>
 
     <form method="post" action="emprestar.php">
 
       <input name="id_bibliotecario" type="hidden" value="<?php echo($infos['id']); ?>">
       <label> E-mail do Aluno: <input name="email_usuario" type="email"></label>
-      <br>
+      <br><br>
       <label> Classificação do Livro: <input name="classificacao_livro" type="text"></label>
-      <br>
+      <br><br>
       <input type="submit" value="Fazer Empréstimo">
 
     </form>
+
+    </center>
 
   </body>
 

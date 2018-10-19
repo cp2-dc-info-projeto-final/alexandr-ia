@@ -82,6 +82,17 @@
 
 			}
 
+			#displayed input{
+
+				width: auto;
+				border: none;
+				background-color: rgb(174,231,240);
+				font-size: 19px;
+				font-family: "Times New Roman";
+				color: #000000;
+
+			}
+
 			.enviar{
 
 				margin-left: 5%;
@@ -214,9 +225,14 @@
 					}
 				?>
 				<?php echo('<p>Tipo de Suporte: '.$tipo.'</p>') ?>
-				<p>Classificação:
-				<?php echo($livro['classificacao']);?>
-				</p>
+				<label>Classificação:
+				<input
+
+					type="text"
+					disabled
+					value="<?php echo($livro['classificacao']);?>"
+				>
+				 </label>
 			</div>
 
 			<?php

@@ -56,7 +56,7 @@
       $sql = NULL;
 
       $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data,	horario)
-                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, FALSE, :_data, :horario);
+                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, TRUE, :_data, :horario);
 
       ');
 
