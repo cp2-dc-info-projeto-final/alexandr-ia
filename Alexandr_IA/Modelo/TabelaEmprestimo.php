@@ -139,4 +139,21 @@
 
   }
 
+  function ListaEmprestimos(){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT emprestimo.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo FROM emprestimo
+                          JOIN usuario
+                          ON emprestimo.aluno_prof = usuario.id
+                          JOIN livro
+                          ON emprestimo.livro = livro.id');
+
+    $sql -> execute();
+    $sql = $sql -> fetchAll();
+
+    return($sql);
+
+  }
+
 ?>

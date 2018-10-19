@@ -321,6 +321,8 @@
           <input type="button" value="Listar Usuarios" onclick="Redirect(\'../Listagem_Usuarios/Listagem_Usuarios.php\');">
           <br>
           <input type="button" value="Emprestar Livro" onClick="Redirect(\'../EmprestaLivro/pagEmprestimo.php\');">
+          <br>
+          <input type="button" value="Ver Empréstimos" onClick="Redirect(\'../VerEmprestimos/verEmprestimos.php\');">
 
       </div>
 
