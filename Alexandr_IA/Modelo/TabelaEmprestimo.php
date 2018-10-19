@@ -156,4 +156,21 @@
 
   }
 
+  function ListaReservas(){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT reserva.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo FROM reserva
+                          JOIN usuario
+                          ON reserva.aluno_prof = usuario.id
+                          JOIN livro
+                          ON reserva.livro = livro.id');
+
+    $sql -> execute();
+    $sql = $sql -> fetchAll();
+
+    return($sql);
+
+  }
+
 ?>

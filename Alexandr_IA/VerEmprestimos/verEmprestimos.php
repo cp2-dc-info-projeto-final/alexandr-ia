@@ -7,6 +7,7 @@
   require_once('../Modelo/TabelaEmprestimo.php');
 
   $emprestimos = ListaEmprestimos();
+  $reservas = ListaReservas();
 
 ?>
 <html>
@@ -213,6 +214,9 @@
 
     <br><br>
 
+    <h2>Empréstimos: </h2>
+    <br>
+
     <table>
 
       <tr>
@@ -240,6 +244,38 @@
       <?php } ?>
 
     </table>
+
+    <br>
+
+    <h2>Lista de interesse: </h2>
+    <br>
+
+    <table>
+
+      <tr>
+
+        <th>Nome do aluno</th>
+        <th>E-mail do aluno</th>
+        <th>Nome do livro emprestado</th>
+        <th>Classificação do livro emprestado</th>
+
+      </tr>
+
+      <?php foreach ($reservas as $reserva) {?>
+
+        <tr>
+
+          <td><?php echo($reserva['nome']); ?></td>
+          <td><?php echo($reserva['email']); ?></td>
+          <td><?php echo($reserva['titulo']); ?></td>
+          <td><?php echo($reserva['classificacao']); ?></td>
+
+        </tr>
+
+      <?php } ?>
+
+    </table>
+    <br><br>
 
   </center>
 
