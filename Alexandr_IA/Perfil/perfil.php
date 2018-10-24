@@ -290,7 +290,7 @@
             <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
             <li> Nome: <input type="text" name="nome" value="<?php echo($usuario['nome']);?>"></li>
             <br>
-            <li> Matrícula: <input type="text" name="matricula" value="<?php echo($usuario['matricula']);?>"></li>
+            <li> Matrícula: <input type="text" disabled name="matricula" value="<?php echo($usuario['matricula']);?>"></li>
             <br>
             <li> E-mail: <input type="text" disabled name="email" value="<?php echo($usuario['email']);?>"></li>
             <br>
