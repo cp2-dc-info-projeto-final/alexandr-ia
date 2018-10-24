@@ -237,6 +237,13 @@
 
 			<?php
 
+			$ban = '';
+			if ($dadosUsuario['banido'] == 1){
+
+				$ban = 'disabled';
+
+			}
+
 				if ($tipoUsuario == 0){
 
 					if($qtd_exemplares != 0){
@@ -246,7 +253,7 @@
 					<form class="enviar" method="post" action="empresta.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Pegar Emprestado" id="amazing_button">
+						<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
@@ -258,7 +265,7 @@
 					<form class="enviar" method="post" action="reserva.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Reservar Livro" id="amazing_button">
+						<input type="button" value="Reservar Livro" id="amazing_button"'.$ban.'>
 					</form>
 
 						');

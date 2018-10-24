@@ -25,6 +25,16 @@
 
         }
 
+        function Excluir(id){
+
+          if( confirm('Deseja mesmo excluir este usuário? A operação é irreversível')){
+
+            window.location.replace('excluir.php?id='+id);
+
+          }
+
+        }
+
       </script>
 
       <style>
@@ -130,6 +140,14 @@
         margin-left: 2%;
 
       }
+
+      form{
+
+        margin: 0;
+        padding: 0;
+
+      }
+
 	  #conteudo.banido{
 		  background-color: red;
 	  }
@@ -183,7 +201,7 @@
 
         $tipo = TipoUsuario($usuario['id']);
 		$banido = $usuario['banido'];
-		
+
         if(empty($usuario['foto']) == true){
 
           $caminho = ('../Imagens/icon_usuarioPadrao.png');
@@ -196,17 +214,17 @@
         }
 
         $id = $usuario['id'];
-		
+
 		if($banido == 1){
         echo('
         <div id="conteudo" class="banido">');
 		}
-		
+
 		if($banido == 0){
         echo('
         <div id="conteudo">');
 		}
-		
+
 		echo('
           <h2>'.$usuario['nome'].'</h2>
 
@@ -218,7 +236,14 @@
 
               <li> Nome: '.$usuario['nome'].'</li>
               <br>
-              <li> Matrícula: '.$usuario['matricula'].'</li>
+
+              <li>
+                <form method="POST" action="alteraMatricula.php">
+                  <input type="hidden" name="id" value="'.$usuario['id'].'">
+                  <label>Matrícula: <input type="text" name="matricula" value="'.$usuario['matricula'].'"></label>
+                <form>
+              </li>
+
               <br>
               <li> E-mail: '.$usuario['email'].'</li>
               <br>
@@ -238,8 +263,8 @@
                 <br>
 
                 <form method="post" action="excluir.php">
-				  <input type="hidden" value="'.$id.'" name="id">
-                  <input type="submit" value="Excluir Aluno/Professor do Sistema">
+				          <input type="hidden" value="'.$id.'" name="id">
+                  <input type="button" value="Excluir Aluno/Professor do Sistema" onClick="Excluir('.$id.');">
                 </form>
 
             </ul>
@@ -256,15 +281,16 @@
 		  if($id == 1){
 		    echo('
 			  </ul>
-			  
+
 			  </div>
 			</div>
 			');
 		  } else {
 			  echo('
+
 					<form method="post" action="excluir.php">
 					  <input type="hidden" value="'.$id.'" name="id">
-					  <input type="submit" value="Excluir Bibliotecario do Sistema">
+					  <input type="button" value="Excluir Bibliotecario do Sistema" onClick="Excluir('.$id.');">
 					</form>
 
 				</ul>

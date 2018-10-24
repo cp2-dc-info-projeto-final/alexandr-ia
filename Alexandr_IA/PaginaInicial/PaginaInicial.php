@@ -185,6 +185,12 @@
 			  }
 
 
+				#aviso {
+
+					color: red;
+
+				}
+
           </style>
 
         <title> Página Inicial </title>
@@ -194,6 +200,16 @@
       <body>
 
         <h1>Biblioteca CPII - Caxias</h1>
+
+				<?php
+
+					if ($usuario['banido'] == 1){
+
+						echo('<h3 id="aviso"> Você está banido, portanto impedido de pegar itens emprestado. Dúvidas, contate o bibliotecário do campus.</h3>');
+
+					}
+
+				?>
 
 		<!-- <div id="barra">
 

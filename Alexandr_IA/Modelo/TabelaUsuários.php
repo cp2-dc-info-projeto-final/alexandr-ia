@@ -115,6 +115,20 @@
 
 	}
 
+	function AlteraMatricula($id, $matricula){
+
+		$bd = CriaConexãoBd();
+
+		$id = intval($id);
+
+		$sql = $bd -> prepare('UPDATE usuario SET matricula = :matricula WHERE id = :id');
+		$sql -> bindValue(':matricula', $matricula);
+		$sql -> bindValue(':id', $id, PDO::PARAM_INT);
+
+		$sql -> execute();
+
+	}
+
 	function Usuarios(){
 
 		$bd = CriaConexãoBd();

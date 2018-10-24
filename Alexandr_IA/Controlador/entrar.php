@@ -45,13 +45,13 @@
 
 	$usuario = InfosUsuario($email);
 
-	if ($usuario['banido'] == 1){
+	/* if ($usuario['banido'] == 1){
 
 		$erro[] = 'Este e-mail está banido, portanto impedido de acessar o sistema. Dúvidas, contate o bibliotecário do campus.';
 
-	}
+	} */
 
-	else if (password_verify($senha, $hash) && count($erro) == 0){
+		if (password_verify($senha, $hash) && count($erro) == 0){
 
 		session_start();
 		$_SESSION['emailUsuarioLogado'] = $email;
