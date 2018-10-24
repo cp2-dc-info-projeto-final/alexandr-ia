@@ -13,13 +13,50 @@
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
     $sql -> bindValue(':id_livro', $id_livro); */
 
-    $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (:id_usuario, :id_livro);');
-    $sql -> bindValue('id_usuario', $id_usuario);
-    $sql -> bindValue('id_livro', $id_livro);
+    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM Reserva
+                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
+
+    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql -> execute();
+
+    $linhas =  $sql -> rowCount();
+    $mensagem = '';
+
+    $sql = NULL;
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
+                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario
+                           AND reserva.livro = :id_livro AND emprestimo.livro = :id_livro');
+
+    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql -> bindValue(':id_livro', $id_livro);
 
     $sql -> execute();
 
-    $mensagem = 'Reserva feita com sucesso';
+    $retorno = $sql -> rowCount();
+
+    if($linhas < 2 AND $retorno == 0){
+
+      $sql = $bd -> prepare('INSERT INTO reserva(aluno_prof,	livro) VALUES (:id_usuario, :id_livro);');
+      $sql -> bindValue('id_usuario', $id_usuario);
+      $sql -> bindValue('id_livro', $id_livro);
+
+      $sql -> execute();
+
+      $mensagem = 'Reserva feita com sucesso';
+
+    } else if ($linhas >= 2){
+
+      $mensagem = 'Você só pode reservar/pegar emprestado, no máximo, 2 itens';
+
+    } else if($retorno != 0){
+
+      $mensagem = 'Você não pode reservar o mesmo item novamente';
+
+    }
 
     return($mensagem);
 
@@ -43,14 +80,16 @@
     $retorno = $sql -> rowCount();
 
     $bd = CriaConexãoBd();
-    $sql = $bd -> prepare('SELECT aluno_prof FROM emprestimo WHERE aluno_prof = :id_usuario');
-    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM Reserva
+                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
 
+    $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> execute();
 
-    $retorno2 = $sql -> rowCount();
+    $linhas =  $sql -> rowCount();
 
-    if($retorno == 0 AND $retorno2 < 2){
+    if($retorno == 0 AND $linhas < 2){
 
       $bd = CriaConexãoBd();
       $sql = NULL;
@@ -73,7 +112,7 @@
 
     } else {
 
-      if($retorno2 >= 2){
+      if($linhas >= 2){
 
         $erro = 'ERRO: <br> Você não pode pegar emprestado mais de 2 livros';
         return($erro);

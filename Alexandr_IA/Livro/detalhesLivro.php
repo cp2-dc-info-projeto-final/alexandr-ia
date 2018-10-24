@@ -265,7 +265,7 @@
 					<form class="enviar" method="post" action="reserva.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="button" value="Reservar Livro" id="amazing_button"'.$ban.'>
+						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
