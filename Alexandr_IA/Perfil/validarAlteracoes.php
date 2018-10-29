@@ -6,7 +6,6 @@
   $request = array_map("trim", $_REQUEST);
   $request = filter_var_array($request, [
 
-    'matricula' => FILTER_DEFAULT,
     'nome' => FILTER_DEFAULT,
     'id' => FILTER_DEFAULT
 
@@ -26,19 +25,6 @@
 
   }
 
-  // ======
-  // ===== Validação da Matricula
-
-  if($request['matricula'] == false){
-
-    $erros[] = "Campo da matrícula inexistente ou inválido";
-
-  } else if (strlen($request['matricula']) > 31 ){
-
-    $erros[] = "O campo matricula precisa ter menos que 31 dígitos";
-
-  }
-
   if( empty($erros) == false){
 
     foreach ($erros as $erro){
@@ -50,10 +36,9 @@
   } else {
 
     $nome = $request['nome'];
-    $matricula = $request['matricula'];
     $id = $request['id'];
 
-    AlteraUsuario($nome, $matricula, $id);
+    AlteraUsuario($nome, NULL, $id);
 
     header('Location: perfil.php');
 
