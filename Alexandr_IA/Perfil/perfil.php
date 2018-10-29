@@ -197,7 +197,7 @@
 					<a href="../Perfil/perfil.php">Perfil</a>
 				</li>
 				<div style="display: inline-block; margin-top:0.6%;" id="pesquisa">
-				<form method="post" action="listagemDeLivros.php">
+				<form method="post" action="../Livro/listagemDeLivros.php">
 					<select name="tipoConsulta">
 						<option value="pp_titulo">Título</option>
 						<option value="pp_autor">Autor</option>
