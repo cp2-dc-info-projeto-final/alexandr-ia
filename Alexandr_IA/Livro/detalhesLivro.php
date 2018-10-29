@@ -22,8 +22,22 @@
 	$id = $dadosUsuario['id'];
 
 	$tipoUsuario = TipoUsuario($id);
-
 	$qtd_exemplares = ExemplaresDisponiveis($idLivro);
+
+	$reservas_usuario = ListaReservasPorId($id);
+
+	$reservaFeita = FALSE;
+	$idReservaFeita = NULL;
+	foreach ($reservas_usuario as $reserva) {
+
+		if($reserva['aluno_prof'] == $id){
+
+			$reservaFeita = TRUE;
+			$idReservaFeita = $reserva['id'];
+
+		}
+
+	}
 
 ?>
 <html>
@@ -258,7 +272,7 @@
 
 						');
 
-					} else {
+					} else if ($reservaFeita == FALSE){
 
 						echo('
 
@@ -266,6 +280,18 @@
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
 						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
+					</form>
+
+						');
+
+					} else {
+
+						echo('
+
+					<form class="enviar" method="post" action="cancela.php">
+						<input type="hidden" value="'.$idReservaFeita.'" name="id_reserva">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Cancelar Reserva" id="amazing_button"'.$ban.'>
 					</form>
 
 						');

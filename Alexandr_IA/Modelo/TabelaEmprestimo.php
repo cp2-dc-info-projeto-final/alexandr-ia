@@ -212,4 +212,30 @@
 
   }
 
+  function ListaReservasPorId($idUsuario){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT * FROM reserva WHERE aluno_prof = :idUsuario');
+
+    $sql -> bindValue(':idUsuario', $idUsuario);
+
+    $sql -> execute();
+    $sql = $sql -> fetchAll();
+
+    return($sql);
+
+  }
+
+  function CancelaReserva($id_reserva){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('DELETE FROM reserva WHERE id = :id_reserva');
+
+    $sql -> bindValue(':id_reserva', $id_reserva);
+    $sql -> execute();
+
+  }
+
 ?>
