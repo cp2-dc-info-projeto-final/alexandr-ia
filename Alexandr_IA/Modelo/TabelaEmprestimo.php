@@ -29,7 +29,7 @@
     $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
                            JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
                            WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario
-                           AND reserva.livro = :id_livro AND emprestimo.livro = :id_livro');
+                           AND reserva.livro = :id_livro OR emprestimo.livro = :id_livro');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> bindValue(':id_livro', $id_livro);
