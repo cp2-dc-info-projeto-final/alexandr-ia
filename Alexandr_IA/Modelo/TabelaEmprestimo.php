@@ -216,9 +216,34 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT * FROM reserva WHERE aluno_prof = :idUsuario');
+    $sql = $bd -> prepare('SELECT reserva.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo FROM reserva
+                          JOIN usuario
+                          ON reserva.aluno_prof = usuario.id
+                          JOIN livro
+                          ON reserva.livro = livro.id
+                          WHERE aluno_prof = :idUsuario');
 
-    $sql -> bindValue(':idUsuario', $idUsuario);
+    $sql -> bindValue('idUsuario', $idUsuario);
+
+    $sql -> execute();
+    $sql = $sql -> fetchAll();
+
+    return($sql);
+
+  }
+
+  function ListaEmprestimosPorId($idUsuario){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT emprestimo.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo FROM emprestimo
+                          JOIN usuario
+                          ON emprestimo.aluno_prof = usuario.id
+                          JOIN livro
+                          ON emprestimo.livro = livro.id
+                          WHERE aluno_prof = :idUsuario ');
+
+    $sql -> bindValue('idUsuario', $idUsuario);
 
     $sql -> execute();
     $sql = $sql -> fetchAll();

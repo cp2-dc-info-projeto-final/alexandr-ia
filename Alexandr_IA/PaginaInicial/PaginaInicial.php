@@ -191,6 +191,12 @@
 
 				}
 
+				#centro{
+
+					margin-bottom: -2%;
+
+				}
+
           </style>
 
         <title> Página Inicial </title>
@@ -348,17 +354,17 @@
 
 							?>
               <br>
-              <h3> <?php
+              <h3><br> <?php
 
 								$tipo = TipoUsuario($usuario['id']);
 
 								if ($tipo == 1){
 
-									echo('Livros emprestados');
+									echo('<a id="centro" href="../VerEmprestimos/VerEmprestimos.php">Livros emprestados</a>');
 
 								} else {
 
-									echo('Livros comigo');
+									echo('<a id="centro" href="../Perfil/itensEmprestados.php">Livros comigo</a>');
 
 								}
 
@@ -366,7 +372,7 @@
 							</h3>
               <br>
               <!-- Consulta dos Livros emprestados -->
-              <br><br>
+
               <h3> Quero uma novidade </h3>
 
 							<?php
