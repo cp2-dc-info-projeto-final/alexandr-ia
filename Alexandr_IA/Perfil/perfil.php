@@ -267,7 +267,7 @@
     <div id="conteudo">
       <h2><?php echo($usuario['nome']); ?></h2>
 
-      <img id="foto_perfil" src=<?php
+      <div><img id="foto_perfil" src=<?php
 
       if(empty($usuario['foto']) == true){
 
@@ -275,11 +275,17 @@
 
       } else {
 
-        // foto guardada
+        echo($usuario['foto']);
 
       }
 
-      ?> >
+      ?> ><br>
+      <form method="post" action="validarFoto.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
+        <input type="file" name="arq" required><br>
+        <input type="submit" value="Alterar foto de perfil">
+      </form>
+    </div>
 
     <div id="infos">
 

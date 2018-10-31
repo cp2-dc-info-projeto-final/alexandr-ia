@@ -209,4 +209,15 @@
 		$sql -> execute();
 	}
 
+	function AlteraFoto($arquivo, $id){
+		$bd = CriaConexãoBd();
+		$sql = $bd->prepare('UPDATE usuario SET foto = :foto
+	                     	 WHERE id = :id');
+
+		$sql->bindValue(':foto', $arquivo);
+		$sql->bindValue(':id', $id);
+
+		$sql->execute();
+	}
+
 ?>
