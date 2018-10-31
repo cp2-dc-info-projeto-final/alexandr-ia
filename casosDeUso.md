@@ -26,10 +26,11 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa Matrícula, Nome, E-mail e Senha.
+  1. Usuário informa Matrícula, Nome, Telefone, Turma, E-mail e Senha.
   2. Sistema verifica se o e-mail é válido
     - Se o e-mail já estiver cadastrado no sistema, ele retorna um erro.
     - Se o e-mail for válido o sistema cadastra o Usuário como Aluno/Professor.
+    - O usuário se cadastra pela internet, através da página de Login.
 
 ## CDU 02 - Cadastro de Bibliotecários
 
@@ -39,11 +40,12 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa Matrícula, Nome, E-mail e Senha.
+  1. Usuário informa Matrícula, Nome, Telefone, Turma, E-mail e Senha.
   2. Sistema verifica se a o e-mail é válido
     - Se o e-mail já estiver cadastrado no sistema, ele retorna um erro.
     - Se o e-mail for válido o sistema cadastra o Usuário como Bibliotecário.
-    
+    - Somente Bibliotecário cadastra outro bibliotecário.
+
 ## CDU 03 - Login
 
 **Atores:** Alunos, Professores e Biliotecários
@@ -53,13 +55,13 @@
 **Fluxo Principal:**
 
   1. Usuário informa e-mail e senha.
-    - Se os dados informados estiverem de acordo com os registrados no sistema, o usuário recebe permissão de acesso de acordo com o cadastro
+    - Se os dados informados estiverem de acordo com os registrados no sistema, o usuário recebe permissão de acesso de acordo com o cadastro, indo para a tela inicial das respectivas permissão
       * Bibliotecários recebem as permissões de acesso de Biliotecário.
       * Alunos e Professores recebem as permissões de acesso de Alunos e Professores.
 
-  2. Caso o Usuário tenha esquecido sua senha, ele será redirecionado para a página de Recuperação de Senha <!>
+  2. Caso o Usuário tenha esquecido sua senha, será redirecionado para a página de Recuperação através do email informado <!>
 
-## CDU 04 - Recuperação de Senha
+## CDU 04 - Recuperação ou Alterar de Senha
 
 **Atores:** Alunos, Professores e Biliotecários
 
@@ -67,9 +69,14 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa e-mail
-  2. Sistema envia um link de redefinição de senha para o e-mail informado.
-  3. O link enviado, quando for acessado, redirecionará o usuário para a Página de definição de Nova Senha.
+  1. Recuperação de Senha
+    - Usuário informa e-mail
+    - Sistema envia um link de redefinição de senha para o e-mail informado.
+    - O link enviado, quando for acessado, redirecionará o usuário para a Página de definição de Nova Senha.
+
+  2. Alterar de Senha
+    - Usuário, na pagina de perfil, pode trocar a senha.
+    - Sistema redirecionará o usuário para a Página de definição de Nova Senha.
 
 ## CDU 05 - Página de definição de Nova Senha
 
@@ -96,7 +103,7 @@
 
 **Atores:** Alunos, Professores e Bibliotecários
 
-**Pré-Condições:** Estar logado
+**Pré-Condições:** Ser cadastrado e estar logado
 
 **Fluxo Principal:**
 
@@ -104,6 +111,8 @@
     * Caso não haja pesquisa, o sistema não exibe quaisquer resultados
 
   2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
+
+  3. O Usuário pode filtar a pesquisa pelo tipo de suporte do livro.
 
 ## CDU 08 - Detalhes do Livro para Alunos e Professores
 
@@ -126,7 +135,7 @@
 
 **Fluxo Principal:**
 
-  1. Sistema disponibiliza mais detalhes do livro selecionado
+  1. Sistema disponibiliza todos os detalhes do livro selecionado
     - Há a possibilidade de excluir o livro do acervo
     - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
 
@@ -174,9 +183,9 @@
   1. Sistema exibe as informações do Aluno/Professor, com a possiblidade da edição das informações pelo mesmo.
   2. Caso o usuário tenha retirado um livro na biblioteca e ele não esteja em uma lista de desejos, ele poderá pedir, até 2 vezes, adiamento da devolução do livro.
     * Estando o livro numa lista de desejos, o pedido de adiamento não será aceito.
-  3. Sistema mostra as recomendações de leitura baseadas nas informações do usuário.
-  4. As informações do Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário.
-  5. Sistema exibe os livros pegos emprestados por aquele Aluno/Professor
+  3. Sistema disponibiliza um botão novidade, que mostra ao usuário um livro aleatoriamente.
+  4. As informações desse Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário, sem poder ser alterados por estes.
+  5. Sistema exibe os livros pegos emprestados por aquele Aluno/Professor.
 
 ## CDU 14 - Atualização de Perfil de Bibliotecários
 
@@ -187,6 +196,13 @@
 **Fluxo Principal:**
 
   1. Sistema exibe as informações do Bibliotecário, com a possiblidade da edição das informações pelo mesmo.
+  2. Sistema mostra um painel de controle da biblioteca virtual:
+    - Inserir Novo Livro
+    - Cadastrar Novo Bibliotecário
+    - Gerencias Liste de Usuários "Banidos"
+    - Listar Usuários
+    - Emprestar  Livros
+    - Ver Emprestimos
 
 ## CDU 15 - Lista Negra
 
