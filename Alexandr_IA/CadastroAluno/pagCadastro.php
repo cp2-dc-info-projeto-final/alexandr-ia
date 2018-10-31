@@ -52,7 +52,7 @@
 
     <p id="subtitulo">Aluno e Professor</p>
       <center>
-      <form method="post" action="cadastraUsuario.php" novalidate>
+      <form method="post" action="cadastraUsuario.php">
         <table>
           <tr>
             <td>
@@ -135,6 +135,41 @@
 					name='confirmarSenha'
 					minlength="6"
 					maxlength="15"
+					required
+				  >
+
+			  </label>
+
+        <br>
+        </div>
+              <div class="linha">
+
+        <label>Telefone:
+
+				  <input
+					class="caixa"
+					type="number"
+					name='telefone'
+					minlength="11"
+					maxlength="31"
+					required
+				  >
+
+			  </label>
+
+        <br>
+        </div>
+
+              <div class="linha">
+
+        <label>Turma:
+
+				  <input
+					class="caixa"
+					type="text"
+					name='turma'
+					minlength="4"
+					maxlength="7"
 					required
 				  >
 

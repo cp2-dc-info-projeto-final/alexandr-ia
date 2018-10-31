@@ -9,7 +9,8 @@
     'nome' => FILTER_DEFAULT,
     'email' => FILTER_VALIDATE_EMAIL,
     'senha' => FILTER_DEFAULT,
-    'confirmarSenha' => FILTER_DEFAULT
+    'confirmarSenha' => FILTER_DEFAULT,
+    'telefone' => FILTER_DEFAULT
 
   ]);
 
@@ -83,6 +84,21 @@
 
   }
 
+  // ======
+  // ===== Validação do Telefone
+
+  if ($request['telefone'] == false){
+
+    $erros[] = "Telefone inexistente ou inválido";
+
+  }
+
+   else if(strlen($request['telefone']) < 11 || strlen($request['telefone']) > 31){
+
+    $erros[] = "Telefone inexistente ou inválido";
+
+  }
+
   //"Criptografar" a senha
   else {
 	$request['senha'] = password_hash($request['senha'], PASSWORD_DEFAULT);
@@ -108,7 +124,8 @@
 		'matricula' => $request['matricula'],
 		'nome' => $request['nome'],
 		'email' => $request['email'],
-		'senha' => $request['senha']
+		'senha' => $request['senha'],
+    'telefone' => $request['telefone']
 	];
 
 	InsereUsuario($novoUsuario, 1);

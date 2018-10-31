@@ -29,12 +29,21 @@
 	{
 		$bd = CriaConexãoBd();
 
-		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha, banido) VALUES( :matricula, :nome, :email, :senha, FALSE);');
-
+		if(array_key_exists('turma', $dadosNovoUsuario)){
+		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha, banido, telefone, turma) VALUES( :matricula, :nome, :email, :senha, FALSE, :telefone, :turma);');
+		} else {
+		$sql = $bd ->prepare('INSERT INTO usuario(matricula, nome, email, senha, banido, telefone, turma) VALUES( :matricula, :nome, :email, :senha, FALSE, :telefone, NULL);');
+		}
 		$sql ->bindValue(':matricula',$dadosNovoUsuario['matricula']);
 		$sql ->bindValue(':nome',$dadosNovoUsuario['nome']);
 		$sql ->bindValue(':email', $dadosNovoUsuario['email']);
 		$sql ->bindValue(':senha', $dadosNovoUsuario['senha']);
+		$sql ->bindValue(':telefone', $dadosNovoUsuario['telefone']);
+
+		if(array_key_exists('turma', $dadosNovoUsuario)){
+		$sql ->bindValue(':turma', $dadosNovoUsuario['turma']);
+		}
+
 		$sql -> execute();
 
 		$bd = CriaConexãoBd();

@@ -52,7 +52,7 @@
 
     <p id="subtitulo">Bibliotecário</p>
       <center>
-      <form method="post" action="cadastraUsuario.php" novalidate>
+      <form method="post" action="cadastraUsuario.php">
         <table>
           <tr>
             <td>
@@ -142,6 +142,23 @@
 
 			  <br>
 			  </div>
+              <div class="linha">
+
+        <label>Telefone:
+
+          <input
+          class="caixa"
+          type="number"
+          name='telefone'
+          minlength="11"
+          maxlength="31"
+          required
+          >
+
+        </label>
+
+        <br>
+        </div>
 
             </td>
           </tr>

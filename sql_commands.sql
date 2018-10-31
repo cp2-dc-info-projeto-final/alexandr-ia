@@ -21,7 +21,9 @@ CREATE TABLE usuario(
     email VARCHAR(63),
     senha VARCHAR(127),
     foto VARCHAR(127),
-    banido BOOL
+    banido BOOL,
+	telefone VARCHAR(31),
+	turma VARCHAR(7)
 
 );
 
