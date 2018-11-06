@@ -18,6 +18,9 @@
       <meta charset="utf-8">
       <!-- <link rel="stylesheet" type="text/css" href="../ArquivosStyle/FolhaDeEstilo.css"> -->
 
+      <link rel="stylesheet" href="croppie.css" />
+      <script src="croppie.js"></script>
+
       <script>
 
         function Redirect(endereco){
@@ -276,7 +279,7 @@
 
       <div id="foto">
 
-        <img id="foto_perfil" src=<?php
+        <img height="200px" width="148px" id="foto_perfil" src=<?php
 
           if(empty($usuario['foto']) == true){
 
