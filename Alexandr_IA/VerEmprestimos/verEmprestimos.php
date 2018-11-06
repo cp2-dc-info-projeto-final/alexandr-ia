@@ -237,7 +237,7 @@
           <td><?php echo($emprestimo['email']); ?></td>
           <td><?php echo($emprestimo['titulo']); ?></td>
           <td><?php echo($emprestimo['classificacao']); ?></td>
-          <td><?php echo($emprestimo['_data']); ?></td>
+          <td><?php echo($emprestimo['_data_emprestimo']); ?></td>
 
         </tr>
 

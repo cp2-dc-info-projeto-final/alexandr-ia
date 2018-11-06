@@ -58,8 +58,10 @@ CREATE TABLE emprestimo (
     bibliotecario INT NULL,
     livro INT NOT NULL,
     retirado BOOLEAN NOT NULL,
-    _data DATE NOT NULL,
-    horario TIME NOT NULL,
+    _data_emprestimo DATE NOT NULL,
+    horario_emprestimo TIME NOT NULL,
+    _data_devolucao DATE,
+    horario_devolucao TIME,
     FOREIGN KEY (aluno_prof) REFERENCES aluno_professor(id),
     FOREIGN KEY (bibliotecario) REFERENCES bibliotecario(id),
     FOREIGN KEY (livro) REFERENCES livro(id)

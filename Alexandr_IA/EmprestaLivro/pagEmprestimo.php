@@ -191,6 +191,8 @@
 
     <br><br>
 
+    <h2>Realizar Empréstimo</h2>
+
     <form method="post" action="emprestar.php">
 
       <input name="id_bibliotecario" type="hidden" value="<?php echo($infos['id']); ?>">
@@ -199,6 +201,20 @@
       <label> Classificação do Livro: <input name="classificacao_livro" type="text"></label>
       <br><br>
       <input type="submit" value="Fazer Empréstimo">
+
+    </form>
+    <br>
+
+    <h2>Receber Empréstimo</h2>
+
+    <form method="post" action="devolve.php">
+
+      <input name="id_bibliotecario" type="hidden" value="<?php echo($infos['id']); ?>">
+      <label> E-mail do Aluno: <input name="email_usuario" type="email"></label>
+      <br><br>
+      <label> Classificação do Livro: <input name="classificacao_livro" type="text"></label>
+      <br><br>
+      <input type="submit" value="Receber Empréstimo">
 
     </form>
 
