@@ -177,6 +177,13 @@
 
       }
 
+      #foto{
+
+        display: flex;
+        float: left;
+
+      }
+
       </style>
 
   </head>
@@ -267,23 +274,34 @@
     <div id="conteudo">
       <h2><?php echo($usuario['nome']); ?></h2>
 
-      <div><img id="foto_perfil" src=<?php
+      <div id="foto">
 
-      if(empty($usuario['foto']) == true){
+        <img id="foto_perfil" src=<?php
 
-        echo('../Imagens/icon_usuarioPadrao.png');
+          if(empty($usuario['foto']) == true){
 
-      } else {
+            echo('../Imagens/icon_usuarioPadrao.png');
 
-        echo($usuario['foto']);
+          } else {
 
-      }
+            echo($usuario['foto']);
 
-      ?> ><br>
+          }
+
+          ?>
+        >
+
+      </div>
+      <br>
+
       <form method="post" action="validarFoto.php" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
         <input type="file" name="arq" required><br>
         <input type="submit" value="Alterar foto de perfil">
+      </form>
+      <form method="post" action="removerFoto.php">
+        <input type="hidden" name="id" value="<?php echo($usuario['id'])?>">
+        <input type="submit" value="Remover foto de perfil">
       </form>
     </div>
 

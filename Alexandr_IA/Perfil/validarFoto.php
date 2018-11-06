@@ -30,6 +30,7 @@
 		$nomeArq = "foto_perfil-$id-$nomeOrig";
 
 		$caminhoCompleto = "$pastaDestino/$nomeArq";
+    $caminhoCompleto = str_replace(' ', '', $caminhoCompleto);
 
 		if($arq['error'] != UPLOAD_ERR_OK){
 
