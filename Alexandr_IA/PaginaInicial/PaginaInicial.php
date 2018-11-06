@@ -344,11 +344,11 @@
 
 							if(empty($usuario['foto']) == true){
 
-								echo('<img src="../Imagens/MaisReduzidas/icon_usuarioPadrao.png">');
+								echo('<img height="67px" width="50px" src="../Imagens/MaisReduzidas/icon_usuarioPadrao.png">');
 
 							} else {
 
-								// foto guardada
+								echo('<img height="67px" width="50px" src="'.$usuario['foto'].'">');
 
 							}
 
