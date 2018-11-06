@@ -62,6 +62,8 @@ CREATE TABLE emprestimo (
     horario_emprestimo TIME NOT NULL,
     _data_devolucao DATE,
     horario_devolucao TIME,
+    _data_prazo DATE NOT NULL,
+    horario_prazo TIME NOT NULL,
     FOREIGN KEY (aluno_prof) REFERENCES aluno_professor(id),
     FOREIGN KEY (bibliotecario) REFERENCES bibliotecario(id),
     FOREIGN KEY (livro) REFERENCES livro(id)
