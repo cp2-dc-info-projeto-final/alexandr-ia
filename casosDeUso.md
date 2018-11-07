@@ -16,7 +16,7 @@
 - [CDU 12 - Gerenciamento de Empréstimos](#cdu-12---gerenciamento-de-empréstimos)
 - [CDU 13 - Atualização de Perfil de Alunos e Professores](#cdu-13---atualização-de-perfil-de-alunos-e-professores)
 - [CDU 14 - Atualização de Perfil de Bibliotecários](#cdu-14---atualização-de-perfil-de-bibliotecários)
-- [CDU 15 - Lista Negra](#cdu-15---lista-negra)
+- [CDU 15 - Lista De Suspenção](#cdu-15---lista-de-suspenção)
 
 ## CDU 01 - Cadastro de Alunos e Professores
 
