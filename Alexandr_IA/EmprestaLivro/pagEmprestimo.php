@@ -97,6 +97,13 @@
 
     }
 
+    .align{
+
+      margin-left: 5%;
+      float: left;
+
+    }
+
     </style>
 
   </head>
@@ -189,8 +196,11 @@
 
   	  ?></div>
 
+    </center>
+
     <br><br>
 
+    <div class="align">
     <h2>Realizar Empréstimo</h2>
 
     <form method="post" action="emprestar.php">
@@ -203,8 +213,9 @@
       <input type="submit" value="Fazer Empréstimo">
 
     </form>
-    <br>
+  </div>
 
+  <div class="align">
     <h2>Receber Empréstimo</h2>
 
     <form method="post" action="devolve.php">
@@ -217,8 +228,22 @@
       <input type="submit" value="Receber Empréstimo">
 
     </form>
+  </div>
 
-    </center>
+  <div class="align">
+    <h2>Realizar renovação (7 dias)</h2>
+
+    <form method="post" action="renova.php">
+
+      <input name="id_bibliotecario" type="hidden" value="<?php echo($infos['id']); ?>">
+      <label> E-mail do Aluno: <input name="email_usuario" type="email"></label>
+      <br><br>
+      <label> Classificação do Livro: <input name="classificacao_livro" type="text"></label>
+      <br><br>
+      <input type="submit" value="Renovar Empréstimo">
+
+    </form>
+  </div>
 
   </body>
 

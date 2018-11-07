@@ -79,6 +79,8 @@
 
     $retorno = $sql -> rowCount();
 
+    // Verificar se há mais de 0 livros para, então, fazer o empréstimo
+
     $bd = CriaConexãoBd();
     $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM Reserva
                            JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
@@ -94,8 +96,19 @@
       $bd = CriaConexãoBd();
       $sql = NULL;
 
-      $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data_emprestimo,	horario_emprestimo, _data_devolucao, horario_devolucao)
-                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, TRUE, :_data_emprestimo, :horario_emprestimo, NULL, NULL);
+      // Consertar esse problema  VVVVV
+      $data_prevista = date_add(strtotime($data), date_interval_create_from_date_string('7 days'));
+
+      $horario_previsto = NULL;
+
+      if($id_bibliotecario == NULL){
+
+        $horario_previsto = strtotime("+48 hours", strtotime($horario));
+
+      }
+
+      $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data_emprestimo,	horario_emprestimo, _data_devolucao, horario_devolucao, _data_prazo, horario_prazo)
+                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, TRUE, :_data_emprestimo, :horario_emprestimo, NULL, NULL, :_data_prazo, :horario_prazo);
 
       ');
 
@@ -104,6 +117,8 @@
       $sql -> bindValue(':id_livro', $id_livro);
       $sql -> bindValue(':_data_emprestimo', $data);
       $sql -> bindValue(':horario_emprestimo', $horario);
+      $sql -> bindValue(':_data_prazo', $data_prevista);
+      $sql -> bindValue(':horario_prazo', $horario_prazo);
 
       $sql -> execute();
 
@@ -152,7 +167,6 @@
   function Devolve($id_usuario, $id_bibliotecario, $id_livro){
 
     $bd = CriaConexãoBd();
-    $erro = '';
 
     date_default_timezone_set ('America/Sao_Paulo');
     $data = date('Y-m-d');
@@ -166,6 +180,28 @@
     $sql -> execute();
 
     return('Item devolvido com sucesso');
+
+  }
+
+  function RenovaEmprestimo($id_emprestimo){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT emprestimo._data_prazo FROM emprestimo WHERE id = :id_emprestimo');
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+
+    $sql -> execute();
+
+    $data = $sql['_data_prazo'];
+    $data = $data + 7;
+
+    $sql = $bd -> prepare('UPDATE emprestimo SET _data_prazo = :data WHERE id = :id_emprestimo');
+    $sql -> bindValue(':data', $data);
+    $sql -> bindValue(':id_emprestimo', $data);
+
+    $sql -> execute();
+
+    return('Empréstimo renovado');
 
   }
 
