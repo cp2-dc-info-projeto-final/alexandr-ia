@@ -226,7 +226,7 @@
     - Emprestar Livros
     - Ver Emprestimos
 
-## CDU 15 - Lista De Suapenção
+## CDU 15 - Lista De Suspenção
 
 **Atores:** Bibliotecários
 
