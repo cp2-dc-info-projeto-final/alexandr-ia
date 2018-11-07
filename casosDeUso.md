@@ -86,7 +86,7 @@
 
 **Fluxo Principal:**
 
-  1. Usuário insere nova senha e a confirma
+  1. Usuário insere nova senha e a confirma.
   2. Sistema redefine o cadastro do usuário, trocando a velha senha pela nova senha.
 
 ## CDU 06 - Gerenciamento de Cadastros
@@ -97,7 +97,11 @@
 
 **Fluxo Principal:**
 
-  1. Sistema disponibiliza as informações dos Alunos e Professores (exceto a senha), não podendo alterá-las
+  1. Sistema disponibiliza as informações dos Alunos e Professores (exceto a senha), não podendo alterá-las, para visualização.
+    - O Bibliotecário tem a possiblidade de excluir o Aluno/Professor do sistema.
+    - O Bibliotecário tem a possiblidade de emprestar livros para Aluno/Professor sem que este estejam logado.
+
+  2. O Bibliotecário tem a possiblidade de cadastrar outro(s) Bibliotecário(s) no sistema.
 
 ## CDU 07 - Pesquisa por Livros
 
@@ -108,11 +112,19 @@
 **Fluxo Principal:**
 
   1. Sistema exibe uma listagem de livros baseado na pesquisa do Usuário, que pode ser feita pelo título, editora ou autor.
-    * Caso não haja pesquisa, o sistema não exibe quaisquer resultados
+    * Caso não haja pesquisa, o sistema exibe a lista de todos os livros.
 
   2. Caso o usuário selecione um livro, será redirecionado para a Página do Livro (de acordo com sua hierarquia de cadastro).
 
-  3. O Usuário pode filtar a pesquisa pelo tipo de suporte do livro.
+  3. O Usuário pode filtar a pesquisa pelo tipo de suporte do livro:
+      - Audio Livro,
+      - CD,
+      - DVD,
+      - Fonte Ampliada,
+      - Histórias em Quadrinhos (HQ),
+      - Literatura de Cordel,
+      - Livro em Braille,
+      - Livro Físico.
 
 ## CDU 08 - Detalhes do Livro para Alunos e Professores
 
@@ -122,10 +134,10 @@
 
 **Fluxo Principal:**
 
-  1. Sistema disponibiliza mais detalhes do livro selecionado
-    - Dentre os detalhes, há o de se o livro está ou não disponível
-      * Caso esteja disponível, o usuário poderá reservar o livro
-      * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos
+  1. Sistema disponibiliza mais detalhes do livro selecionado.
+    - Dentre os detalhes, há o de se o livro está ou não disponível.
+      * Caso esteja disponível, o usuário poderá reservar o livro.
+      * Caso não esteja disponível, o usuário poderá adcionar o livro à lista de desejos.
 
 ## CDU 09 - Detalhes do Livro para Bibliotecários
 
@@ -137,7 +149,7 @@
 
   1. Sistema disponibiliza todos os detalhes do livro selecionado
     - Há a possibilidade de excluir o livro do acervo
-    - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros
+    - Caso o usuário queira editar as informações de um livro, ele será redirecionado para a página de Edição de Informações dos Livros.
 
 ## CDU 10 - Página de Edição de Informações dos Livros
 
@@ -147,8 +159,8 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro
-  2. Sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário
+  1. Usuário informa as alterações que deverão ser feitas nos campos que exibem as informações do livro.
+  2. Sistema atualiza as informações do livro a partir das mudanças feitas pelo usuário.
 
 ## CDU 11 - Gerenciamento do Acervo (dos livros)
 
@@ -158,8 +170,13 @@
 
 **Fluxo Principal:**
 
-  1. Usuário preencherá um formulário contendo as informações do livro a ser adcionados
-  2. Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário
+  1. Usuário tem a possibilidade de adicionar novos livros ao acerveo:
+    - O usuário reencherá um formulário contendo as informações do livro a ser adcionados.
+    - Sistema adcionará o novo livro à coleção de livros, com as informações dadas pelo usuário.
+
+  2. Usuário tem a possibilidade de excluir livros do acerveo.
+
+  3. Usuário tem a possibilidade de alterar as informações dos livros do acerveo.
 
 ## CDU 12 - Gerenciamento de Empréstimos
 
@@ -169,29 +186,34 @@
 
 **Fluxo Principal:**
 
-  1. Usuário informa ao sistema se o livro reservado foi retirado ou não
+  1. Usuário informa ao sistema se o livro reservado foi retirado ou não:
     * No caso de reservas feitas anteriormente, com quantidade superior aos livros disponíveis, se a quantidade de livros retirados for igual a quantidade existente no acervo, a reserva irá para a lista de desejos.
+
+  2. Ele(a) é quem autoriza que algum livro tenha a data de entrega adiada.
+    * De acordo com a lista de espera do livro citado.
 
 ## CDU 13 - Atualização de Perfil de Alunos e Professores
 
 **Atores:** Alunos e Professores
 
-**Pré-Condições:** Ser cadastrado no sistema como Aluno ou Professor e estar logado no sistema
+**Pré-Condições:** Ser cadastrado no sistema como Aluno ou Professor e estar logado no sistema.
 
 **Fluxo Principal:**
 
   1. Sistema exibe as informações do Aluno/Professor, com a possiblidade da edição das informações pelo mesmo.
-  2. Caso o usuário tenha retirado um livro na biblioteca e ele não esteja em uma lista de desejos, ele poderá pedir, até 2 vezes, adiamento da devolução do livro.
-    * Estando o livro numa lista de desejos, o pedido de adiamento não será aceito.
+  2. Caso o usuário tenha retirado um livro na biblioteca e ele não esteja em uma lista de desejos, ele poderá solicitar, até 2 vezes, o adiamento da devolução do livro para o Bibliotecário.
+    * Estando o livro numa lista de desejos, o pedido de adiamento será negado.
   3. Sistema disponibiliza um botão novidade, que mostra ao usuário um livro aleatoriamente.
-  4. As informações desse Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário, sem poder ser alterados por estes.
-  5. Sistema exibe os livros pegos emprestados por aquele Aluno/Professor.
+  4. As informações desse Usuário poderão ser vizualizadas a qualquer momento pelo bibliotecário, sem poder ser alterados por este.
+  5. Sistema exibe os livros pegos emprestados por aquele Aluno/Professor, e/ou a lista de desejos dele.
+  6. O usuário tem a possibilidade de adicionar uma foto de perfil.
+    * Ou manter o icon padrão do sistema, ou remover a foto de prefil e deixar o icon padrão, e/ou alterar para uma outra foto qualquer escolhida pelo usuário Aluno/Professor.
 
 ## CDU 14 - Atualização de Perfil de Bibliotecários
 
 **Atores:** Bibliotecários
 
-**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema
+**Pré-Condições:** Ser cadastrado no sistema como Bibliotecário e estar logado no sistema.
 
 **Fluxo Principal:**
 
@@ -199,12 +221,12 @@
   2. Sistema mostra um painel de controle da biblioteca virtual:
     - Inserir Novo Livro
     - Cadastrar Novo Bibliotecário
-    - Gerencias Liste de Usuários "Banidos"
+    - Gerencias Liste Suspenção
     - Listar Usuários
-    - Emprestar  Livros
+    - Emprestar Livros
     - Ver Emprestimos
 
-## CDU 15 - Lista Negra
+## CDU 15 - Lista De Suapenção
 
 **Atores:** Bibliotecários
 
@@ -212,4 +234,5 @@
 
 **Fluxo Principal:**
 
-  1. O bibliotecário pode colocar ou tirar Alunos/Professores da lista, que poderá ser acessada e alterada através do próprio perfil do bibliotecário
+  1. O bibliotecário pode colocar ou tirar Alunos/Professores dessa lista, que poderá ser acessada e alterada através do próprio perfil do bibliotecário.
+  2. Essa lista consiste em usuários proibidos de pegar livros emprestados, ainda podendo acessar o sistema.
