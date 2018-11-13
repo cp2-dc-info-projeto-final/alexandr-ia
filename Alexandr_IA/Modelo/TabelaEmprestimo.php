@@ -62,6 +62,37 @@
 
   }
 
+  function ExemplaresDisponiveis($id_livro){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT retirado FROM emprestimo WHERE livro = :id_livro AND retirado = TRUE;');
+
+    $sql -> bindValue('id_livro', $id_livro);
+    $sql -> execute();
+
+    $emprestados = 0;
+    $emprestados = $sql -> rowCount();
+
+    $sql = NULL;
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT exemplar FROM livro WHERE id = :id_livro');
+
+    $sql -> bindValue('id_livro', $id_livro);
+    $sql -> execute();
+
+    $sql = $sql -> fetch();
+
+    $total = 0;
+    $total = $sql['exemplar'];
+
+    $qtd_disponivel = $total - $emprestados;
+
+    return($qtd_disponivel);
+
+  }
+
   function Empresta($id_usuario, $id_bibliotecario, $id_livro) {
 
     $bd = CriaConexãoBd();
@@ -79,11 +110,11 @@
 
     $retorno = $sql -> rowCount();
 
-    // Verificar se há mais de 0 livros para, então, fazer o empréstimo
+    $qtd_disponivel = ExemplaresDisponiveis($id_livro);
 
     $bd = CriaConexãoBd();
-    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM Reserva
-                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
+                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
                            WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
@@ -91,13 +122,13 @@
 
     $linhas =  $sql -> rowCount();
 
-    if($retorno == 0 AND $linhas < 2){
+    if($retorno == 0 AND $linhas < 2 AND $qtd_disponivel > 0){
 
       $bd = CriaConexãoBd();
       $sql = NULL;
 
-      // Consertar esse problema  VVVVV
-      $data_prevista = date_add(strtotime($data), date_interval_create_from_date_string('7 days'));
+      $data_prevista_s = strtotime('+7 day', strtotime($data));
+      $data_prevista = date('Y-m-d', $data_prevista_s);
 
       $horario_previsto = NULL;
 
@@ -107,8 +138,8 @@
 
       }
 
-      $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data_emprestimo,	horario_emprestimo, _data_devolucao, horario_devolucao, _data_prazo, horario_prazo)
-                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, TRUE, :_data_emprestimo, :horario_emprestimo, NULL, NULL, :_data_prazo, :horario_prazo);
+      $sql = $bd -> prepare('INSERT INTO emprestimo(aluno_prof,	bibliotecario,	livro,	retirado,	_data_emprestimo,	horario_emprestimo, _data_devolucao, horario_devolucao, _data_prazo)
+                            VALUES (:id_usuario, :id_bibliotecario, :id_livro, TRUE, :_data_emprestimo, :horario_emprestimo, NULL, NULL, :_data_prazo);
 
       ');
 
@@ -118,7 +149,6 @@
       $sql -> bindValue(':_data_emprestimo', $data);
       $sql -> bindValue(':horario_emprestimo', $horario);
       $sql -> bindValue(':_data_prazo', $data_prevista);
-      $sql -> bindValue(':horario_prazo', $horario_prazo);
 
       $sql -> execute();
 
@@ -137,6 +167,13 @@
       if($retorno != 0){
 
         $erro = 'ERRO: <br> Este livro já está emprestado a este usuário';
+        return($erro);
+
+      }
+
+      if($qtd_disponivel <= 0){
+
+        $erro = 'ERRO: <br> Não há mais exemplares disponíveis deste livro para empréstimo';
         return($erro);
 
       }
@@ -183,56 +220,36 @@
 
   }
 
-  function RenovaEmprestimo($id_emprestimo){
+  function RenovaEmprestimo($id_usuario, $id_bibliotecario, $id_livro){
 
     $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE aluno_prof = :id_usuario AND bibliotecario = :id_bibliotecario AND livro = :id_livro');
+    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
+    $sql -> bindValue(':id_livro', $id_livro);
+
+    $sql -> execute();
+    $sql = $sql -> fetch();
+    $id_emprestimo = $sql['id'];
 
     $sql = $bd -> prepare('SELECT emprestimo._data_prazo FROM emprestimo WHERE id = :id_emprestimo');
     $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
     $sql -> execute();
+    $sql = $sql -> fetch();
 
     $data = $sql['_data_prazo'];
-    $data = $data + 7;
+    $data = strtotime('+7 day', strtotime($data));
+    $data = date('Y-m-d', $data);
 
     $sql = $bd -> prepare('UPDATE emprestimo SET _data_prazo = :data WHERE id = :id_emprestimo');
     $sql -> bindValue(':data', $data);
-    $sql -> bindValue(':id_emprestimo', $data);
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
     $sql -> execute();
 
-    return('Empréstimo renovado');
-
-  }
-
-  function ExemplaresDisponiveis($id_livro){
-
-    $bd = CriaConexãoBd();
-
-    $sql = $bd -> prepare('SELECT retirado FROM emprestimo WHERE livro = :id_livro AND retirado = TRUE;');
-
-    $sql -> bindValue('id_livro', $id_livro);
-    $sql -> execute();
-
-    $emprestados = 0;
-    $emprestados = $sql -> rowCount();
-
-    $sql = NULL;
-    $bd = CriaConexãoBd();
-
-    $sql = $bd -> prepare('SELECT exemplar FROM livro WHERE id = :id_livro');
-
-    $sql -> bindValue('id_livro', $id_livro);
-    $sql -> execute();
-
-    $sql = $sql -> fetch();
-
-    $total = 0;
-    $total = $sql['exemplar'];
-
-    $qtd_disponivel = $total - $emprestados;
-
-    return($qtd_disponivel);
+    return("Empréstimo renovado");
 
   }
 
