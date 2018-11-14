@@ -63,6 +63,10 @@
 
     $mensagem = Empresta($id_usuario, $id_bibliotecario, $id_livro);
 
+    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+
+    Retirar($id_emprestimo);
+
     if ($mensagem == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
 
       $mensagem = 'Empréstimo feito com sucesso';

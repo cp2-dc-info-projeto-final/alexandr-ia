@@ -2,6 +2,11 @@
 
 	session_start();
 
+	require_once('../Modelo/CriaConexao.php');
+	require_once('../Modelo/TabelaUsuários.php');
+	require_once('../Modelo/TabelaEmprestimo.php');
+	require_once('../Modelo/TabelaLivros.php');
+
 	if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
 
 		$erro = [];
@@ -13,8 +18,48 @@
 
 	}
 
-	require_once('../Modelo/CriaConexao.php');
-	require_once('../Modelo/TabelaUsuários.php');
+	$usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
+	$id_usuario = $usuario['id'];
+
+	$emprestimos = ListaEmprestimosPorId($id_usuario);
+
+	$resultado = [];
+
+	foreach ($emprestimos as $emprestimo) {
+
+		$id_emprestimo = $emprestimo['id'];
+		$resultado = TempoLimite($id_emprestimo);
+
+		$avisos = [];
+
+		$livro = $resultado['nome_livro'];
+
+		//var_dump($resultado['tempo_restante']);
+
+		if ($resultado['tempo_restante']->invert == 1){
+
+			CancelaPreEmprestimo($id_emprestimo);
+			$avisos[] = "O tempo para retirar o livro $livro acabou";
+
+		} else if ( $resultado['tempo_restante']->days >= 1){
+
+			// Nesse caso não é preciso enviar um aviso
+
+		} else if ( $resultado['tempo_restante']->h > 12){
+
+			$avisos[] = "Você tem menos de 24H para retirar o livro $livro na biblioteca";
+
+		} else if ($resultado['tempo_restante']->h > 6){
+
+			$avisos[] = "Você tem menos de 12H para retirar o livro $livro na biblioteca";
+
+		} else if($resultado['tempo_restante']->h > 0){
+
+				$avisos[] = "Você tem menos de 6H para retirar o livro $livro na biblioteca";
+
+		}
+
+	}
 
 	$email = $_SESSION['emailUsuarioLogado'];
 	$usuario = InfosUsuario($email);
@@ -215,7 +260,53 @@
 
 					}
 
-				?>
+					if( empty($avisos) == FALSE){
+
+				    echo ('
+
+				      <br>
+				      <style>
+
+					  #caixaAviso{
+
+						visibility:visible;
+						background-color: #ffff80;
+						width: 50%;
+						text-align: center;
+						border: solid 1px;
+						padding: 3px;
+						font-size: 18px;
+
+					  }
+
+					  </style>
+
+				      ');
+
+				    }
+
+				  ?>
+
+					<center>
+
+						<div id='caixaAviso'>
+					  <?php
+
+						if( empty($avisos) == FALSE){
+
+							echo('Aviso: ');
+
+							foreach ($avisos as $mensagem) {
+
+ 							 echo(' || '.$mensagem);
+
+ 						 }
+
+						}
+
+					  ?></div>
+
+					</center>
 
 		<!-- <div id="barra">
 
