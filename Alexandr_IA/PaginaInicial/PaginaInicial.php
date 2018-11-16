@@ -24,13 +24,12 @@
 	$emprestimos = ListaEmprestimosPorId($id_usuario);
 
 	$resultado = [];
+	$avisos = [];
 
 	foreach ($emprestimos as $emprestimo) {
 
 		$id_emprestimo = $emprestimo['id'];
-		$resultado = TempoLimite($id_emprestimo);
-
-		$avisos = [];
+		$resultado = TempoLimite($id_emprestimo);		
 
 		$livro = $resultado['nome_livro'];
 

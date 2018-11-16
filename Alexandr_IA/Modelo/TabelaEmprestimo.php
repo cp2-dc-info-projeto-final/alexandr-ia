@@ -337,7 +337,7 @@
 
     $bd = CriaConexãoBd();
 
-    $dataHora = new DateTime('now',/* '2018-11-17',*/ new DateTimeZone('America/Sao_Paulo'));
+    $dataHora = new DateTime('now',/*'2018-11-19',*/ new DateTimeZone('America/Sao_Paulo'));
     //$data = date('Y-m-d', strtotime('2018-11-16') );
     //$horario = date('H:i:s');
     //$horario = date('H:i:s', strtotime('04:00:00'));
