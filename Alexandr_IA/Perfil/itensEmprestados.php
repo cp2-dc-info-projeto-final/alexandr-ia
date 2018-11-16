@@ -230,22 +230,77 @@
         <th>Nome do livro emprestado</th>
         <th>Classificação do livro emprestado</th>
         <th>Data do empréstimo</th>
+        <th>Data de devolução</th>
 
       </tr>
 
-      <?php foreach ($emprestimos as $emprestimo) {?>
+      <?php foreach ($emprestimos as $emprestimo) {
+
+        if($emprestimo['retirado'] == 1 AND empty($emprestimo['_data_devolucao']) == TRUE) {
+
+      ?>
 
         <tr>
 
-          <td><?php echo($emprestimo['aluno_prof']); ?></td>
+          <td><?php echo($emprestimo['nome']); ?></td>
           <td><?php echo($emprestimo['email']); ?></td>
           <td><?php echo($emprestimo['titulo']); ?></td>
           <td><?php echo($emprestimo['classificacao']); ?></td>
           <td><?php echo($emprestimo['_data_emprestimo']); ?></td>
+          <td><?php echo($emprestimo['_data_prazo']); ?></td>
 
         </tr>
 
-      <?php } ?>
+      <?php
+
+        }
+       }
+
+      ?>
+
+    </table>
+
+    <br>
+
+    <h2>Reservas: </h2>
+    <br>
+
+    <table>
+
+      <tr>
+
+        <th>Nome do aluno</th>
+        <th>E-mail do aluno</th>
+        <th>Nome do livro emprestado</th>
+        <th>Classificação do livro emprestado</th>
+        <th>Data da reserva</th>
+        <th>Data limite para retirar</th>
+
+      </tr>
+
+      <?php foreach ($emprestimos as $emprestimo) {
+
+        if($emprestimo['retirado'] == 0 AND empty($emprestimo['_data_devolucao']) == TRUE) {
+
+      ?>
+
+        <tr>
+
+          <td><?php echo($emprestimo['nome']); ?></td>
+          <td><?php echo($emprestimo['email']); ?></td>
+          <td><?php echo($emprestimo['titulo']); ?></td>
+          <td><?php echo($emprestimo['classificacao']); ?></td>
+          <td><?php echo($emprestimo['_data_emprestimo']); ?></td>
+          <td><?php echo($emprestimo['_data_prazo']); ?></td>
+
+        </tr>
+
+      <?php
+
+        }
+       }
+
+      ?>
 
     </table>
 

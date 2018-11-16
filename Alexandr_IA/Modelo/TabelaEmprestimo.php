@@ -196,13 +196,14 @@
     $data_prazo = strtotime('+7 day', strtotime($data));
     $data_prazo = date('Y-m-d', $data_prazo);
 
-    $sql = $bd -> prepare('UPDATE emprestimo SET retirado = TRUE, _data_emprestimo = :_data, horario_emprestimo = :horario, _data_prazo = :_data_prazo, horario_prazo = :horario_prazo, bibliotecario = :id_bibliotecario');
+    $sql = $bd -> prepare('UPDATE emprestimo SET retirado = TRUE, _data_emprestimo = :_data, horario_emprestimo = :horario, _data_prazo = :_data_prazo, horario_prazo = :horario_prazo, bibliotecario = :id_bibliotecario WHERE id = :id_emprestimo');
 
     $sql -> bindValue(':_data', $data);
     $sql -> bindValue(':horario', $horario);
     $sql -> bindValue(':_data_prazo', $data_prazo);
     $sql -> bindValue(':horario_prazo', '18:00:00');
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
     $sql -> execute();
 
@@ -341,7 +342,7 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT * FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro');
+    $sql = $bd -> prepare('SELECT * FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro AND _data_devolucao IS NULL');
 
     $sql -> bindValue('id_usuario', $id_usuario);
     $sql -> bindValue('id_livro', $id_livro);
@@ -367,7 +368,7 @@
 
     $bd = CriaConexãoBd();
 
-    $dataHora = new DateTime('now',/*'2018-11-24',*/ new DateTimeZone('America/Sao_Paulo'));
+    $dataHora = new DateTime('now',/*'2018-11-23T19:00:00',*/ new DateTimeZone('America/Sao_Paulo'));
     //$data = date('Y-m-d', strtotime('2018-11-16') );
     //$horario = date('H:i:s');
     //$horario = date('H:i:s', strtotime('04:00:00'));
@@ -427,13 +428,22 @@
   function ProcuraIdEmprestimo($id_usuario, $id_livro) {
 
     $bd = CriaConexãoBd();
-    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro');
+    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro AND _data_devolucao IS NULL');
 
     $sql -> bindValue('id_usuario', $id_usuario);
     $sql -> bindValue('id_livro', $id_livro);
 
     $sql -> execute();
+    // $sql = $sql -> fetchAll();
     $sql = $sql -> fetch();
+
+    /* $linhaFinal = [];
+
+    foreach ($sql as $linha) {
+
+      $linhaFinal = $linha;
+
+    } */
 
     return($sql['id']);
 

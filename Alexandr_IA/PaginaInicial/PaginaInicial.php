@@ -69,7 +69,7 @@
 
 				// Nesse caso não é preciso enviar um aviso
 
-			} else if ( $resultado['tempo_restante']->days = 1){
+			} else if ( $resultado['tempo_restante']->days == 1){
 
 				$avisos[] = "O prazo de devolução do livro $livro expira em 1 dia";
 
