@@ -36,7 +36,7 @@
     .barra ul {
 
       list-style-type: none;
-      margin-top: 5%;
+      margin-top: 1%;
       padding: 0;
       overflow: hidden;
       background-color: #000000;
@@ -84,7 +84,7 @@
 
     h1{
 
-      margin-bottom: 2%;
+      margin-bottom: 4%;
       text-align: center;
       font-size: 48px;
 
@@ -111,6 +111,8 @@
   <body>
 
     <h1>Biblioteca CPII - Caxias</h1>
+
+    <center><b id="aviso">ATENÇÃO: ANTES DE FAZER REALIZAR QUALQUER AÇÃO, ATUALIZE A PÁGINA (PARA SINCRONIZAR O HORÁRIO)</b></center>
 
     <div class="barra">
 			<ul>

@@ -185,7 +185,7 @@
 
   }
 
-  function Retirar($id_emprestimo){
+  function Retirar($id_emprestimo, $id_bibliotecario){
 
     $bd = CriaConexãoBd();
 
@@ -196,12 +196,13 @@
     $data_prazo = strtotime('+7 day', strtotime($data));
     $data_prazo = date('Y-m-d', $data_prazo);
 
-    $sql = $bd -> prepare('UPDATE emprestimo SET retirado = TRUE, _data_emprestimo = :_data, horario_emprestimo = :horario, _data_prazo = :_data_prazo, horario_prazo = :horario_prazo');
+    $sql = $bd -> prepare('UPDATE emprestimo SET retirado = TRUE, _data_emprestimo = :_data, horario_emprestimo = :horario, _data_prazo = :_data_prazo, horario_prazo = :horario_prazo, bibliotecario = :id_bibliotecario');
 
     $sql -> bindValue(':_data', $data);
     $sql -> bindValue(':horario', $horario);
     $sql -> bindValue(':_data_prazo', $data_prazo);
     $sql -> bindValue(':horario_prazo', '18:00:00');
+    $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
 
     $sql -> execute();
 
@@ -215,10 +216,13 @@
     $data = date('Y-m-d');
     $horario = date('H:i:s');
 
-    $sql = $bd -> prepare('UPDATE emprestimo SET _data_devolucao = :_data_devolucao, horario_devolucao = :horario_devolucao, retirado = FALSE');
+    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+
+    $sql = $bd -> prepare('UPDATE emprestimo SET _data_devolucao = :_data_devolucao, horario_devolucao = :horario_devolucao, retirado = FALSE WHERE id = :id_emprestimo');
 
     $sql -> bindValue(':_data_devolucao', $data);
     $sql -> bindValue(':horario_devolucao', $horario);
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
     $sql -> execute();
 
@@ -333,15 +337,41 @@
 
   }
 
+  function VerificaStatusEmprestimo($id_usuario, $id_livro){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT * FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro');
+
+    $sql -> bindValue('id_usuario', $id_usuario);
+    $sql -> bindValue('id_livro', $id_livro);
+
+    $sql -> execute();
+    $sql = $sql -> fetch();
+
+    if( empty($sql) == TRUE ){
+
+      return(0);
+      // O empréstimo não existe
+
+    } else {
+
+      return(1);
+      // O empréstimo existe
+
+    }
+
+  }
+
   function TempoLimite($id_emprestimo){
 
     $bd = CriaConexãoBd();
 
-    $dataHora = new DateTime('now',/*'2018-11-19',*/ new DateTimeZone('America/Sao_Paulo'));
+    $dataHora = new DateTime(/*'now',*/'2018-11-24', new DateTimeZone('America/Sao_Paulo'));
     //$data = date('Y-m-d', strtotime('2018-11-16') );
     //$horario = date('H:i:s');
     //$horario = date('H:i:s', strtotime('04:00:00'));
-    $sql = $bd -> prepare('SELECT _data_prazo, horario_prazo, livro FROM emprestimo WHERE id = :id');
+    $sql = $bd -> prepare('SELECT _data_prazo, horario_prazo, livro, retirado FROM emprestimo WHERE id = :id');
 
     $sql -> bindValue(':id', $id_emprestimo);
     $sql -> execute();
@@ -351,7 +381,7 @@
     $infos = [];
 
     $livro = DetalhaLivro($sql['livro']);
-    $livro = $livro['titulo'];
+    $titulo = $livro['titulo'];
 
     $prazo = DateTime::createFromFormat('Y-m-d H:i:s', $sql['_data_prazo'].' '.$sql['horario_prazo']);
     $tempo_restante = $dataHora->diff($prazo);
@@ -363,8 +393,9 @@
     //$horario_prazo = DateTime::createFromFormat('H:i:s', $emprestimo['horario_prazo']);
     //$horario_restante[] = date_diff($horario_prazo, $horario);
 
-    $infos['nome_livro'] = $livro;
+    $infos['nome_livro'] = $titulo;
     $infos['tempo_restante'] = $tempo_restante;
+    $infos['retirado'] = $sql['retirado'];
     //$infos['horario'] = $horario_restante;
 
     return($infos);

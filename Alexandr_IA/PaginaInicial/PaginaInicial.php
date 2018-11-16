@@ -29,32 +29,55 @@
 	foreach ($emprestimos as $emprestimo) {
 
 		$id_emprestimo = $emprestimo['id'];
-		$resultado = TempoLimite($id_emprestimo);		
+		$resultado = TempoLimite($id_emprestimo);
 
 		$livro = $resultado['nome_livro'];
 
 		//var_dump($resultado['tempo_restante']);
+		if($emprestimo['retirado'] == 0){
 
-		if ($resultado['tempo_restante']->invert == 1){
+			if ($resultado['tempo_restante']->invert == 1){
 
-			CancelaPreEmprestimo($id_emprestimo);
-			$avisos[] = "O tempo para retirar o livro $livro acabou";
+				CancelaPreEmprestimo($id_emprestimo);
+				$avisos[] = "O tempo para retirar o livro $livro acabou";
 
-		} else if ( $resultado['tempo_restante']->days >= 1){
+			} else if ( $resultado['tempo_restante']->days >= 1){
 
-			// Nesse caso não é preciso enviar um aviso
+				// Nesse caso não é preciso enviar um aviso
 
-		} else if ( $resultado['tempo_restante']->h > 12){
+			} else if ( $resultado['tempo_restante']->h > 12){
 
-			$avisos[] = "Você tem menos de 24H para retirar o livro $livro na biblioteca";
+				$avisos[] = "Você tem menos de 24H para retirar o livro $livro na biblioteca";
 
-		} else if ($resultado['tempo_restante']->h > 6){
+			} else if ($resultado['tempo_restante']->h > 6){
 
-			$avisos[] = "Você tem menos de 12H para retirar o livro $livro na biblioteca";
+				$avisos[] = "Você tem menos de 12H para retirar o livro $livro na biblioteca";
 
-		} else if($resultado['tempo_restante']->h > 0){
+			} else if($resultado['tempo_restante']->h > 0){
 
-				$avisos[] = "Você tem menos de 6H para retirar o livro $livro na biblioteca";
+					$avisos[] = "Você tem menos de 6H para retirar o livro $livro na biblioteca";
+
+			}
+
+		} else {
+
+			if ($resultado['tempo_restante']->invert == 1){
+
+				$avisos[] = "A devolução do livro $livro está atrasada";
+
+			} else if ( $resultado['tempo_restante']->days >= 2){
+
+				// Nesse caso não é preciso enviar um aviso
+
+			} else if ( $resultado['tempo_restante']->days = 1){
+
+				$avisos[] = "O prazo de devolução do livro $livro expira em 1 dia";
+
+			} else {
+
+				$avisos[] = "O livro $livro deve ser devolvido hoje, até as 18:00H, na biblioteca";
+
+			}
 
 		}
 

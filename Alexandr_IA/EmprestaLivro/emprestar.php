@@ -56,22 +56,33 @@
     $classificacao_livro = $request['classificacao_livro'];
     $id_bibliotecario = $request['id_bibliotecario'];
 
+    $mensagem = '';
+
     $infos_usuario = InfosUsuario($email_usuario);
     $id_usuario = $infos_usuario['id'];
 
     $id_livro = IdPorClassificacao($classificacao_livro);
 
-    $mensagem = Empresta($id_usuario, $id_bibliotecario, $id_livro);
+    $diferencial = VerificaStatusEmprestimo($id_usuario, $id_livro);
 
-    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+    if($diferencial == 0){
 
-    Retirar($id_emprestimo);
+      $mensagem = Empresta($id_usuario, $id_bibliotecario, $id_livro);
 
-    if ($mensagem == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
+      if ($mensagem == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
+
+        $mensagem = 'Empréstimo feito com sucesso';
+
+      }
+
+    } else {
 
       $mensagem = 'Empréstimo feito com sucesso';
 
     }
+
+    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+    Retirar($id_emprestimo, $id_bibliotecario);
 
     header('Location: pagEmprestimo.php?mensagem='.urlencode($mensagem));
 
