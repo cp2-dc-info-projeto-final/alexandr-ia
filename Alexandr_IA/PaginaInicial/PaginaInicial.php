@@ -189,7 +189,8 @@
               .maisacessados{
                 padding: 8px;
                 margin-right: -1px;
-                background-color: grey;
+                background-color: rgb(174,231,240);
+								border: solid 5px grey;
                 display: inline-block;
                 //margin-left: 3%;
 
@@ -487,6 +488,71 @@
           <div class="maisacessados">
 
             <!-- Colocar a consulta dos livros mais acessados -->
+						<?php
+
+						$ids_lista_mais_acessados = MaisAcessados();
+						$lista_mais_acessados = [];
+
+						foreach ($ids_lista_mais_acessados as $id) {
+
+							$lista_mais_acessados[] = DetalhaLivro($id);
+
+						}
+
+						foreach ($lista_mais_acessados as $livro) {
+
+							$tipo = VerificaTipo($livro['id']);
+							$img = null;
+
+							if($tipo == 'CD'){
+
+								$img = $tipo;
+
+							} else if($tipo == 'DVD') {
+
+								$img = $tipo;
+
+							} else if($tipo == 'Cordel'){
+
+								$img = $tipo;
+
+							} else if($tipo == 'Braille'){
+
+								$img = $tipo;
+
+							} else if($tipo == 'Audiolivro'){
+
+								$img = $tipo;
+
+							} else if($tipo == 'Edição com fonte ampliada'){
+
+								$img = 'fonteAmpliada';
+
+							} else if( HQ($livro['id']) == true ){
+
+								$img = 'hq';
+								$tipo = 'HQ/Mangá/Graphic Novel';
+
+							} else {
+
+								$img = 'livro';
+								$tipo = 'Livro';
+
+							}
+
+							echo('
+
+								<a href="../Livro/detalhesLivro.php?idLivro='.$livro['id'].'">
+									<img src="../Imagens/MaisReduzidas/icon_'.$img.'.png">
+								</a>
+								<br>
+								<p class="texto_mais_acessados"> '.$livro['titulo'].' </p>
+
+							');
+
+						}
+
+						?>
 
           </div>
 

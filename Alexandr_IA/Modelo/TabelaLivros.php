@@ -148,7 +148,89 @@
 
 	}
 
+	function MaisAcessados(){
 
+		$bd = CriaConexãoBd();
+		$sql = $bd -> prepare('SELECT livro FROM emprestimo');
+		$sql -> execute();
+
+		$lista_matriz = $sql -> fetchAll();
+		$lista_array = [];
+
+		foreach ($lista_matriz as $item) {
+
+			$lista_array[] = $item[0];
+
+		}
+
+		$frequencias = array_count_values($lista_array);
+		$maisAcessados = [];
+
+		foreach ($frequencias as $id_livro => $valor) {
+
+			if( count($maisAcessados) < 10){
+
+				$maisAcessados[] = $id_livro;
+
+			} else {
+
+				foreach ($maisAcessados as $posicao => $item) {
+
+					if ( ($valor > $item) AND (in_array( $id_livro, $maisAcessados)) == FALSE ){
+
+						$maisAcessados[$posicao] = $frequencias[$id_livro];
+
+					}
+
+				}
+
+			}
+
+		}
+
+		/* for ($i= 0; $i < 10; $i++) {
+
+			$maisAcessados[] = -1;
+
+		}
+
+		foreach ($frequencias as $valor) {
+
+			foreach ($maisAcessados as $item) {
+
+				if ( ($valor > $item) AND (in_array( array_search($valor, $frequencias), $maisAcessados)) == FALSE ){
+
+					$posicao = array_search($item, $maisAcessados);
+					$maisAcessados[$posicao] = $frequencias[array_search($valor, $frequencias)];
+
+				}
+
+			}
+
+		} */
+
+		$resultado = [];
+
+		foreach ($maisAcessados as $item) {
+
+			if ($item != -1){
+
+				$resultado[] = $item;
+
+			}
+
+		}
+
+		/* var_dump($lista_matriz);
+		var_dump($lista_array);
+		var_dump($frequencias);
+		var_dump($maisAcessados);
+		var_dump($resultado);
+		exit(); */
+
+		return ($resultado);
+
+	}
 
 	function IdsLivro(){
 
