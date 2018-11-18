@@ -13,8 +13,8 @@
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
     $sql -> bindValue(':id_livro', $id_livro); */
 
-    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM Reserva
-                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
+                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
                            WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
@@ -27,7 +27,7 @@
     $bd = CriaConexãoBd();
 
     $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
-                           JOIN Emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
+                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
                            WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario
                            AND reserva.livro = :id_livro OR emprestimo.livro = :id_livro');
 
@@ -66,7 +66,7 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT retirado FROM emprestimo WHERE livro = :id_livro AND retirado = TRUE;');
+    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE livro = :id_livro AND _data_devolucao IS NULL;');
 
     $sql -> bindValue('id_livro', $id_livro);
     $sql -> execute();
@@ -370,7 +370,7 @@
 
     $bd = CriaConexãoBd();
 
-    $dataHora = new DateTime(/*'now',*/'2018-11-21', new DateTimeZone('America/Sao_Paulo'));
+    $dataHora = new DateTime('now',/*'2018-11-21',*/ new DateTimeZone('America/Sao_Paulo'));
     //$data = date('Y-m-d', strtotime('2018-11-16') );
     //$horario = date('H:i:s');
     //$horario = date('H:i:s', strtotime('04:00:00'));

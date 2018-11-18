@@ -190,23 +190,37 @@
 
 		if($tipoUsuario == 0){
 
+			$sql = $bd -> prepare('DELETE FROM reserva WHERE id = :id');
+			$sql -> bindValue(':id', $id);
+			$sql -> execute();
+
+			$sql = $bd -> prepare('DELETE FROM emprestimo WHERE id = :id AND _data_devolucao IS NULL AND retirado = 0');
+			$sql -> bindValue(':id', $id);
+			$sql -> execute();
+
 			$tipo = $bd -> prepare('DELETE FROM aluno_professor WHERE id = :id');
 			$tipo -> bindValue(':id', $id);
 			$tipo -> execute();
 
+			$bd = CriaConexãoBd();
+			$sql = $bd -> prepare('DELETE FROM usuario WHERE id = :id');
+			$sql -> bindValue(':id', $id);
+			$sql -> execute();
+
 		}
 
 		if($tipoUsuario == 1){
+
+			$bd = CriaConexãoBd();
+			$sql = $bd -> prepare('DELETE FROM usuario WHERE id = :id');
+			$sql -> bindValue(':id', $id);
+			$sql -> execute();
 
 			$tipo = $bd -> prepare('DELETE FROM bibliotecario WHERE id = :id');
 			$tipo -> bindValue(':id', $id);
 			$tipo -> execute();
 
 		}
-		$bd = CriaConexãoBd();
-		$sql = $bd -> prepare('DELETE FROM usuario WHERE id = :id');
-		$sql -> bindValue(':id', $id);
-		$sql -> execute();
 	}
 
 	function AlteraFoto($arquivo, $id){
