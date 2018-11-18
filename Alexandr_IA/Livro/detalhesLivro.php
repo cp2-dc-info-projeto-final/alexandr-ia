@@ -25,6 +25,18 @@
 	$qtd_exemplares = ExemplaresDisponiveis($idLivro);
 
 	$reservas_usuario = ListaReservasPorId($id);
+	$emprestimos_usuario = ListaEmprestimosPorId($id);
+	$jaEmprestado = 0;
+
+	foreach ($emprestimos_usuario as $emprestimo) {
+
+		if ($emprestimo['id_livro'] == $idLivro){
+
+			$jaEmprestado = 1;
+
+		}
+
+	}
 
 	$reservaFeita = FALSE;
 	$idReservaFeita = NULL;
@@ -262,15 +274,31 @@
 
 					if($qtd_exemplares != 0){
 
-						echo('
+						if($jaEmprestado == 1){
 
-					<form class="enviar" method="post" action="empresta.php">
-						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
-					</form>
+							echo('
 
-						');
+						<form class="enviar" method="post" action="cancelaEmprestimo.php">
+							<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+							<input type="submit" value="Cancelar Emprestimo" id="amazing_button"'.$ban.'>
+						</form>
+
+							');
+
+						} else {
+
+							echo('
+
+						<form class="enviar" method="post" action="empresta.php">
+							<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+							<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
+						</form>
+
+							');
+
+						}
 
 					} else if ($reservaFeita == FALSE){
 

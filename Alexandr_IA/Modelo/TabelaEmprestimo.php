@@ -324,7 +324,7 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT emprestimo.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo FROM emprestimo
+    $sql = $bd -> prepare('SELECT emprestimo.*, usuario.nome, usuario.email, livro.classificacao, livro.titulo, livro.id AS id_livro FROM emprestimo
                           JOIN usuario
                           ON emprestimo.aluno_prof = usuario.id
                           JOIN livro
