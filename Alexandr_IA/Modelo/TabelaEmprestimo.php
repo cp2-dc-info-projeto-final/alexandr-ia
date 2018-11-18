@@ -26,10 +26,7 @@
     $sql = NULL;
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
-                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
-                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario
-                           AND reserva.livro = :id_livro OR emprestimo.livro = :id_livro');
+    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario AND emprestimo.livro = :id_livro');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> bindValue(':id_livro', $id_livro);
@@ -54,7 +51,7 @@
 
     } else if($retorno != 0){
 
-      $mensagem = 'Você não pode reservar o mesmo item novamente';
+      $mensagem = 'Você não pode reservar um item já emprestado a você';
 
     }
 

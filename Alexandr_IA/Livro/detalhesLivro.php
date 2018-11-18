@@ -30,7 +30,7 @@
 
 	foreach ($emprestimos_usuario as $emprestimo) {
 
-		if ($emprestimo['id_livro'] == $idLivro){
+		if ($emprestimo['livro'] == $idLivro){
 
 			$jaEmprestado = 1;
 
@@ -42,7 +42,7 @@
 	$idReservaFeita = NULL;
 	foreach ($reservas_usuario as $reserva) {
 
-		if($reserva['aluno_prof'] == $id){
+		if($reserva['livro'] == $idLivro){
 
 			$reservaFeita = TRUE;
 			$idReservaFeita = $reserva['id'];
@@ -272,47 +272,19 @@
 
 				if ($tipoUsuario == 0){
 
-					if($qtd_exemplares != 0){
-
-						if($jaEmprestado == 1){
-
-							echo('
-
-						<form class="enviar" method="post" action="cancelaEmprestimo.php">
-							<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-							<input type="submit" value="Cancelar Emprestimo" id="amazing_button"'.$ban.'>
-						</form>
-
-							');
-
-						} else {
-
-							echo('
-
-						<form class="enviar" method="post" action="empresta.php">
-							<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-							<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
-						</form>
-
-							');
-
-						}
-
-					} else if ($reservaFeita == FALSE){
+					if($jaEmprestado == 1){
 
 						echo('
 
-					<form class="enviar" method="post" action="reserva.php">
+					<form class="enviar" method="post" action="cancelaEmprestimo.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
+						<input type="submit" value="Cancelar Emprestimo" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
 
-					} else {
+					} else if ($reservaFeita == TRUE){
 
 						echo('
 
@@ -324,7 +296,31 @@
 
 						');
 
-					}
+					} else if ($qtd_exemplares != 0){
+
+						echo('
+
+					<form class="enviar" method="post" action="empresta.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
+					</form>
+
+						');
+
+					} else {
+
+						echo('
+
+					<form class="enviar" method="post" action="reserva.php">
+						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
+					</form>
+
+						');
+
+						}
 
 				} else {
 
