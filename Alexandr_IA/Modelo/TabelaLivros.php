@@ -168,7 +168,7 @@
 
 		foreach ($frequencias as $id_livro => $valor) {
 
-			if( count($maisAcessados) < 10){
+			if( count($maisAcessados) < 3){
 
 				$maisAcessados[] = $id_livro;
 

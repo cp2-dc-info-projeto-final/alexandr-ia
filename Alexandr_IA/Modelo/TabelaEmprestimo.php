@@ -113,14 +113,22 @@
     $qtd_disponivel = ExemplaresDisponiveis($id_livro);
 
     $bd = CriaConexãoBd();
-    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
-                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
-                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
+    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> execute();
 
-    $linhas =  $sql -> rowCount();
+    $linhas_emprestimo = $sql -> rowCount();
+
+    $bd = CriaConexãoBd();
+    $sql = $bd -> prepare('SELECT reserva.id FROM reserva WHERE reserva.aluno_prof = :id_usuario');
+
+    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql -> execute();
+
+    $linhas_reserva = $sql -> rowCount();
+
+    $linhas = $linhas_reserva + $linhas_emprestimo;
 
     if($retorno == 0 AND $linhas < 2 AND $qtd_disponivel > 0){
 
