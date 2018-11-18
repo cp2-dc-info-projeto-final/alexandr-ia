@@ -272,7 +272,8 @@
                           JOIN usuario
                           ON emprestimo.aluno_prof = usuario.id
                           JOIN livro
-                          ON emprestimo.livro = livro.id');
+                          ON emprestimo.livro = livro.id
+                          ORDER BY usuario.nome');
 
     $sql -> execute();
     $sql = $sql -> fetchAll();
@@ -289,7 +290,8 @@
                           JOIN usuario
                           ON reserva.aluno_prof = usuario.id
                           JOIN livro
-                          ON reserva.livro = livro.id');
+                          ON reserva.livro = livro.id
+                          ORDER BY livro.titulo');
 
     $sql -> execute();
     $sql = $sql -> fetchAll();
@@ -368,7 +370,7 @@
 
     $bd = CriaConexãoBd();
 
-    $dataHora = new DateTime('now',/*'2018-11-23T19:00:00',*/ new DateTimeZone('America/Sao_Paulo'));
+    $dataHora = new DateTime(/*'now',*/'2018-11-21', new DateTimeZone('America/Sao_Paulo'));
     //$data = date('Y-m-d', strtotime('2018-11-16') );
     //$horario = date('H:i:s');
     //$horario = date('H:i:s', strtotime('04:00:00'));
@@ -419,6 +421,32 @@
     $bd = CriaConexãoBd();
 
     $sql = $bd -> prepare('DELETE FROM emprestimo WHERE id = :id_emprestimo');
+
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+    $sql -> execute();
+
+  }
+
+  function VerificaPreEmprestimo($id_emprestimo){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT * FROM emprestimo WHERE id = :id_emprestimo');
+
+    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+    $sql -> execute();
+
+    $sql = $sql -> fetch();
+
+    return($sql['_data_prazo']);
+
+  }
+
+  function RemovePreEmprestimo($id_emprestimo){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('UPDATE emprestimo SET retirado = FALSE AND _data_prazo = NULL AND horario_prazo = NULL WHERE id = :id_emprestimo');
 
     $sql -> bindValue(':id_emprestimo', $id_emprestimo);
     $sql -> execute();

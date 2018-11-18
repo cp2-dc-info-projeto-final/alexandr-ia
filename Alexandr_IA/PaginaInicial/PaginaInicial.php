@@ -21,10 +21,40 @@
 	$usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
 	$id_usuario = $usuario['id'];
 
-	$emprestimos = ListaEmprestimosPorId($id_usuario);
-
 	$resultado = [];
 	$avisos = [];
+	$tipo = TipoUsuario($usuario['id']);
+
+	if($tipo == 1){
+
+		$emprestimos = ListaEmprestimos();
+
+		foreach ($emprestimos as $emprestimo) {
+
+			$id_emprestimo = $emprestimo['id'];
+			$resultado = TempoLimite($id_emprestimo);
+			echo(var_dump($resultado));
+
+			$nomeUsuario = $emprestimo['nome'];
+			$emailUsuario = $emprestimo['email'];
+			$livro = $emprestimo['titulo'];
+
+			if($emprestimo['retirado'] == 0){
+
+				if ($resultado['tempo_restante']->invert == 1){
+
+					RemovePreEmprestimo($id_emprestimo);
+					$avisos[] = "O limite de tempo para que o usuário $nomeUsuario($emailUsuario) retirasse o livro $livro expirou";
+
+				}
+
+			}
+
+		}
+
+	}
+
+	$emprestimos = ListaEmprestimosPorId($id_usuario);
 
 	foreach ($emprestimos as $emprestimo) {
 
@@ -33,9 +63,19 @@
 
 		$livro = $resultado['nome_livro'];
 
+		$data_prazo_pre_emprestimo = VerificaPreEmprestimo($id_emprestimo);
+
+		if($data_prazo_pre_emprestimo == NULL){
+
+			CancelaPreEmprestimo($id_emprestimo);
+			$avisos[] = "O tempo para retirar o livro $livro acabou";
+
+		}
+
 		//var_dump($resultado['tempo_restante']);
 		if($emprestimo['retirado'] == 0){
 
+			// Esse primeiro if provavelmente perderá sua função
 			if ($resultado['tempo_restante']->invert == 1){
 
 				CancelaPreEmprestimo($id_emprestimo);
@@ -473,7 +513,7 @@
 
 								if ($tipo == 1){
 
-									echo('<a id="centro" href="../VerEmprestimos/VerEmprestimos.php">Livros emprestados</a>');
+									echo('<a id="centro" href="../VerEmprestimos/verEmprestimos.php">Livros emprestados</a>');
 
 								} else {
 
