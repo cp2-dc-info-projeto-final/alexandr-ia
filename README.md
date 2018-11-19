@@ -3,15 +3,28 @@
 
 ## Integrantes:
 
-  - Allison Matheus
+  - Allison Matheus de Oliveira Gomes
   - Carlos Eduardo Valladares da Mota
   - Gabriel Teixeira da Costa
-  - Gabriele Gomes
+  - Gabriele Gomes Coelho
 
-## Proposta de viabilidade sobre TCC (Trabalho de Conclusão de Curso)
+## Sumário
 
-### VISÃO GERAL
+- [PROPOSTA DE TCC (Trabalho de Conclusão de Curso)](PROPOSTA-DE-TCC---Trabalho-de-Conclusão-de-Curso)
+- [DESCRIÇÃO DA PROPOSTA](DESCRIÇÃO-DA-PROPOSTA)
+- [OBJETIVOS](OBJETIVOS)
+- [ESPECIFICAÇÕES](ESPECIFICAÇÕES)
+- [CASOS DE USO](CASOS-DE-USO)
+
+## PROPOSTA DE TCC - Trabalho de Conclusão de Curso
+
+### DESCRIÇÃO DA PROPOSTA
 O projeto consiste em computadorizar o sistema de empréstimo de livros da biblioteca do Colégio Pedro II, visando facilitar a organização e manutenção do sistema.
+
+### STAKEHOLDERS
+Alan (Bibliotecário do Colégio Pedro II - Campus de Caxias)
+
+//links para Requisitos
 
 ### OBJETIVOS   
 - Catalogar os livros e excluí-los;
@@ -44,3 +57,9 @@ O projeto consiste em computadorizar o sistema de empréstimo de livros da bibli
 5. Os livros serão catalogados de acordo com o acervo disponível na biblioteca do campus. Caso algum livro tenha sido danificado ao ponto de não poder ser mais utilizado pela biblioteca, o(a) bibliotecário(a) tem a opção de excluir o livro do acervo até que possam colocar outro no lugar e sendo assim, necessário recadastra-lo. Existindo também a possibilidade de cadastrar novos livros, adicionando-os ao sistema.
 
 6. O aluno(a)/professor(a) tem a possibilidade de pedir novidade, isto é, pedir ao sistema que o mostre um livro aleatoriamente, e tem acesso a lista de livros mais desejados.
+
+## CASOS DE USO
+
+## MODELAGEM
+
+## MANUAL
