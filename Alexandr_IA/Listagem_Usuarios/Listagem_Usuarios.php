@@ -208,8 +208,7 @@
 
         } else {
 
-          // $caminho =
-          // foto guardada
+          $caminho = $usuario['foto'];
 
         }
 
@@ -228,7 +227,7 @@
 		echo('
           <h2>'.$usuario['nome'].'</h2>
 
-          <img id="foto_perfil" src='.$caminho.'>
+          <img height="200px" width="148px" id="foto_perfil" src='.$caminho.'>
 
         <div id="infos">
 
@@ -241,7 +240,7 @@
                 <form method="POST" action="alteraMatricula.php">
                   <input type="hidden" name="id" value="'.$usuario['id'].'">
                   <label>Matrícula: <input type="text" name="matricula" value="'.$usuario['matricula'].'"></label>
-                <form>
+                </form>
               </li>
 
               <br>

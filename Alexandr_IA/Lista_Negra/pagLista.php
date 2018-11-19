@@ -175,8 +175,7 @@
 
           } else {
 
-            // $caminho =
-            // foto guardada
+            $caminho = $usuario['foto'];
 
           }
 
@@ -188,7 +187,7 @@
 
             <h2>'.$usuario['nome'].'</h2>
 
-            <img id="foto_perfil" src='.$caminho.'>
+            <img height="200px" width="148px" id="foto_perfil" src='.$caminho.'>
 
             <div id="infos">
 

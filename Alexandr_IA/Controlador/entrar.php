@@ -15,6 +15,8 @@
 	$email = $request['email'];
 	$senha = $request['senha'];
 
+	$usuario = InfosUsuario($email);
+
 	$bd = CriaConexãoBd();
 	$sql_1 = $bd -> prepare('SELECT email FROM usuario WHERE email = :email');
 	$sql_1 -> bindValue(':email', $email);
@@ -29,27 +31,21 @@
 
 	if ($email == false)
 	{
-		$erro[] = "E-Mail não informado";
+		$erro[] = "E-Mail não informado ou inválido";
 	}
-	else if ($sql_1 -> rowCount() == 0)
+	else if ($sql_1->rowCount() == 0)
 	{
 		$erro[] = "Nenhum cliente encontrado para este E-Mail";
 	}
 	else if ($senha == false)
 	{
 		$erro[] = "Senha não informada";
-	}
-
-	require_once('../Modelo/CriaConexao.php');
-	require_once('../Modelo/TabelaUsuários.php');
-
-	$usuario = InfosUsuario($email);
-
-	/* if ($usuario['banido'] == 1){
+	} else
+	 if ($usuario['status'] == 1){
 
 		$erro[] = 'Este e-mail está banido, portanto impedido de acessar o sistema. Dúvidas, contate o bibliotecário do campus.';
 
-	} */
+	} else
 
 		if (password_verify($senha, $hash) && count($erro) == 0){
 
@@ -59,9 +55,7 @@
 		header('Location: ../PaginaInicial/PaginaInicial.php');
 		exit();
 
-	}
-
-	else
+	}	else
 	{
 		$erro[] = "Senha inválida";
 	}
