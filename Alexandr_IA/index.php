@@ -114,9 +114,9 @@
               <td>
                 <div><label>E-mail: </label> <input  class="caixa"type = "text" name="email" required></div><br>
                 <div><label>Senha: </label> <input  class="caixa" type = "password" name="senha" minlength="6" maxlength="15" required></div><br>
-                <div><input type = "checkbox"> <label>Permanecer logado</label></div><br>
+                <!-- <div><input type = "checkbox"> <label>Permanecer logado</label></div><br> -->
                 <input id="amazing_button" style="margin-bottom:20px;" type = "submit" value = "Login"></div><br>
-                <a href="" >Esqueci minha senha</a><br>
+                <!-- <a href="" >Esqueci minha senha</a><br> -->
                 <a href="CadastroAluno/pagCadastro.php">Não sou cadastrado</a>
               </td>
             </tr>
