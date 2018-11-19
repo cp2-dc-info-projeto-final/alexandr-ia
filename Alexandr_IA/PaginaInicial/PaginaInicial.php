@@ -33,7 +33,6 @@
 
 			$id_emprestimo = $emprestimo['id'];
 			$resultado = TempoLimite($id_emprestimo);
-			echo(var_dump($resultado));
 
 			$nomeUsuario = $emprestimo['nome'];
 			$emailUsuario = $emprestimo['email'];

@@ -13,9 +13,7 @@
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
     $sql -> bindValue(':id_livro', $id_livro); */
 
-    $sql = $bd -> prepare('SELECT reserva.id, emprestimo.id FROM reserva
-                           JOIN emprestimo ON emprestimo.aluno_prof = reserva.aluno_prof
-                           WHERE reserva.aluno_prof = :id_usuario AND emprestimo.aluno_prof = :id_usuario');
+    $sql = $bd -> prepare('SELECT reserva.id FROM reserva WHERE reserva.aluno_prof = :id_usuario');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> execute();
@@ -26,7 +24,7 @@
     $sql = NULL;
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario AND emprestimo.livro = :id_livro');
+    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario AND emprestimo.livro = :id_livro AND _data_devolucao IS NULL');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> bindValue(':id_livro', $id_livro);
@@ -47,7 +45,7 @@
 
     } else if ($linhas >= 2){
 
-      $mensagem = 'Você só pode reservar/pegar emprestado, no máximo, 2 itens';
+      $mensagem = 'Você só pode reservar, no máximo, 2 itens';
 
     } else if($retorno != 0){
 
@@ -110,14 +108,15 @@
     $qtd_disponivel = ExemplaresDisponiveis($id_livro);
 
     $bd = CriaConexãoBd();
-    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario');
+    $sql = $bd -> prepare('SELECT emprestimo.id FROM emprestimo WHERE emprestimo.aluno_prof = :id_usuario AND _data_devolucao IS NULL');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> execute();
 
-    $linhas_emprestimo = $sql -> rowCount();
+    // $linhas_emprestimo = $sql -> rowCount();
+    $linhas = $sql -> rowCount();
 
-    $bd = CriaConexãoBd();
+    /* $bd = CriaConexãoBd();
     $sql = $bd -> prepare('SELECT reserva.id FROM reserva WHERE reserva.aluno_prof = :id_usuario');
 
     $sql -> bindValue(':id_usuario', $id_usuario);
@@ -125,7 +124,7 @@
 
     $linhas_reserva = $sql -> rowCount();
 
-    $linhas = $linhas_reserva + $linhas_emprestimo;
+    $linhas = $linhas_reserva + $linhas_emprestimo; */
 
     if($retorno == 0 AND $linhas < 2 AND $qtd_disponivel > 0){
 
@@ -157,6 +156,25 @@
       $sql -> bindValue(':horario_prazo', $horario_previsto);
 
       $sql -> execute();
+
+      $consulta = $bd -> prepare('SELECT * FROM reserva WHERE aluno_prof = :id_usuario AND livro = :id_livro');
+      $consulta -> bindValue(':id_usuario', $id_usuario);
+      $consulta -> bindValue(':id_livro', $id_livro);
+
+      $consulta -> execute();
+
+      if( $consulta->rowCount() == 1 ){
+
+        $bd = CriaConexãoBd();
+        $sql = NULL;
+
+        $sql = $bd -> prepare('DELETE FROM reserva WHERE aluno_prof = :id_usuario AND livro = :id_livro');
+        $sql -> bindValue(':id_usuario', $id_usuario);
+        $sql -> bindValue(':id_livro', $id_livro);
+
+        $sql -> execute();
+
+      }
 
       $erro = 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas';
       return($erro);

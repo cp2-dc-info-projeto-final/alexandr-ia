@@ -251,14 +251,9 @@
 					}
 				?>
 				<?php echo('<p>Tipo de Suporte: '.$tipo.'</p>') ?>
-				<label>Classificação:
-				<input
-
-					type="text"
-					disabled
-					value="<?php echo($livro['classificacao']);?>"
-				>
-				 </label>
+				<p>
+					Classificação: <?php echo($livro['classificacao']);?>
+				</p>
 			</div>
 
 			<?php
@@ -291,7 +286,7 @@
 					<form class="enviar" method="post" action="cancela.php">
 						<input type="hidden" value="'.$idReservaFeita.'" name="id_reserva">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Cancelar Reserva" id="amazing_button"'.$ban.'>
+						<input type="submit" value="Remover da lista" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
