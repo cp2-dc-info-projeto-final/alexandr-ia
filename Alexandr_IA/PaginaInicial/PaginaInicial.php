@@ -434,7 +434,7 @@
 
 								if($tipo == 'CD'){
 
-									$img = $tipo;
+									$img = 'cd';
 
 								} else if($tipo == 'DVD') {
 
@@ -505,7 +505,7 @@
 
 							if($tipo == 'CD'){
 
-								$img = $tipo;
+								$img = 'cd';
 
 							} else if($tipo == 'DVD') {
 
