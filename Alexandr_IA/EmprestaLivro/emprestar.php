@@ -73,6 +73,10 @@
 
         $mensagem = 'Empréstimo feito com sucesso';
 
+      } else if ($mensagem == 'ERRO: <br> Você não pode pegar emprestado mais de 2 livros'){
+
+        $mensagem = 'Não é possível realizar o empréstimo pois este aluno já possui 2 livros no momento';
+
       }
 
     } else {

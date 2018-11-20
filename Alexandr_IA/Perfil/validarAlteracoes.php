@@ -54,6 +54,7 @@
 			$erro = "Erro ao salvar o arquivo no servidor";
 
 		}
+  }
 
   if( empty($erros) == false){
 
