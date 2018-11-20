@@ -480,6 +480,22 @@
 
   }
 
+  function VerificaRetirado($id_usuario, $id_livro){
+
+    $bd = CriaConexãoBd();
+
+    $sql = $bd -> prepare('SELECT * FROM emprestimo WHERE aluno_prof = :id_usuario AND livro = :id_livro AND _data_devolucao IS NULL');
+
+    $sql -> bindValue(':id_usuario', $id_usuario);
+    $sql -> bindValue(':id_livro', $id_livro);
+    $sql -> execute();
+
+    $sql = $sql -> fetch();
+
+    return($sql['retirado']);
+
+  }
+
   function RemovePreEmprestimo($id_emprestimo){
 
     $bd = CriaConexãoBd();

@@ -65,12 +65,22 @@
 
     $diferencial = VerificaStatusEmprestimo($id_usuario, $id_livro);
 
-    if($diferencial == 0){
+    if($infos_usuario['status'] == 1){
+
+      $mensagem = 'Este usuário está excluído do sistema, portanto não pode realizar empréstimos';
+
+    } else if ($infos_usuario['banido'] == 1) {
+
+      $mensagem = 'Este usuário está suspenso, portanto não pode realizar empréstimos';
+
+    } else if($diferencial == 0){
 
       $mensagem = Empresta($id_usuario, $id_bibliotecario, $id_livro);
 
       if ($mensagem == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
 
+        $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+        Retirar($id_emprestimo, $id_bibliotecario);
         $mensagem = 'Empréstimo feito com sucesso';
 
       } else if ($mensagem == 'ERRO: <br> Você não pode pegar emprestado mais de 2 livros'){
@@ -79,14 +89,21 @@
 
       }
 
+
     } else {
 
-      $mensagem = 'Empréstimo feito com sucesso';
+      if (VerificaRetirado($id_usuario, $id_livro) == 1){
+
+        $mensagem = 'Este item já está emprestado a este usuário';
+
+      } else {
+
+        Retirar($id_emprestimo, $id_bibliotecario);
+        $mensagem = 'Empréstimo feito com sucesso';
+
+      }
 
     }
-
-    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
-    Retirar($id_emprestimo, $id_bibliotecario);
 
     header('Location: pagEmprestimo.php?mensagem='.urlencode($mensagem));
 
