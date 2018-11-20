@@ -27,12 +27,19 @@
 	$reservas_usuario = ListaReservasPorId($id);
 	$emprestimos_usuario = ListaEmprestimosPorId($id);
 	$jaEmprestado = 0;
+	$retirado = 0;
 
 	foreach ($emprestimos_usuario as $emprestimo) {
 
 		if ($emprestimo['livro'] == $idLivro){
 
 			$jaEmprestado = 1;
+
+			if($emprestimo['retirado'] == 1){
+
+				$retirado = 1;
+
+			}
 
 		}
 
@@ -269,15 +276,29 @@
 
 					if($jaEmprestado == 1){
 
-						echo('
+						if($retirado == 0){
 
-					<form class="enviar" method="post" action="cancelaEmprestimo.php">
-						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
-						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Cancelar Emprestimo" id="amazing_button"'.$ban.'>
-					</form>
+							echo('
 
-						');
+						<form class="enviar" method="post" action="cancelaEmprestimo.php">
+							<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
+							<input type="hidden" value="'.$livro['id'].'" name="id_livro">
+							<input type="submit" value="Cancelar Reserva" id="amazing_button"'.$ban.'>
+						</form>
+
+							');
+
+						} else {
+
+							echo('
+
+								<p><b>Este livro está com você, fique atento ao prazo de devolução</b></p>
+
+							');
+
+						}
+
+
 
 					} else if ($reservaFeita == TRUE){
 
@@ -298,7 +319,7 @@
 					<form class="enviar" method="post" action="empresta.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Pegar Emprestado" id="amazing_button"'.$ban.'>
+						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
@@ -310,7 +331,7 @@
 					<form class="enviar" method="post" action="reserva.php">
 						<input type="hidden" value="'.$dadosUsuario['id'].'" name="id_usuario">
 						<input type="hidden" value="'.$livro['id'].'" name="id_livro">
-						<input type="submit" value="Reservar Livro" id="amazing_button"'.$ban.'>
+						<input type="submit" value="Colocar na Lista" id="amazing_button"'.$ban.'>
 					</form>
 
 						');
