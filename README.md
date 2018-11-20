@@ -60,6 +60,17 @@ Alan (Bibliotecário do Colégio Pedro II - Campus de Caxias)
 
 ## Casos de uso
 
+Diagrama de Casos de Uso:
+![Diagrama de Casos de Uso](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/PNG/DiagramaDeCasosSeUso.png)
+
+[Descrição dos Casos de Uso](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/casosDeUso.md)
+
 ## Modelagem
+
+Diagrama de Classes:
+![Diagrama de Classes](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/PNG/Diagrama%20de%20Classes.png)
+
+Banco de Dados (DED):
+![Banco de Dados](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/PNG/ModelagemDoBancoDeDados.png)
 
 ## Manual
