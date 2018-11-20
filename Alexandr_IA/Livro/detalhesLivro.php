@@ -167,6 +167,26 @@
 
 				');
 
+				$erro = $_REQUEST['erro'];
+
+				if ($erro == 'Empréstimo registrado, retire o livro na biblioteca em até 48 Horas'){
+
+					$erro = 'Reserva feita, retire o livro na biblioteca em até 48 Horas';
+
+				} else if ($erro == 'Empréstimo cancelado'){
+
+					$erro = 'Reserva cancelada';
+
+				} else if ($erro == 'Reserva de Livro Cancelada'){
+
+					$erro = 'Item removido com sucesso da lista de interesses';
+
+				} else if ($erro == 'Reserva feita com sucesso'){
+
+					$erro = 'Item colocado com sucesso na lista de interesses';
+
+				}
+
 				echo('<center><div id="caixaErros">');
 
 					echo($erro);
