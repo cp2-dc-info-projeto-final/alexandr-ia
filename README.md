@@ -10,15 +10,14 @@
 
 ## Sumário
 
-- [PROPOSTA DE TCC (Trabalho de Conclusão de Curso)](PROPOSTA-DE-TCC---Trabalho-de-Conclusão-de-Curso)
-- [DESCRIÇÃO DA PROPOSTA](DESCRIÇÃO-DA-PROPOSTA)
-- [OBJETIVOS](OBJETIVOS)
-- [ESPECIFICAÇÕES](ESPECIFICAÇÕES)
-- [CASOS DE USO](CASOS-DE-USO)
+- [Proposta](#proposta-de-tcc---trabalho-de-conclusão-de-curso)
+- [Casos de Uso](#casos-de-uso)
+- [Modelagem](#modelagem)
+- [Manual](#manual)
 
-## PROPOSTA DE TCC - Trabalho de Conclusão de Curso
+## Proposta de TCC - Trabalho de Conclusão de Curso
 
-### DESCRIÇÃO DA PROPOSTA
+### Descrição da Proposta
 O projeto consiste em computadorizar o sistema de empréstimo de livros da biblioteca do Colégio Pedro II, visando facilitar a organização e manutenção do sistema.
 
 ### STAKEHOLDERS
@@ -58,8 +57,8 @@ Alan (Bibliotecário do Colégio Pedro II - Campus de Caxias)
 
 6. O aluno(a)/professor(a) tem a possibilidade de pedir novidade, isto é, pedir ao sistema que o mostre um livro aleatoriamente, e tem acesso a lista de livros mais desejados.
 
-## CASOS DE USO
+## Casos de uso
 
-## MODELAGEM
+## Modelagem
 
-## MANUAL
+## Manual
