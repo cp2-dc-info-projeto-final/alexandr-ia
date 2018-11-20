@@ -266,7 +266,7 @@
 
     $bd = CriaConexãoBd();
 
-    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE aluno_prof = :id_usuario AND bibliotecario = :id_bibliotecario AND livro = :id_livro');
+    $sql = $bd -> prepare('SELECT id FROM emprestimo WHERE aluno_prof = :id_usuario AND bibliotecario = :id_bibliotecario AND livro = :id_livro AND _data_devolucao IS NULL');
     $sql -> bindValue(':id_usuario', $id_usuario);
     $sql -> bindValue(':id_bibliotecario', $id_bibliotecario);
     $sql -> bindValue(':id_livro', $id_livro);
@@ -275,23 +275,31 @@
     $sql = $sql -> fetch();
     $id_emprestimo = $sql['id'];
 
-    $sql = $bd -> prepare('SELECT emprestimo._data_prazo FROM emprestimo WHERE id = :id_emprestimo');
-    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+    if(VerificaStatusEmprestimo($id_usuario, $id_livro) == 1){
 
-    $sql -> execute();
-    $sql = $sql -> fetch();
+      $sql = $bd -> prepare('SELECT emprestimo._data_prazo FROM emprestimo WHERE id = :id_emprestimo');
+      $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
-    $data = $sql['_data_prazo'];
-    $data = strtotime('+7 day', strtotime($data));
-    $data = date('Y-m-d', $data);
+      $sql -> execute();
+      $sql = $sql -> fetch();
 
-    $sql = $bd -> prepare('UPDATE emprestimo SET _data_prazo = :data WHERE id = :id_emprestimo');
-    $sql -> bindValue(':data', $data);
-    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+      $data = $sql['_data_prazo'];
+      $data = strtotime('+7 day', strtotime($data));
+      $data = date('Y-m-d', $data);
 
-    $sql -> execute();
+      $sql = $bd -> prepare('UPDATE emprestimo SET _data_prazo = :data WHERE id = :id_emprestimo');
+      $sql -> bindValue(':data', $data);
+      $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
-    return("Empréstimo renovado");
+      $sql -> execute();
+
+      return("Empréstimo renovado");
+
+    } else {
+
+      return('Este empréstimo não está em aberto ou não existe');
+
+    }
 
   }
 
