@@ -1,6 +1,18 @@
 <?php
 
 	session_start();
+
+	if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
+
+		$erro = [];
+		$erro[] = 'É preciso estar logado para acessar a página';
+		$_SESSION['erro'] = $erro;
+
+		header('Location: ../index.php');
+		exit();
+
+	}
+
 	$idLivro = filter_input(INPUT_GET, 'idLivro', FILTER_SANITIZE_URL);
 	$erro = filter_input(INPUT_GET, 'erro', FILTER_DEFAULT);
 
