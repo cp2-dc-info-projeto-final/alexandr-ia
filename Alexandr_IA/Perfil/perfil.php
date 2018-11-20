@@ -2,6 +2,19 @@
 
   session_start();
 
+  session_start();
+
+  if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
+
+		$erro = [];
+		$erro[] = 'É preciso estar logado para acessar a página';
+		$_SESSION['erro'] = $erro;
+
+		header('Location: ../index.php');
+		exit();
+
+	}
+
   require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
   $usuario = InfosUsuario($_SESSION['emailUsuarioLogado']);
@@ -299,7 +312,7 @@
 
       </div>
 	  <div id="infos">
-	  
+
       <ul>
 
           <form style="margin-bottom:20%;" method="post" action="validarAlteracoes.php">
@@ -314,9 +327,9 @@
             <input type="submit" value="Salvar alterações">
 
           </form>
-		  
+
       </ul>
-	
+
     </div>
 	<div>
       <form method="post" action="validarFoto.php" enctype="multipart/form-data">

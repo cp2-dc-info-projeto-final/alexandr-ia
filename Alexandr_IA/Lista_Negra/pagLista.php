@@ -1,6 +1,35 @@
 <?php
 
+  require_once('../Modelo/CriaConexao.php');
+  require_once('../Modelo/TabelaUsuários.php');
   session_start();
+
+  if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
+
+		$erro = [];
+		$erro[] = 'É preciso estar logado para acessar a página';
+		$_SESSION['erro'] = $erro;
+
+		header('Location: ../index.php');
+		exit();
+
+	} else {
+
+    $email = $_SESSION['emailUsuarioLogado'];
+    $id_usuario = InfosUsuario($email);
+    $id_usuario = $id_usuario['id'];
+
+    if(TipoUsuario($id_usuario) == 0){
+
+      $erro = [];
+  		$erro[] = 'É preciso ser um bibliotecário para acessar a página';
+  		$_SESSION['erro'] = $erro;
+
+  		header('Location: ../index.php');
+  		exit();
+
+    }
+  }
 
   require_once('../Modelo/CriaConexao.php');
   require_once('../Modelo/TabelaUsuários.php');
