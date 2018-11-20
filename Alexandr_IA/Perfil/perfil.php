@@ -146,7 +146,6 @@
       }
 
       #conteudo{
-        margin-left: 20%;
         display: inline-block;
         width: 50%;
       }
@@ -159,7 +158,8 @@
 
         display: block;
         float: right;
-        margin-left: 5%;
+		margin-top:2%;
+        margin-right: 25%;
         border: 2px solid;
         padding: 1%;
 
@@ -186,6 +186,9 @@
         float: left;
 
       }
+	  form{
+		  margin-bottom: 0%;
+	  }
 
       </style>
 
@@ -295,24 +298,11 @@
         >
 
       </div>
-      <br>
-
-      <form method="post" action="validarFoto.php" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
-        <input type="file" name="arq" required><br>
-        <input type="submit" value="Alterar foto de perfil">
-      </form>
-      <form method="post" action="removerFoto.php">
-        <input type="hidden" name="id" value="<?php echo($usuario['id'])?>">
-        <input type="submit" value="Remover foto de perfil">
-      </form>
-    </div>
-
-    <div id="infos">
-
+	  <div id="infos">
+	  
       <ul>
 
-          <form method="post" action="validarAlteracoes.php">
+          <form style="margin-bottom:20%;" method="post" action="validarAlteracoes.php">
 
             <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
             <li> Nome: <input type="text" name="nome" value="<?php echo($usuario['nome']);?>"></li>
@@ -324,9 +314,21 @@
             <input type="submit" value="Salvar alterações">
 
           </form>
-
+		  
       </ul>
-
+	
+    </div>
+	<div>
+      <form method="post" action="validarFoto.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo($usuario['id']); ?>">
+        <input type="file" name="arq" required><br>
+        <input type="submit" value="Alterar foto de perfil">
+      </form>
+      <form method="post" action="removerFoto.php">
+        <input type="hidden" name="id" value="<?php echo($usuario['id'])?>">
+        <input type="submit" value="Remover foto de perfil">
+      </form>
+	</div>
     </div>
 
     <?php
