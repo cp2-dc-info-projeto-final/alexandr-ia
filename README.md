@@ -20,19 +20,20 @@
 ### Descrição da Proposta
 O projeto consiste em computadorizar o sistema de empréstimo de livros da biblioteca do Colégio Pedro II, visando facilitar a organização e manutenção do sistema.
 
-### STAKEHOLDERS
+### Stakeholder(s)
 Alan (Bibliotecário do Colégio Pedro II - Campus de Caxias)
 
-//links para Requisitos
+### Requisitos
+[Especificação de Requisitos](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/requisitos.md)
 
-### OBJETIVOS   
+### Objetivos
 - Catalogar os livros e excluí-los;
 - Cadastrar alunos/professores e excluir ex-alunos/professores;
 - Gerenciar os empréstimos dos livros;
 - Definir prazos de entrega dos livros e prorrogações;
 - Permitir ao bibliotecário controlar o sistema.
 
-### ESPECIFICAÇÕES
+### Especificações
 1. O acesso ao sistema seria dado de acordo com a matrícula do aluno/professor ou o código do bibliotecário, dependendo de quem for o utilizador;
 
     a. Os diferentes utilizadores possuem níveis de acesso ao sistema diferentes e cada um deles possuem seu perfil e ninguém além dos bibliotecários(as) podem acessar o perfil dos alunos(as) e professores(as) cadastrados no sistema;
