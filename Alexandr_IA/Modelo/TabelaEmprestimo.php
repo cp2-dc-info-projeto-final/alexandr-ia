@@ -240,17 +240,25 @@
     $data = date('Y-m-d');
     $horario = date('H:i:s');
 
-    $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
+    if( VerificaStatusEmprestimo($id_usuario, $id_livro) == 1){
 
-    $sql = $bd -> prepare('UPDATE emprestimo SET _data_devolucao = :_data_devolucao, horario_devolucao = :horario_devolucao, retirado = FALSE WHERE id = :id_emprestimo');
+      $id_emprestimo = ProcuraIdEmprestimo($id_usuario, $id_livro);
 
-    $sql -> bindValue(':_data_devolucao', $data);
-    $sql -> bindValue(':horario_devolucao', $horario);
-    $sql -> bindValue(':id_emprestimo', $id_emprestimo);
+      $sql = $bd -> prepare('UPDATE emprestimo SET _data_devolucao = :_data_devolucao, horario_devolucao = :horario_devolucao, retirado = FALSE WHERE id = :id_emprestimo');
 
-    $sql -> execute();
+      $sql -> bindValue(':_data_devolucao', $data);
+      $sql -> bindValue(':horario_devolucao', $horario);
+      $sql -> bindValue(':id_emprestimo', $id_emprestimo);
 
-    return('Item devolvido com sucesso');
+      $sql -> execute();
+
+      return('Item devolvido com sucesso');
+
+    } else {
+
+      return('Este usuário não está com este item emprestado');
+
+    }
 
   }
 
@@ -373,9 +381,8 @@
     $sql -> bindValue('id_livro', $id_livro);
 
     $sql -> execute();
-    $sql = $sql -> fetch();
 
-    if( empty($sql) == TRUE ){
+    if( $sql->rowCount() == 0 ){
 
       return(0);
       // O empréstimo não existe
