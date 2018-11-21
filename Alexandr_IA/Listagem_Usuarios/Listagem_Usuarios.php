@@ -285,7 +285,7 @@
 
                 <form method="post" action="banir.php">
                   <input type="hidden" value="'.$id.'" name="id">
-                  <input type="submit" value="Adicionar Aluno/Professor à Lista Negra">
+                  <input type="submit" value="Adicionar Aluno/Professor à Lista de Suspensão">
                 </form>
 
                 <br>

@@ -40,7 +40,7 @@
 
   <head>
 
-    <title>Página da Lista Negra</title>
+    <title>Página da Lista de Suspensão</title>
     <meta charset="utf-8">
 
     <style>
@@ -185,7 +185,7 @@
 			</ul>
 		</div>
 
-    <center><h2>Lista Negra: </h2></center>
+    <center><h2>Lista de Suspensão: </h2></center>
 
     <?php
 
@@ -248,7 +248,7 @@
 
       if($bans == 0){
 
-        echo('<center><h4>Não há nenhum usuário na Lista Negra</h4></center>');
+        echo('<center><h4>Não há nenhum usuário na Lista de Suspensão</h4></center>');
 
       }
 

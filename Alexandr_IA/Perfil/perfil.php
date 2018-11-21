@@ -356,7 +356,7 @@
           <br>
           <input type="button" value="Cadastrar Novo Bibliotecário" onClick="Redirect(\'../CadastroBibliotecario/pagCadastro.php\');">
           <br>
-          <input type="button" value="Gerenciar Lista Negra" onClick="Redirect(\'../Lista_Negra/pagLista.php\');">
+          <input type="button" value="Gerenciar Lista de Suspensão" onClick="Redirect(\'../Lista_Negra/pagLista.php\');">
           <br>
           <input type="button" value="Listar Usuarios" onclick="Redirect(\'../Listagem_Usuarios/Listagem_Usuarios.php\');">
           <br>
