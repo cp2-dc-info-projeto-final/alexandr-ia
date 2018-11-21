@@ -74,3 +74,4 @@ Banco de Dados (DED):
 ![Banco de Dados](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/PNG/ModelagemDoBancoDeDados.png)
 
 ## Manual
+[Manual de Utilização](https://github.com/cp2-dc-info-projeto-final-2018/requisitos-alexandr-ia/blob/master/Manual%20de%20Instru%C3%A7%C3%B5es.pdf)
