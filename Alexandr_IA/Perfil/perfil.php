@@ -2,8 +2,6 @@
 
   session_start();
 
-  session_start();
-
   if(array_key_exists('emailUsuarioLogado', $_SESSION) == false){
 
 		$erro = [];
