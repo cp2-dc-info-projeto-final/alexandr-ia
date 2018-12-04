@@ -75,11 +75,11 @@ CREATE TABLE emprestimo (
 
 INSERT INTO usuario VALUES
 
-  (1, 'M00000000', 'Bibliotecário Admin Padrão', 'bib_admin@example.com', '$2y$10$JfLURWJ3HjCl00odKV2fwe5wxc1K3ULs2Eopr59U.LvrXFJ6/7LSm', NULL, FALSE, '21900000000', NULL),
-  (2, 'M00000001', 'Allison Matheus', 'allison@example.com', '$2y$10$Ir.WpDxsPMIhdpuc9dPUnOpILhhLx.zXQNzDgx9E.TRkbClAN8fOC', NULL, FALSE, '21900000001', 'IN301'),
-  (3, 'M00000002', 'Carlos Eduardo', 'filhao@example.com', '$2y$10$MUxxWHYZ7sr4.CWxPkWcO./1EzvqgBN/zeqipBHUJDOP3J/JY2tn.', NULL, FALSE, '21900000002', 'IN301'),
-  (4, 'M00000003', 'Gabriel Teixeira', 'gabriel@example.com', '$2y$10$.Dqxl58TMI8yR147u5j12ei/JsC18hkRQdqLmlcXmpnycVqIqgzim', NULL, FALSE, '21900000003', 'IN301'),
-  (5, 'M00000004', 'Gabriele Gomes', 'gabriele@example.com', '$2y$10$z2OGHu6H0F5YNDtqHMUOyO4CiIrMwWNK7jIzqmiz6cOG8nwp49ACq', NULL, FALSE, '21900000004', 'IN301');
+  (1, 'M00000000', 'Bibliotecário Admin Padrão', 'bib_admin@example.com', '$2y$10$JfLURWJ3HjCl00odKV2fwe5wxc1K3ULs2Eopr59U.LvrXFJ6/7LSm', NULL, FALSE, '21900000000', NULL, 0),
+  (2, 'M00000001', 'Allison Matheus', 'allison@example.com', '$2y$10$Ir.WpDxsPMIhdpuc9dPUnOpILhhLx.zXQNzDgx9E.TRkbClAN8fOC', NULL, FALSE, '21900000001', 'IN301', 0),
+  (3, 'M00000002', 'Carlos Eduardo', 'filhao@example.com', '$2y$10$MUxxWHYZ7sr4.CWxPkWcO./1EzvqgBN/zeqipBHUJDOP3J/JY2tn.', NULL, FALSE, '21900000002', 'IN301', 0),
+  (4, 'M00000003', 'Gabriel Teixeira', 'gabriel@example.com', '$2y$10$.Dqxl58TMI8yR147u5j12ei/JsC18hkRQdqLmlcXmpnycVqIqgzim', NULL, FALSE, '21900000003', 'IN301', 0),
+  (5, 'M00000004', 'Gabriele Gomes', 'gabriele@example.com', '$2y$10$z2OGHu6H0F5YNDtqHMUOyO4CiIrMwWNK7jIzqmiz6cOG8nwp49ACq', NULL, FALSE, '21900000004', 'IN301', 0);
 
 INSERT INTO aluno_professor VALUES
 
